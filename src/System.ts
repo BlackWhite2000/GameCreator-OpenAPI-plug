@@ -2,7 +2,7 @@
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 1.0
+ * @version 2.0
  */
 module OpenAPI {
 
@@ -14,7 +14,7 @@ module OpenAPI {
         /**
          * 当前版本号
          */
-        static Version = 1.0;
+        static Version = 2.0;
 
         /**
          * 是否安装本插件
