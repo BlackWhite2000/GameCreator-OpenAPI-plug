@@ -1,21 +1,23 @@
 {
   "name": "gamecreator-openapi-plug",
   "scripts": {
-    "dist": "gulp clean && gulp concat-ts && npm-run-all dist-js && tsc -p dist/tsconfig.json",
-    "dist-ts": "gulp clean-ts && gulp concat-ts && tsc -p dist/tsconfig.json",
+    "dist": "gulp clean && gulp concat-ts && npm-run-all dist-js d-ts",
+    "dist-ts": "gulp clean-ts && gulp concat-ts && npm-run-all d-ts",
     "dist-js": "gulp concat-distCryptoJS",
+    "plug": "gulp plug",
     "plug-dist": "gulp plug-dist",
-    "public": "gulp concat-CryptoJS"
+    "plug-clean": "gulp plug-clean",
+    "d-ts": "tsc -p dist/tsconfig.json"
   },
   "license": "ISC",
   "dependencies": {
-    "crypto-js": "^4.1.1",
     "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
     "gulp-concat": "^2.6.1",
     "typescript": "^4.9.4"
   },
   "devDependencies": {
+    "gulp-clean": "^0.4.0",
+    "gulp-ignore": "^3.0.0",
     "gulp-prompt": "^1.2.0",
     "npm-run-all": "^4.1.5"
   }
