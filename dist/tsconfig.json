@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "outDir": "",
+        "rootDir": "",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "skipLibCheck": true,
+        "lib": [
+            "DOM",
+            "ES2015"
+        ],
+    },
+    "files": [
+       "OpenAPI.ts"
+    ],
+    "include": [
+        "../../GameCreatorLib/**/*.d.ts"
+    ]
+}
