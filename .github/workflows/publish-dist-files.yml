@@ -11,11 +11,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: npm install
-    - run: npm run dist-no-d-ts
-    - name: Create or Checkout dist branch
+    - run: npm run dits-no-d-ts
+    - name: Checkout or create dist branch
       run: |
-        git branch -D dist
-        git branch dist
+        git checkout -b dist || git checkout dist
     - name: Add dist files
       run: |
         git add dist/* -f
