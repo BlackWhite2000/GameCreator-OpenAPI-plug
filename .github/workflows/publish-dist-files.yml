@@ -18,7 +18,9 @@ jobs:
     - name: Remove files from dist branch
       run: git rm -rf dist/*
     - name: Add dist files and exclude the unwanted files
-      run: git add dist/* -f --ignore-removal dist/*.d.ts dist/tsconfig.json
+      run: |
+        git add dist
+        git reset dist/*.d.ts dist/tsconfig.json
     - name: Set git user email and name
       run: |
         git config user.email "2285697543@qq.com"
