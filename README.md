@@ -36,6 +36,7 @@ npm i
 
 ### 开发版本
 可直接下载dist分支内的文件,下载完毕后放到工程的 **Game/GCplug** 内即可。
+
 但是请注意，dist分支是开发版，意味着测试并不充足 [下载地址](https://github.com/BlackWhite2000/GameCreator-OpenAPI-plug/archive/refs/heads/dist.zip)。
 
 ## 命令
