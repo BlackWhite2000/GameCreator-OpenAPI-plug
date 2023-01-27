@@ -22,7 +22,7 @@ jobs:
     - name: 添加发布文件
       run: git add dist/*
     - name: 移动至根目录
-      run: git mv dist/* ../
+      run: git mv dist/* /
     - name: 操作信息
       run: |
         git config user.email "2285697543@qq.com"
