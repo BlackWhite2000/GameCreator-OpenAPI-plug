@@ -15,15 +15,12 @@ jobs:
     - name: Checkout or create dist branch
       run: |
         git checkout -b dist || git checkout dist
-    - name: Add dist files
-      run: |
-        git add dist/* -f
+    - name: Add dist files and exclude the unwanted files
+      run: git add dist/* -f --ignore-removal dist/*.d.ts dist/tsconfig.json
     - name: Set git user email and name
       run: |
-        git config --global user.email "2285697543@qq.com"
-        git config --global user.name "BlackWhite"
-    - name: Add all files to git
-      run: git add .
+        git config user.email "2285697543@qq.com"
+        git config user.name "BlackWhite"
     - name: Commit and push dist files
       run: |
         git commit -m "Add dist files"
