@@ -15,8 +15,10 @@ jobs:
     - name: Checkout or create dist branch
       run: |
         git checkout -b dist || git checkout dist
-    - name: Add dist files and exclude the unwanted files
-      run: git add dist/* -f --ignore-removal dist/*.d.ts dist/tsconfig.json
+    - name: Add dist files 
+      run: git add dist
+    - name: Exclude the unwanted files
+      run: git reset dist/*.d.ts dist/tsconfig.json
     - name: Set git user email and name
       run: |
         git config user.email "2285697543@qq.com"
