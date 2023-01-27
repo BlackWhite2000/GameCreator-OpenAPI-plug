@@ -20,7 +20,7 @@ jobs:
     - name: Clean up unnecessary files
       run: git rm -r --cached .
     - name: Add dist files and exclude the unwanted files
-      run: git add --all dist/* -f
+      run: git add dist/* -f
     - name: Set git user email and name
       run: |
         git config user.email "2285697543@qq.com"
