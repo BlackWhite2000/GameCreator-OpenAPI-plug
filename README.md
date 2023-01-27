@@ -12,10 +12,6 @@ npm i
 ### 开始
 基于 **src** 目录开始开发, 完毕后使用命令 **dist** 或者 **dist-ts**, 会将所有ts打包成一个ts, 主要方便发布插件。
 
-声明文件打包过程可能会有报错, 这是正常情况, 因为没有相关环境存在。
-
-确保最终代码是正常的即可。
-
 ### 注意事项
 如果打包包含第三方库, 请使用命令 **dist**
 
@@ -41,10 +37,10 @@ npm i
 
 ## 命令
 ### dist
-合并ts到dist、拷贝public内的js到dist、生成d.ts到dist
+合并ts到dist、拷贝public内的js到dist
 
 ### dist-ts
-合并ts到dist、生成d.ts到dist
+合并ts到dist
 
 ### dist-js
 拷贝public内的js到dist 
@@ -60,6 +56,7 @@ npm i
 
 ### d-ts 
 生成d.ts到dist
+声明文件打包过程可能会有报错, 这是正常情况, 因为没有相关环境存在。
 
 ### dist-no-d-ts
 合并ts到dist、拷贝public内的js到dist
