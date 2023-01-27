@@ -30,6 +30,14 @@ npm i
 
 一旦使用了第三方库, 都请注意冲突问题, 因为这是插件, 不确定用户会不会有第二个相同的库存在。
 
+## 下载插件
+### 发布版本
+直接去官网安装下载即可 [安装地址](https://www.gamecreator.com.cn/plug/det/641)。
+
+### 开发版本
+可直接下载dist分支内的文件,下载完毕后放到工程的 **Game/GCplug** 内即可。
+但是请注意，dist分支是开发版，意味着测试并不充足 [下载地址](https://github.com/BlackWhite2000/GameCreator-OpenAPI-plug/archive/refs/heads/dist.zip)。
+
 ## 命令
 ### dist
 合并ts到dist、拷贝public内的js到dist、生成d.ts到dist
