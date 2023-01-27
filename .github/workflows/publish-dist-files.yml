@@ -1,31 +1,29 @@
 name: Publish dist files
 
 on:
-  push:
-    branches:
-      - master
+push:
+branches:
+- master
 
 jobs:
-  build-dist:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - run: npm install
-    - run: npm run dist-no-d-ts
-    - name: Checkout or create dist branch
-      run: |
-        git checkout -b dist || git checkout dist
-    - name: Add dist files and exclude the unwanted files
-      run: git add dist/* -f
-    - name: Reset unwanted files
-      run: git reset dist/*.d.ts dist/tsconfig.json
-    - name: Set git user email and name
-      run: |
-        git config user.email "2285697543@qq.com"
-        git config user.name "BlackWhite"
-    - name: Commit and push dist files
-      run: |
-        git commit -m "Add dist files"
-        git push origin dist --force
-    - name: Clean dist branch
-      run: git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch dist/*.d.ts dist/tsconfig.json' --prune-empty --tag-name-filter cat -- --all
+build-dist:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v3
+- run: npm install
+- run: npm run dist-no-d-ts
+- name: Checkout or create dist branch
+run: |
+git checkout -b dist || git checkout dist
+- name: Add dist files and exclude the unwanted files
+run: git add dist/* -f
+- name: Reset unwanted files
+run: git reset dist/*.d.ts dist/tsconfig.json
+- name: Set git user email and name
+run: |
+git config user.email "2285697543@qq.com"
+git config user.name "BlackWhite"
+- name: Commit and push dist files
+run: |
+git commit -m "Add dist files"
+git push origin dist --force
