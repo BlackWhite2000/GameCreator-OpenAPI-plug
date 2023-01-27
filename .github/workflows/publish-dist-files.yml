@@ -1,0 +1,25 @@
+name: Publish dist files
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-dist:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - run: npm install
+    - run: npm run dist
+    - name: Create or Checkout dist branch
+      run: |
+        git branch -D dist
+        git branch dist
+    - name: Add dist files
+      run: |
+        git add dist/* -f
+    - name: Commit and push dist files
+      run: |
+        git commit -m "Add dist files"
+        git push origin dist --force
