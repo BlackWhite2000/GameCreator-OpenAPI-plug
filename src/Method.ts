@@ -93,29 +93,29 @@ module OpenAPI {
 
         /**
          * 判断常量变量类型
-         * @param {number} variable_index_constant 常量
-         * @param {number} variable_index_variable 变量
-         * @param {number} variable_index_type 选项类型
+         * @param {number} constant 常量
+         * @param {number} variable 变量
+         * @param {number} index_type 选项类型
          * @param {number} variable_type 【默认数值】变量类型
          */
-        static JudgeTypeConstantVariable(variable_index_constant: number, variable_index_variable: number, variable_index_type: number, variable_type = 0) {
+        static JudgeTypeConstantVariable(constant: number, variable: number, index_type: number, variable_type = 0) {
             let variable_value;
-            if (variable_index_type == 0) {
-                variable_value = variable_index_constant;
+            if (index_type == 0) {
+                variable_value = constant;
             } else {
                 // 数值
                 if (variable_type == 0) {
-                    variable_value = Game.player.variable.getVariable(variable_index_variable);
+                    variable_value = Game.player.variable.getVariable(variable);
                 }
 
                 // 字符串
                 if (variable_type == 1) {
-                    variable_value = Game.player.variable.getString(variable_index_variable);
+                    variable_value = Game.player.variable.getString(variable);
                 }
 
                 // 开关
                 if (variable_type == 2) {
-                    variable_value = Game.player.variable.getSwitch(variable_index_variable);
+                    variable_value = Game.player.variable.getSwitch(variable);
                 }
             }
             return variable_value;
