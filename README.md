@@ -38,7 +38,7 @@ npm i
 合并ts到dist、生成d.ts到dist
 
 ### dist-js
-拷贝public内的js到dist
+拷贝public内的js到dist 
 
 ### plug
 清空插件目录、拷贝dist内除了tsconfig.json、.d.ts的文件到插件目录 -可以手动填写路径
