@@ -14,18 +14,18 @@ jobs:
     - run: rm -rf dist
     - run: mkdir dist
     - run: npm run dist-no-d-ts
-    - name: Checkout or create dist branch
+    - name: 切换或创建dist分支
       run: |
         git checkout -b dist || git checkout dist
-    - name: Clean up unnecessary files
+    - name: 清空dist分支
       run: git rm -r --cached .
-    - name: Add dist files and exclude the unwanted files
-      run: git add dist/* -f
-    - name: Set git user email and name
+    - name: 添加发布文件
+      run: git add dist/*
+    - name: 操作信息
       run: |
         git config user.email "2285697543@qq.com"
         git config user.name "BlackWhite"
-    - name: Commit and push dist files
+    - name: 推送发布文件
       run: |
         git commit -m "Add dist files"
         git push origin dist --force
