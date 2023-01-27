@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - run: npm install
-    - run: npm run dist
+    - run: npm run dist-no-d-ts
     - name: Create or Checkout dist branch
       run: |
         git branch -D dist

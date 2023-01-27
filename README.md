@@ -51,3 +51,6 @@ npm i
 
 ### d-ts
 生成d.ts到dist
+
+### dist-no-d-ts
+合并ts到dist、拷贝public内的js到dist
