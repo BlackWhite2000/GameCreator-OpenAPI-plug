@@ -18,7 +18,7 @@ jobs:
       run: |
         git checkout -b dist || git checkout dist
     - name: Add dist files and exclude the unwanted files
-      run: git add dist/*
+      run: git add dist/
     - name: Set git user email and name
       run: |
         git config user.email "2285697543@qq.com"
