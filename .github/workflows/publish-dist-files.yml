@@ -25,6 +25,8 @@ jobs:
       run: git mv ./dist/* ./
     - name: 删除dist文件
       run: rm -rf ./dist
+    - name: 删除tsconfig文件
+      run: rm -rf tsconfig.json
     - name: 操作信息
       run: |
         git config user.email "2285697543@qq.com"
