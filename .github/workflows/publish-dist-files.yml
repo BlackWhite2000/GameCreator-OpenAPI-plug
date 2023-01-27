@@ -13,7 +13,7 @@ jobs:
     - run: npm install
     - run: rm -rf dist
     - run: mkdir dist
-    - run: npm run dist-no-d-ts
+    - run: npm run dist
     - name: 切换或创建dist分支
       run: |
         git checkout -b dist || git checkout dist
