@@ -18,6 +18,10 @@ jobs:
     - name: Add dist files
       run: |
         git add dist/* -f
+    - name: Set git user email and name
+      run: |
+        git config --global user.email "2285697543@qq.com"
+        git config --global user.name "BlackWhite"
     - name: Commit and push dist files
       run: |
         git commit -m "Add dist files"
