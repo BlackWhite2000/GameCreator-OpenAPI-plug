@@ -31,9 +31,12 @@ npm i
 直接去官网安装下载即可 [安装地址](https://www.gamecreator.com.cn/plug/det/641)。
 
 ### 开发版本
-可直接下载dist分支内的文件,下载完毕后放到工程的 **Game/GCplug** 内即可。
+但是请注意，dist分支是开发版，意味着测试并不充足
+#### 直接下载
+dist分支内的文件,下载完毕后放到工程的 **Game/GCplug** 内即可 [下载地址](https://github.com/BlackWhite2000/GameCreator-OpenAPI-plug/archive/refs/heads/dist.zip)。
 
-但是请注意，dist分支是开发版，意味着测试并不充足 [下载地址](https://github.com/BlackWhite2000/GameCreator-OpenAPI-plug/archive/refs/heads/dist.zip)。
+#### 拉取dist分支
+你也可以直接拉取本仓库,然后切换到dist分支,当然记得请在工程的 **Game/GCplug** 拉取。
 
 ## 命令
 ### dist
