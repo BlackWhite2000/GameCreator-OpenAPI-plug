@@ -15,9 +15,9 @@ jobs:
     - name: Checkout or create dist branch
       run: |
         git checkout -b dist || git checkout dist
-    - name: Add dist files 
-      run: git add dist
-    - name: Exclude the unwanted files
+    - name: Add dist files and exclude the unwanted files
+      run: git add dist/* -f
+    - name: Reset unwanted files
       run: git reset dist/*.d.ts dist/tsconfig.json
     - name: Set git user email and name
       run: |
@@ -27,3 +27,5 @@ jobs:
       run: |
         git commit -m "Add dist files"
         git push origin dist --force
+    - name: Clean dist branch
+      run: git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch dist/*.d.ts dist/tsconfig.json' --prune-empty --tag-name-filter cat -- --all
