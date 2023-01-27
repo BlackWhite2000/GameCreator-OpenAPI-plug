@@ -55,7 +55,7 @@ module OpenAPI {
 
         /**
          * 时间戳转日期, 格式 1609459200。 支持获取特定时间 
-         * @param {any} data 时间戳
+         * @param {number} data 时间戳
          * @param {string} data_type 【可选】获取时间类型 y、m、d、h、i、s。如 s = 获取时间戳中的秒
          */
         static timestampToDate(data: number, data_type = "") {
