@@ -20,7 +20,7 @@ jobs:
     - name: 清空dist分支
       run: git rm -r --cached .
     - name: 添加发布文件
-      run: git add dist/*
+      run: git add dist/* -f
     - name: 移动至根目录
       run: git mv ./dist/* ./
     - name: 删除dist文件
