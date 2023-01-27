@@ -49,7 +49,7 @@ npm i
 ### plug-clean
 清空插件目录 -可以手动填写路径
 
-### d-ts
+### d-ts 
 生成d.ts到dist
 
 ### dist-no-d-ts
