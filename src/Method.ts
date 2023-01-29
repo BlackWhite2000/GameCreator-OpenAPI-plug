@@ -120,5 +120,22 @@ module OpenAPI {
             }
             return variable_value;
         }
+
+        /**
+         * 光标系统样式名称
+         * 'default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize'
+         */
+        static cursorSystemStyleName = [
+            'default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize'
+        ]
+
+        /**
+         * 基于cursorSystemStyleName来弹出指定名称
+         * @param {string[]} name 弹出指定的名称
+         */
+        static cursorSystemStyleName_spliceName(name: string[]) {
+            let cursorName = [...OpenAPI.Method.cursorSystemStyleName]
+            return cursorName.filter(x => name.indexOf(x.toString()) === -1)
+        }
     }
 }
