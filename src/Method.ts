@@ -137,5 +137,13 @@ module OpenAPI {
             let cursorName = [...OpenAPI.Method.cursorSystemStyleName]
             return cursorName.filter(x => name.indexOf(x.toString()) === -1)
         }
+
+        /**
+         * 检查当前模板是否是兼容的模板ID。 false = 不兼容, true = 兼容
+         * @param {number[]} templateID 兼容的模板ID合集
+         */
+        static checkTemplateID(templateID: number[]) {
+            return templateID.indexOf(Config.templateID) !== -1;
+        }
     }
 }
