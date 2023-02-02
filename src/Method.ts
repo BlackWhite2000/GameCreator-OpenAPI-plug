@@ -18,7 +18,7 @@ module OpenAPI {
          * 随机字符串
          * @param {number} len 随机字符串的长度
          */
-        static getRandomString(len: number) {
+        static getRandomString(len: number): string {
             let _charStr = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678',
                 min = 0,
                 max = _charStr.length - 1,
@@ -28,7 +28,7 @@ module OpenAPI {
                 return;
             }
             // 循环生成字符串
-            for (var i = 0, index; i < len; i++) {
+            for (let i = 0, index; i < len; i++) {
                 index = (function (randomIndexFunc, i) {
                     return randomIndexFunc(min, max, i, randomIndexFunc);
                 })(function (min, max, i, _self) {
@@ -45,48 +45,52 @@ module OpenAPI {
         }
 
         /**
-         * 日期转时间戳, 格式 1970/1/1 00:00:00
+         * 日期转时间戳, 格式 1970/01/01 00:00:00 或 1970-01-01 00:00:00
          * @param {string} date 日期
          */
         static dateToTimestamp(date: string): number {
-            let time = new Date(Date.parse(date));
-            return time.getTime();
+            return new Date(date.replace(/-/g, '/')).getTime();
         }
 
         /**
          * 时间戳转日期, 格式 1609459200。 支持获取特定时间 
-         * @param {number} data 时间戳
+         * @param {number} data 时间戳。输出格式 1970/01/01 00:00:00
          * @param {string} data_type 【可选】获取时间类型 y、m、d、h、i、s。如 s = 获取时间戳中的秒
          */
-        static timestampToDate(data: number, data_type = "") {
+        static timestampToDate(data: number, data_type = ""): string {
             let _data = 0;
-            if (String(data).length == 13) {
-                _data = data
+            if (String(data).length === 13) {
+                _data = data;
             } else {
-                _data = data * 1000
+                _data = data * 1000;
             }
             let time = new Date(_data);
-            let _time = 0;
-            if (data_type == "y") {
+            let _time;
+            if (data_type === "y") {
                 _time = time.getFullYear();
             }
-            if (data_type == "m") {
-                _time = time.getMonth() + 1;
+            if (data_type === "m") {
+                _time = pad(time.getMonth() + 1, 2);
             }
-            if (data_type == "d") {
-                _time = time.getDate();
+            if (data_type === "d") {
+                _time = pad(time.getDate(), 2);
             }
-            if (data_type == "h") {
-                _time = time.getHours();
+            if (data_type === "h") {
+                _time = pad(time.getHours(), 2);
             }
-            if (data_type == "i") {
-                _time = time.getMinutes();
+            if (data_type === "i") {
+                _time = pad(time.getMinutes(), 2);
             }
-            if (data_type == "s") {
-                _time = time.getSeconds();
+            if (data_type === "s") {
+                _time = pad(time.getSeconds(), 2);
             }
-            if (data_type == "") {
-                return _data;
+            if (data_type === "") {
+                _time = `${time.getFullYear()}/${pad(time.getMonth() + 1, 2)}/${pad(time.getDate(), 2)} ${pad(time.getHours(), 2)}:${pad(time.getMinutes(), 2)}:${pad(time.getSeconds(), 2)}`;
+            }
+            function pad(num: number, size: number): string {
+                let s = num + "";
+                while (s.length < size) s = "0" + s;
+                return s;
             }
             return _time;
         }
@@ -98,7 +102,7 @@ module OpenAPI {
          * @param {number} index_type 选项类型
          * @param {number} variable_type 【默认数值】变量类型
          */
-        static JudgeTypeConstantVariable(constant: number, variable: number, index_type: number, variable_type = 0) {
+        static JudgeTypeConstantVariable(constant: number, variable: number, index_type: number, variable_type = 0): any {
             let variable_value;
             if (index_type == 0) {
                 variable_value = constant;
@@ -133,7 +137,7 @@ module OpenAPI {
          * 基于cursorSystemStyleName来弹出指定名称
          * @param {string[]} name 弹出指定的名称
          */
-        static cursorSystemStyleName_spliceName(name: string[]) {
+        static cursorSystemStyleName_spliceName(name: string[]): string[] {
             let cursorName = [...OpenAPI.Method.cursorSystemStyleName]
             return cursorName.filter(x => name.indexOf(x.toString()) === -1)
         }
@@ -142,7 +146,7 @@ module OpenAPI {
          * 检查当前模板是否是兼容的模板ID。 false = 不兼容, true = 兼容
          * @param {number[]} templateID 兼容的模板ID合集
          */
-        static checkTemplateID(templateID: number[]) {
+        static checkTemplateID(templateID: number[]): boolean {
             return templateID.indexOf(Config.templateID) !== -1;
         }
     }
