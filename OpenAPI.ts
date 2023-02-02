@@ -1,3 +1,146 @@
+module OpenAPI {
+
+    /**
+     * CryptoJS
+     */
+    export class CryptoJS {
+
+        /**
+         * AES加密
+         * @param {string} data 需要加密的数据
+         * @param {string} key 密钥 必须16字符, 不可泄漏
+         * @param {string} iv iv 必须16字符, 必须随机生成
+         */
+        static AES(data: string, key: string, iv: string): any {
+
+            // 密钥
+            let secretKey = OpenAPI_CryptoJS.enc.Utf8.parse(key);
+
+            // iv
+            let randomIv = OpenAPI_CryptoJS.enc.Utf8.parse(iv);
+
+            // 加密CBC
+            let encryptData = OpenAPI_CryptoJS.AES.encrypt(data, secretKey, {
+                mode: OpenAPI_CryptoJS.mode.CBC,
+                iv: randomIv,
+                padding: OpenAPI_CryptoJS.pad.Pkcs7
+            });
+
+            return encryptData.toString();
+        }
+
+        /**
+         * AES解密
+         * @param {string} data 加密的数据
+         * @param {string} key 密钥 必须16字符, 不可泄漏
+         * @param {string} iv iv 必须16字符, 必须随机生成
+         */
+        static AES_DECRYPT(data: string, key: string, iv: string): any {
+
+            // 密钥
+            let secretKey = OpenAPI_CryptoJS.enc.Utf8.parse(key);
+
+            // iv
+            let randomIv = OpenAPI_CryptoJS.enc.Utf8.parse(iv);
+
+            // 加密CBC
+            let encryptData = OpenAPI_CryptoJS.AES.decrypt(data, secretKey, {
+                mode: OpenAPI_CryptoJS.mode.CBC,
+                iv: randomIv,
+                padding: OpenAPI_CryptoJS.pad.Pkcs7
+            });
+
+            return encryptData.toString(OpenAPI_CryptoJS.enc.Utf8)
+        }
+    }
+}
+module OpenAPI {
+
+    /**
+     * GameCreator相关API
+     */
+    export class GC {
+
+        /**
+         * GC平台相关API
+         */
+        static Cloud = {
+
+            /**
+             * 是否是GC平台
+             */
+            get isInGCCloud(): boolean {
+                return window.location.href.indexOf("gamecreator") != -1;
+            },
+
+            /**
+             * 游戏ID
+             */
+            get GameID(): number {
+                if (!OpenAPI.GC.Cloud.isInGCCloud) return 0;
+                let p = window.location.href.split("releaseProject/").pop().split("/").shift().split("_");
+                return parseInt(p[1]);
+            },
+
+            /**
+             * 游戏名称
+             */
+            get GameName(): string {
+                if (!OpenAPI.GC.Cloud.isInGCCloud) return null;
+                let name = document.querySelector('title').innerText;
+                let p = document.querySelector('meta[name="keywords"]').getAttribute('content');
+                let remove = name + " | ";
+                if (p.startsWith(remove)) {
+                    p = p.replace(remove, '');
+                }
+                return p;
+            },
+
+            /**
+             * 当前版本号
+             */
+            get GameVersion(): number {
+                if (!OpenAPI.GC.Cloud.isInGCCloud) return 0;
+                let p = window.location.href.split("releaseProject/").pop().split("/");
+                return parseInt(p[1]);
+            },
+
+            /**
+             * 作者ID
+             */
+            get AuthorUID(): number {
+                if (!OpenAPI.GC.Cloud.isInGCCloud) return 0;
+                let p = window.location.href.split("releaseProject/").pop().split("/").shift().split("_");
+                return parseInt(p[0]);
+            },
+
+            /**
+             * 作者名称
+             */
+            get AuthorName(): string {
+                if (!OpenAPI.GC.Cloud.isInGCCloud) return null;
+                let p = document.querySelector('title').innerText;
+                return p;
+            }
+
+        }
+
+        /**
+         * 如果是编辑器则弹窗, 如果是发布后则输出
+         */
+        static isCloudLog(text: any): void {
+            if (Config.RELEASE_GAME) {
+                trace(text)
+            } else {
+                alert(text)
+            }
+        }
+    }
+
+}
+
+
+
 
 module OpenAPI {
 
@@ -148,6 +291,69 @@ module OpenAPI {
          */
         static checkTemplateID(templateID: number[]): boolean {
             return templateID.indexOf(Config.templateID) !== -1;
+        }
+    }
+}
+/**
+ * 更多API插件
+ * @author BlackWhite
+ * @see https://www.gamecreator.com.cn/plug/det/641
+ * @version 2.0
+ */
+module OpenAPI {
+
+  /**
+   * 插件的系统API
+   */
+  export class System {
+
+    /**
+     * 当前版本号
+     */
+    static Version = 2.0;
+
+    /**
+     * 是否安装本插件
+     */
+    static Installed = true;
+  }
+
+  // 输出
+  setTimeout(function () {
+    if (typeof Config !== 'undefined' && typeof OpenAPI !== 'undefined') {
+      if (!Config.RELEASE_GAME) {
+        trace(`OpenAPI v${OpenAPI.System.Version.toFixed(1)} => OK`)
+      } else {
+        console.log(` %c OpenAPI v${OpenAPI.System.Version.toFixed(1)} %c https://www.gamecreator.com.cn/plug/det/641 `, "color: #fadfa3; background: #333; padding:8px;border-left:1px solid #fadfa3;border-top:1px solid #fadfa3;border-bottom:1px solid #fadfa3;", "color: #fadfa3; background: #333; padding:8px; border:1px solid #fadfa3;");
+      }
+    }
+  }, 1000);
+};
+
+
+module OpenAPI {
+
+    /**
+     * 界面模块API
+     */
+    export class UI {
+
+        /**
+         * 界面列表组件数据初始化
+         * @param {UIList} list 指定列表
+         * @param {any} list_modelGUI 项模型数据,如：ListItem_1
+         * @param {number} list_len 列表长度
+         * @param {boolean} isFocus 【默认关闭】是否设置焦点
+         */
+        static listDataInit(list: UIList, list_modelGUI: any, list_len: number, isFocus = false): void {
+            let arr = [];
+            for (let i = 1; i <= list_len; i++) {
+                arr.push(new list_modelGUI());
+            }
+            list.items = arr;
+            if (isFocus) {
+                UIList.focus = list
+            }
         }
     }
 }
