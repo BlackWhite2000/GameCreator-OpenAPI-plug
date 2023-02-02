@@ -39,6 +39,9 @@ dist分支内的文件,下载完毕后放到工程的 **Game/GCplug** 内即可 
 你也可以直接拉取本仓库,然后切换到dist分支,当然记得请在工程的 **Game/GCplug** 拉取。
 
 ## 命令
+### up-plug
+合并ts到dist、拷贝public内的js到dist、清空插件目录、拷贝dist内除了tsconfig.json、.d.ts的文件到插件目录 -可以手动填写路径
+
 ### dist
 合并ts到dist、拷贝public内的js到dist
 

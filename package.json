@@ -1,6 +1,7 @@
 {
   "name": "gamecreator-openapi-plug",
   "scripts": {
+    "up-plug":"npm-run-all dist plug",
     "dist": "gulp clean && gulp concat-ts && npm-run-all dist-js",
     "dist-ts": "gulp clean-ts && gulp concat-ts",
     "dist-js": "gulp concat-distCryptoJS",
