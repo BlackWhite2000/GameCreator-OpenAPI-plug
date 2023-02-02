@@ -72,7 +72,7 @@ module OpenAPI {
         /**
          * 如果是编辑器则弹窗, 如果是发布后则输出
          */
-        static isCloudLog(text) {
+        static isCloudLog(text: any): void {
             if (Config.RELEASE_GAME) {
                 trace(text)
             } else {

@@ -11,7 +11,7 @@ module OpenAPI {
          * @param {string} key 密钥 必须16字符, 不可泄漏
          * @param {string} iv iv 必须16字符, 必须随机生成
          */
-        static AES(data: string, key: string, iv: string) {
+        static AES(data: string, key: string, iv: string): any {
 
             // 密钥
             let secretKey = OpenAPI_CryptoJS.enc.Utf8.parse(key);
@@ -35,7 +35,7 @@ module OpenAPI {
          * @param {string} key 密钥 必须16字符, 不可泄漏
          * @param {string} iv iv 必须16字符, 必须随机生成
          */
-        static AES_DECRYPT(data: string, key: string, iv: string) {
+        static AES_DECRYPT(data: string, key: string, iv: string): any {
 
             // 密钥
             let secretKey = OpenAPI_CryptoJS.enc.Utf8.parse(key);

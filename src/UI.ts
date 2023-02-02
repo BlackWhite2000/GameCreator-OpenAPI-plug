@@ -13,7 +13,7 @@ module OpenAPI {
          * @param {number} list_len 列表长度
          * @param {boolean} isFocus 【默认关闭】是否设置焦点
          */
-        static listDataInit(list: UIList, list_modelGUI: any, list_len: number, isFocus = false) {
+        static listDataInit(list: UIList, list_modelGUI: any, list_len: number, isFocus = false): void {
             let arr = [];
             for (let i = 1; i <= list_len; i++) {
                 arr.push(new list_modelGUI());
