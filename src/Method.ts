@@ -97,12 +97,12 @@ module OpenAPI {
 
         /**
          * 判断常量变量类型
-         * @param {number} constant 常量
+         * @param {any} constant 常量
          * @param {number} variable 变量
-         * @param {number} index_type 选项类型
-         * @param {number} variable_type 【默认数值】变量类型
+         * @param {number} index_type 选项类型 0 = 常量 1 = 变量
+         * @param {number} variable_type 【默认数值】变量类型 0 = 数值, 1 = 字符串, 2 = 开关(返回 0 = 关闭, 1 = 开启)
          */
-        static JudgeTypeConstantVariable(constant: number, variable: number, index_type: number, variable_type = 0): any {
+        static JudgeTypeConstantVariable(constant: any, variable: number, index_type: number, variable_type = 0): any {
             let variable_value;
             if (index_type == 0) {
                 variable_value = constant;
