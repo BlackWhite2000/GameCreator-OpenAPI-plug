@@ -149,5 +149,12 @@ module OpenAPI {
         static checkTemplateID(templateID: number[]): boolean {
             return templateID.indexOf(Config.templateID) !== -1;
         }
+
+        /**
+         * 随机颜色
+         */
+        static getRandomColor():string{
+            return '#' + (Math.random() * 0xffffff << 0).toString();
+        }
     }
 }
