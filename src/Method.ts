@@ -153,8 +153,37 @@ module OpenAPI {
         /**
          * 随机颜色
          */
-        static getRandomColor():string{
-            return '#' + (Math.random() * 0xffffff << 0).toString();
+        static getRandomColor(): string {
+            return '#' + (Math.random() * 0xffffff << 0).toString(16);
+        }
+
+        /**
+          * 更简单的HttpRequest
+          * @param {string} url 请求地址 
+          * @param {any} json 数据, get写null即可 
+          * @param {any} completeText 完成事件 
+          * @param {any} errorText 发生错误时事件 
+          * @param {any} trigger 触发器
+          */
+        static sendRequest(url: string, json = null, completeText: any, errorText: any, trigger = null): void {
+            var ur = new HttpRequest();
+            ur.send(url, JSON.stringify({ json }), "post", "json", ["Content-Type", "application/json"]);
+            if (trigger) {
+                trigger.pause = true;
+                trigger.offset(1);
+            }
+            ur.once(EventObject.COMPLETE, this, (content) => {
+                completeText(content);
+                if (trigger) {
+                    CommandPage.executeEvent(trigger);
+                }
+            });
+            ur.once(EventObject.ERROR, this, (content) => {
+                errorText(content);
+                if (trigger) {
+                    CommandPage.executeEvent(trigger);
+                }
+            });
         }
     }
 }
