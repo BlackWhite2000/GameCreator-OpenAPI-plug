@@ -165,9 +165,9 @@ module OpenAPI {
           * @param {any} errorText 发生错误时事件 
           * @param {any} trigger 触发器
           */
-        static sendRequest(url: string, json: any, completeText: any, errorText: any, trigger = null): void {
+        static sendRequest(url: string, json: any, completeText: any, errorText: any, trigger = null, requestType = 'post'): void {
             var ur = new HttpRequest();
-            ur.send(url, JSON.stringify(json), "post", "json", ["Content-Type", "application/json"]);
+            ur.send(url, JSON.stringify(json), requestType, "json", ["Content-Type", "application/json"]);
             if (trigger) {
                 trigger.pause = true;
                 trigger.offset(1);
