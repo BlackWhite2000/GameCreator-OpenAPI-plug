@@ -185,5 +185,53 @@ module OpenAPI {
                 }
             });
         }
+
+        /**
+          * 解析文本内变量占位符
+          * @param {string} text 文本 
+          */
+        static parseVarPlaceholderData(text: string) {
+            let getData = [
+                (s) => { return Game.player.variable.getVariable(s); },
+                (s) => { return Game.player.variable.getString(s); },
+                (s) => { return ClientWorld.variable.getVariable(s); },
+                (s) => { return ClientWorld.variable.getString(s); }
+            ];
+            let regex = [
+                /\[@v\w+\]/g,
+                /\[@s\w+\]/g,
+                /\[\$v\w+\]/g,
+                /\[\$s\w+\]/g
+            ]
+            for (let i = 0; i < getData.length; i++) {
+                let result = this.replacePlaceholderData(text, regex[i], getData[i]);
+                if (result) {
+                    text = result;
+                }
+            }
+            return text;
+        }
+
+        /**
+          * 替换占位符数据
+          * @param {string} text 文本 
+          * @param {RegExp} regex 正则表达式 
+          * @param {any} getData 解析占位符数据 
+          * @param {number} start 起始位 
+          * @param {string} end 结束符号 
+          */
+        static replacePlaceholderData(text: string, regex: RegExp, getData: any, start = 3, end = "]") {
+            if (!text.match(regex)) return;
+            let matches = text.match(regex);
+            for (let i = 0; i < matches.length; i++) {
+                let d = matches[i];
+                let s = Number(d.slice(start, d.indexOf(end)));
+                if (s) {
+                    let v = getData(s);
+                    text = text.replace(d, v);
+                }
+            }
+            return text;
+        };
     }
 }
