@@ -1,26 +1,26 @@
 {
-  "name": "gamecreator-openapi-plug",
+  "private": true,
+  "packageManager": "pnpm@8.7.0",
   "scripts": {
-    "up-plug":"npm-run-all dist plug",
-    "dist": "gulp clean && gulp concat-ts && npm-run-all dist-js",
-    "dist-ts": "gulp clean-ts && gulp concat-ts",
-    "dist-js": "gulp concat-distCryptoJS",
-    "plug": "gulp plug",
-    "plug-dist": "gulp plug-dist",
-    "plug-clean": "gulp plug-clean",
-    "d-ts": "tsc -p dist/tsconfig.json",
-    "npm-i": "npm i"
-  },
-  "license": "ISC",
-  "dependencies": {
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "typescript": "^4.9.4"
+    "build": "node scripts/build_ts.mjs",
+    "build:lib": "pnpm run lib:gc && pnpm run lib:game && pnpm run lib:index",
+    "build:w": "node scripts/build_ts.mjs -w",
+    "build:update": "pnpm run build:public && pnpm run build:ts",
+    "build:public": "node scripts/delete_nottype.mjs -dist/public && node public/config.mjs && node scripts/copy_dist.mjs -public",
+    "build:ts": "node scripts/delete_nottype.mjs -dist/public && tsc -p ./build/tsconfig.json && node scripts/copy_dist.mjs -build",
+    "link": "node scripts/link_ts.mjs",
+    "lib:gc": "node scripts/copy_lib.mjs -GameCreatorLib -dist/gc && node scripts/build_lib.mjs -/dist/gc -/type/gc.d.ts && node scripts/delete_nottype.mjs -lib/dist/gc",
+    "lib:game": "node scripts/copy_lib.mjs -Game -tmp/game && tsc -p ./lib/tsconfig.json && node scripts/build_lib.mjs -/dist/game -/type/game.d.ts && node scripts/delete_folder.mjs -/lib/tmp",
+    "lib:index": "node scripts/build_lib.mjs -type -index.d.ts",
+    "init:delete": "node scripts/delete_folder.mjs -/lib/index.d.ts && node scripts/delete_folder.mjs -/lib/type",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "init": "pnpm run init:delete && pnpm run build:lib && pnpm run build && pnpm run link && node scripts/hello.mjs && pnpm run build:w"
   },
   "devDependencies": {
-    "gulp-clean": "^0.4.0",
-    "gulp-ignore": "^3.0.0",
-    "gulp-prompt": "^1.2.0",
-    "npm-run-all": "^4.1.5"
+    "@antfu/eslint-config": "^0.43.1",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.53.0",
+    "typescript": "^5.2.2"
   }
 }

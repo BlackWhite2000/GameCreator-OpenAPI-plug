@@ -1,69 +1,60 @@
-## 目录结构
-src //开发
+## 说明
 
-public //存放第三方库, 尽可能修改命名空间防止冲突
+GameCreator功能开发起手模板。
 
-dist //发布
+## 配置
 
-## 开发流程
-### npm
-npm i 
+创建 `.env` 文件, 可参考 `.env.example` 文件。
 
-### 开始
-基于 **src** 目录开始开发, 完毕后使用命令 **dist** 或者 **dist-ts**, 会将所有ts打包成一个ts, 主要方便发布插件。
+```env
+TEMPLATE_PATH=D:\我的游戏工程  # 工程的根路径
+OUTPUT_NAME=App # ts合并名称
+OUTPUT_FOLDER_NAME=App  # 硬链接后存放的文件夹名
+```
 
-### 注意事项
-如果打包包含第三方库, 请使用命令 **dist**
+## 开始
 
-如果打包不包含第三方库, 请使用命令 **dist-ts**
+> 请配置好 .env 再执行以下操作
 
-声明文件不会放到插件目录内, 因为会有重复标识符的问题出现
+```shell
+npm install pnpm -g
+pnpm install
+pnpm run init
+```
 
-### 第三方库
-可以直接下js然后放到 **public**, 之后在 **gulpfile.js** 配置下打包到 **dist** 即可。
+## 命令说明
 
-也可以 **npm i** 然后拷贝到 **public**。
+> 通常的开发只需要执行一次 `pnpm run init` 以及确保 `pnpm run build:w` 存在即可。
+> 开发过程中如新建了自定义指令，则需要执行一次 `pnpm run build:lib` 以拉取最新api库。
+> 其他命令用的相对少。
 
-一旦使用了第三方库, 都请注意冲突问题, 因为这是插件, 不确定用户会不会有第二个相同的库存在。
+```shell
+pnpm run init # 将自动获取工程的 .d.ts，自动建立硬链接，以确保开发环境是正确的，最后会执行一次 pnpm run build:w。该命令通常执行一次即可。如果希望更新开发环境可再次执行。
+pnpm run build # 合并 src 目录内的ts文件至 dist 目录内
+pnpm run build:w # 持续监听执行 pnpm run build，当 src 目录内有变更时，自动合并更新。
+pnpm run build:lib # 获取工程的 .d.ts，工程如果新增了相关api，可以执行一次来更新。
+pnpm run build:public # 将 public 目录内的文件拷贝至 dist/public。同时将会拷贝至游戏工程内，通常路径是：我的游戏工程/Game/game/硬链接后存放的文件夹名/public。
+pnpm run build:ts # 将 build 目录内的文件拷贝至 dist/build。同时将会拷贝至游戏工程内，通常路径是：我的游戏工程/Game/game/硬链接后存放的文件夹名/build。
+pnpm run build:update # 将会执行 pnpm run build:public 跟 pnpm run build:ts。
+pnpm run link # 将会执行一次硬链接建立，如果硬链接丢失可执行此命令。
+```
 
-## 下载插件
-### 发布版本
-直接去官网安装下载即可 [安装地址](https://www.gamecreator.com.cn/plug/det/641)。
+## 目录说明
 
-### 开发版本
-但是请注意，dist分支是开发版，意味着测试并不充足
-#### 直接下载
-dist分支内的文件,下载完毕后放到工程的 **Game/GCplug** 内即可 [下载地址](https://github.com/BlackWhite2000/GameCreator-OpenAPI-plug/archive/refs/heads/dist.zip)。
+```shell
+lib # 游戏工程的 .d.ts 支持库
+script # 该项目运行脚本
+build # 该目录下的文件将会被编译成一个 js 文件，固定名称为 main.js。该目录下的文件并不会与 lib 目录关联。
+public # 该目录下的文件不会被编译、合并。将会直接被拷贝。该目录下的文件并不会与 lib 目录关联。
+src # 该目录下的文件将被合并成一个 ts 文件，文件名跟随环境变量 OUTPUT_NAME。该目录下的文件与 lib 目录关联。
+```
 
-#### 拉取dist分支
-你也可以直接拉取本仓库,然后切换到dist分支,当然记得请在工程的 **Game/GCplug** 拉取。
+## CI说明
 
-## 命令
-### up-plug
-合并ts到dist、拷贝public内的js到dist、清空插件目录、拷贝dist内除了tsconfig.json、.d.ts的文件到插件目录 -可以手动填写路径
+如要使用每周自动更新依赖版本以及自动合并。
 
-### dist
-合并ts到dist、拷贝public内的js到dist
+请在仓库的 `Settings` -> `Actions` -> `General` 中。
 
-### dist-ts
-合并ts到dist
+开启 `Allow GitHub Actions to create and approve pull requests`。
 
-### dist-js
-拷贝public内的js到dist 
-
-### plug
-清空插件目录、拷贝dist内除了tsconfig.json、.d.ts的文件到插件目录 -可以手动填写路径
-
-### plug-dist
-拷贝dist内除了tsconfig.json、.d.ts的文件到插件目录 -可以手动填写路径
-
-### plug-clean
-清空插件目录 -可以手动填写路径
-
-### d-ts 
-生成d.ts到dist
-
-声明文件打包过程可能会有报错, 这是正常情况, 因为没有相关环境存在。
-
-### dist-no-d-ts
-合并ts到dist、拷贝public内的js到dist
+如不需要，则删除 `.github` 文件即可。
