@@ -11,10 +11,7 @@
     "sourceMap": true,
     "declarationDir": "./dist",
     "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "noImplicitAny": false,
-    "ignoreDeprecations": "5.0",
-    "noEmit": true,
+    "strict": false
   },
   "skipLibCheck": true,
   "files": [
