@@ -22,27 +22,39 @@ module OpenAPI {
       get GameID(): number {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
           return 0
-        // @ts-expect-error 无需判断是否存在
-        const p = window.location.href.split('releaseProject/').pop().split('/').shift().split('_')
-        // 这里进行 p 的进一步操作
+        const releaseProject = window.location.href.split('releaseProject/').pop()
+        if (!releaseProject)
+          return 0
+        const split = releaseProject.split('/')
+        const shift = split.shift()
+        if (!shift)
+          return 0
+        const p = shift.split('_')
         return Number.parseInt(p[1])
       },
 
       /**
        * 游戏名称
        */
-      get GameName(): string | null {
+      get GameName(): string {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
           return ''
-          // @ts-expect-error 无需判断是否存在
-        const name = document.querySelector('title').innerText
-        // @ts-expect-error 无需判断是否存在
-        let p = document.querySelector('meta[name="keywords"]').getAttribute('content')
+        const title = document.querySelector('title')
+        if (!title)
+          return ''
+        const name = title.innerText
+        const keywords = document.querySelector('meta[name="keywords"]')
+        if (!keywords)
+          return ''
+        let p = keywords.getAttribute('content')
         const remove = `${name} | `
-        if (p && p.startsWith(remove))
+        if (p && p.startsWith(remove)) {
           p = p.replace(remove, '')
-
-        return p
+          return p
+        }
+        else {
+          return ''
+        }
       },
 
       /**
@@ -51,8 +63,11 @@ module OpenAPI {
       get GameVersion(): number {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
           return 0
-        // @ts-expect-error 无需判断是否存在
-        const p = window.location.href.split('releaseProject/').pop().split('/')
+        const releaseProject = window.location.href.split('releaseProject/')
+        const pop = releaseProject.pop()
+        if (!pop)
+          return 0
+        const p = pop.split('/')
         return Number.parseInt(p[1])
       },
 
@@ -62,8 +77,17 @@ module OpenAPI {
       get AuthorUID(): number {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
           return 0
-        // @ts-expect-error 无需判断是否存在
-        const p = window.location.href.split('releaseProject/').pop().split('/').shift().split('_')
+        const releaseProject = window.location.href.split('releaseProject/')
+        const pop = releaseProject.pop()
+        if (!pop)
+          return 0
+        const split = pop.split('/')
+        if (!split)
+          return 0
+        const shift = split.shift()
+        if (!shift)
+          return 0
+        const p = shift.split('_')
         return Number.parseInt(p[0])
       },
 
@@ -73,8 +97,10 @@ module OpenAPI {
       get AuthorName(): string {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
           return ''
-        // @ts-expect-error 无需判断是否存在
-        const p = document.querySelector('title').innerText
+        const title = document.querySelector('title')
+        if (!title)
+          return ''
+        const p = title.innerText
         return p
       },
 
