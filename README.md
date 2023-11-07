@@ -9,7 +9,7 @@ GameCreator功能开发起手模板。
 ```env
 TEMPLATE_PATH=D:\OpenAPI插件工程  # 工程的根路径
 OUTPUT_NAME=OpenAPI # ts合并名称
-OUTPUT_FOLDER_NAME=GCplug/641/OpenAPI  # 硬链接后存放的文件夹名
+OUTPUT_FOLDER_NAME=GCplug/641  # 硬链接后存放的文件夹名
 ```
 
 ## 开始
