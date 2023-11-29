@@ -156,9 +156,9 @@ module OpenAPI {
     }
 
     /**
-     * 更简单的HttpRequest
+     * 更简单的HttpRequest - 即将弃用
      * @param {string} url 请求地址
-     * @param {any} json 数据, get写null即可
+     * @param {any} json 数据
      * @param {any} completeText 完成事件
      * @param {any} errorText 发生错误时事件
      * @param {any} trigger 触发器
@@ -188,10 +188,10 @@ module OpenAPI {
      */
     static parseVarPlaceholderData(text: string) {
       const getData = [
-        (s) => { return Game.player.variable.getVariable(s) },
-        (s) => { return Game.player.variable.getString(s) },
-        (s) => { return ClientWorld.variable.getVariable(s) },
-        (s) => { return ClientWorld.variable.getString(s) },
+        (s: any) => { return Game.player.variable.getVariable(s) },
+        (s: any) => { return Game.player.variable.getString(s) },
+        (s: any) => { return ClientWorld.variable.getVariable(s) },
+        (s: any) => { return ClientWorld.variable.getString(s) },
       ]
       const regex = [
         /\[@v\w+\]/g,
