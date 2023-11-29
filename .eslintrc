@@ -2,7 +2,6 @@
   "extends": "@antfu",
    "rules": {
     "no-console": "off",
-    "@typescript-eslint/no-namespace": "off",
-    "@typescript-eslint/prefer-includes": "off"
+    "@typescript-eslint/no-namespace": "off"
   }
 }

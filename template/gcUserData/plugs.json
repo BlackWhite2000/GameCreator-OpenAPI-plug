@@ -1,0 +1,43 @@
+[
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            null,
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/641/CryptoJS.min.js",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/641/OpenAPI.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 641,
+        "name": "【OpenAPI】更多API插件 v2.1",
+        "lastUpdateTime": 1675860710,
+        "author": "BlackWhite",
+        "gcver": null
+    }
+]
