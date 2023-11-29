@@ -2,16 +2,6 @@
 
 GameCreator功能开发起手模板。
 
-## 配置
-
-创建 `.env` 文件, 可参考 `.env.example` 文件。
-
-```env
-OUTPUT_NAME=App # ts合并名称。
-OUTPUT_PATH=Game # 存放文件的目录, 使用相对路径，如Game就表示存放至 template/Game 目录内。
-OUTPUT_FOLDER_NAME=App  # ts合并存放的文件夹名。
-```
-
 ## 开始
 
 ### 1、安装依赖
