@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/prefer-includes */
 module OpenAPI {
 
   /**
