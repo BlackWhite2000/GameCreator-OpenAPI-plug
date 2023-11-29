@@ -1,6 +1,6 @@
 ## 说明
 
-GameCreator功能开发起手模板。
+OpenAPI 更多API插件
 
 ## 开始
 
