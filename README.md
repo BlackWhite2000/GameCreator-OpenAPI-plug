@@ -21,17 +21,11 @@ npm install pnpm -g
 pnpm install
 ```
 
-### 2、下载工程
-
-将工程下载放到 `template` 目录内。
-
-如果发现 `tsconfig.json` 不再报找不到文件 `**/template/Game` 的错误，表示放置正确。
-
-### 3、开发
+### 2、开发
 
 从 `src` 文件开始，开发完毕后执行 `pnpm run build` 将自动合并ts并拷贝至工程内。
 
-### 4、填写开发文档
+### 3、填写开发文档
 
 `docs` 内置了md文档，可查看 `docs/README.md` 来开始。
 
