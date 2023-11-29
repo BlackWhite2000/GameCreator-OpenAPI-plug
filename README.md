@@ -1,6 +1,10 @@
 ## 说明
 
-OpenAPI 更多API插件
+OpenAPI 更多API插件。
+
+## 在线文档
+
+https://openapi.docs.gcw.wiki
 
 ## 开始
 
