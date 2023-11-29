@@ -56,7 +56,7 @@ module OpenAPI {
      * @param {number} data 时间戳。输出格式 1970/01/01 00:00:00
      * @param {string} data_type 【可选】获取时间类型 y、m、d、h、i、s。如 s = 获取时间戳中的秒
      */
-    static timestampToDate(data: number, data_type = ''): string | number | undefined {
+    static timestampToDate(data: number, data_type: string = ''): string | number | undefined {
       let _data = 0
       if (String(data).length === 13)
         _data = data
@@ -102,7 +102,7 @@ module OpenAPI {
      * @param {number} index_type 选项类型 0 = 常量 1 = 变量
      * @param {number} variable_type 【默认数值】变量类型 0 = 数值, 1 = 字符串, 2 = 开关(返回 0 = 关闭, 1 = 开启)
      */
-    static JudgeTypeConstantVariable(constant: any, variable: number, index_type: number, variable_type = 0): any {
+    static JudgeTypeConstantVariable(constant: any, variable: number, index_type: number, variable_type: number = 0): any {
       let variable_value
       if (index_type === 0) {
         variable_value = constant
@@ -186,7 +186,7 @@ module OpenAPI {
      * 解析文本内变量占位符
      * @param {string} text 文本
      */
-    static parseVarPlaceholderData(text: string) {
+    static parseVarPlaceholderData(text: string): string {
       const getData = [
         (s: any) => { return Game.player.variable.getVariable(s) },
         (s: any) => { return Game.player.variable.getString(s) },
@@ -215,7 +215,7 @@ module OpenAPI {
      * @param {number} start 起始位
      * @param {string} end 结束符号
      */
-    static replacePlaceholderData(text: string, regex: RegExp, getData: any, start = 3, end = ']') {
+    static replacePlaceholderData(text: string, regex: RegExp, getData: any, start: number = 3, end: string = ']'): string | null {
       const matches = text.match(regex)
       if (matches) {
         for (let i = 0; i < matches.length; i++) {
