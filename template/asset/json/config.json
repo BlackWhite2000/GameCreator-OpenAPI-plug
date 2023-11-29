@@ -6,7 +6,7 @@
             "name": "Source_Han_Sans",
             "path": "asset/font/Source_Han_Sans.ttf",
             "fonttype": "ttf",
-            "size": 7.8
+            "size": 0
         }
     ],
     "EDITOR_MAG_FILTER": 9728,
@@ -15,7 +15,7 @@
     "CREATED_GC_VERSION": 0.99063,
     "RELEASE_TEMPLATE_GC_VERSION": 0.985,
     "gameSID": "0.9649932131569627-1701229524002",
-    "gameProjectName": "RPG1161纯净版",
+    "gameProjectName": "OpenAPI",
     "gameVersion": "1.0",
     "fragmentFileVersion": true,
     "GAME_MAG_FILTER": 9728,
