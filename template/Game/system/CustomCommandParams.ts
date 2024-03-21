@@ -1075,3 +1075,90 @@ class CustomCommandParams_8002 {
     soType: number; // = 2; 对象
     attr: CustomCompData; // 属性
 }
+/**
+* 自定义指令 15001-获取日期
+*/
+class CustomCommandParams_15001 {
+    setTypeDataList: number; // = 0;  
+    setType: boolean; // = false; 输出指定时间单位 (输出至将变为数值)
+    setStr: number; // = 0; 输出至
+    setNum: number; // = 0; 输出至
+    isDataIndex: boolean; // = false; 一位数情况下, 保留0的存在. 即输出 01 而不是 1 (输出至将变为字符串-优先级最高)
+    timeDataTypeList: number; // = 0; 时间戳来源
+    timeStampType: number; // = 1;  
+    timeStamp: number; // = 0;  
+    timeStampVar: number; // = 0;  
+}
+/**
+* 自定义指令 15002-获取时间戳
+*/
+class CustomCommandParams_15002 {
+    timeStr: number; // = 0; 日期
+    timeStamp: number; // = 0; 输出至
+    isTimeType: boolean; // = false; 指定单位转换
+    timeDataTypeList: number; // = 0; 日期来源
+    timeNumType_y: number; // = 0;  
+    timeNumType_h: number; // = 0;  
+    timeNumType_m: number; // = 0;  
+    timeNumType_i: number; // = 0;  
+    timeNumType_d: number; // = 0;  
+    timeNumType_s: number; // = 0;  
+    timeNumVar_m: number; // = 0; 月
+    timeNumVar_h: number; // = 0; 时
+    timeNumVar_i: number; // = 0; 分
+    timeNumVar_d: number; // = 0; 日
+    timeNumVar_s: number; // = 0; 秒
+    timeNumVar_y: number; // = 0; 年
+    timeNum_y: number; // = 1970; 年
+    timeNum_m: number; // = 1; 月
+    timeNum_d: number; // = 1; 日
+    timeNum_h: number; // = 0; 时
+    timeNum_i: number; // = 0; 分
+    timeNum_s: number; // = 0; 秒
+}
+/**
+* 自定义指令 15003-获取时间
+*/
+class CustomCommandParams_15003 {
+    setTime: number; // = 0; 输出至
+    timeDataTypeList: number; // = 0; 时间来源
+    timeGetStatus: number; // = 0; 状态开关
+    setTimeStamp: number; // = 0; 获取时间戳
+    timeNumType_y: number; // = 0;  
+    timeNumType_h: number; // = 0;  
+    timeNumType_m: number; // = 0;  
+    timeNumType_i: number; // = 0;  
+    timeNumType_d: number; // = 0;  
+    timeNumType_s: number; // = 0;  
+    timeNumVar_m: number; // = 0; 月
+    timeNumVar_h: number; // = 0; 时
+    timeNumVar_i: number; // = 0; 分
+    timeNumVar_d: number; // = 0; 日
+    timeNumVar_s: number; // = 0; 秒
+    timeNumVar_y: number; // = 0; 年
+    timeNum_y: number; // = 1970; 年
+    timeNum_m: number; // = 1; 月
+    timeNum_d: number; // = 1; 日
+    timeNum_h: number; // = 0; 时
+    timeNum_i: number; // = 0; 分
+    timeNum_s: number; // = 0; 秒
+}
+/**
+* 自定义指令 15004-获取服务器时间
+*/
+class CustomCommandParams_15004 {
+    yy: boolean; // = false; 年
+    yyVar: number; // = 0;
+    mm: boolean; // = false; 月 
+    mmVar: number; // = 0;
+    dd: boolean; // = false; 日
+    ddVar: number; // = 0;
+    hh: boolean; // = false; 时
+    hhVar: number; // = 0;
+    min: boolean; // = false; 分
+    minVar: number; // = 0;
+    ss: boolean; // = false; 秒
+    ssVar: number; // = 0;
+    retVar: number; // = 0;
+    ret: boolean; // = false; 返回值
+}

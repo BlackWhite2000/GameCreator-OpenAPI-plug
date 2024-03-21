@@ -568,7 +568,28 @@
         },
         {
             "typeName": "[#GAME_THE_PLUG-IN_COMMAND]",
-            "commandList": []
+            "commandList": [
+                [
+                    160001,
+                    "获取日期",
+                    false
+                ],
+                [
+                    160002,
+                    "获取时间戳",
+                    false
+                ],
+                [
+                    160003,
+                    "获取时间",
+                    false
+                ],
+                [
+                    160004,
+                    "获取服务器时间",
+                    false
+                ]
+            ]
         }
     ]
 }

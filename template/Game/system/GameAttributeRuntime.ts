@@ -32,6 +32,7 @@ class WorldData {
     static keyboards: DataStructure_gameKeyboard[]; // = [];
     static word_gamepadInput: string; // = ""; 请按下游戏手柄键位
     static word_keyboardInput: string; // = ""; 请输入键盘键位
+    static timeApi_yyvhc: string; // = "https://api.gcw.wiki/TimeStamp"; API地址
 }
 class PlayerData {
     sceneObject: SceneObject;

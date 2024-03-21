@@ -1650,6 +1650,53 @@
             "blockCondition": [],
             "blockHeight": 109,
             "autoOrder": true
+        },
+        {
+            "name": "获取服务器时间插件 by BlackWhite",
+            "blockAttrs": [
+                {
+                    "attr": {
+                        "id": "109231766290_0.012154765819281321",
+                        "varName": "timeApi_yyvhc",
+                        "varType": 1,
+                        "compData": {
+                            "compType": 9,
+                            "compParam": {}
+                        },
+                        "defaultValue": "https://api.gcw.wiki/TimeStamp",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 1,
+                        "arrayMode": false,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "API地址",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": true,
+                        "titleWidth": 100,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 15,
+                    "x": 15,
+                    "width": 717,
+                    "height": 32
+                }
+            ],
+            "blockCondition": [],
+            "blockHeight": 60,
+            "autoOrder": true
         }
     ],
     "compAutoOrderLimitHeight": 0
