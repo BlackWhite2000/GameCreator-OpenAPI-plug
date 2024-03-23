@@ -34,7 +34,7 @@ class GUI_TEST2 extends GUI_15 {
 
 // 自定义 UI 组件类 UINeko，继承自 UIBitmap
 class UINeko extends UIBitmap {
-  body: Matter.Body // 刚体属性
+  body: OpenAPI.Matter.Body // 刚体属性
 
   constructor(x: number = 0, y: number = 0) {
     super()
