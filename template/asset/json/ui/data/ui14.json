@@ -1,6 +1,144 @@
 {
     "root": {
-        "children": []
+        "children": [
+            {
+                "id": "153571799634_0.9486823059546379",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "图片2",
+                "x": 738,
+                "y": 534,
+                "width": 52,
+                "height": 310,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 240,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/picture/control/uibitmap.png",
+                "grid9": "20,20,20,20,0",
+                "flip": false,
+                "isTile": false,
+                "pivotType": 0
+            },
+            {
+                "id": "153571786786_0.6835386271721151",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "图片1",
+                "x": 553,
+                "y": 400,
+                "width": 60,
+                "height": 41,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/picture/control/uibitmap.png",
+                "grid9": "20,20,20,20,0",
+                "flip": false,
+                "isTile": false,
+                "pivotType": 0
+            },
+            {
+                "id": "153619187913_0.5628722677345315",
+                "condition": [],
+                "type": "UIAvatar",
+                "name": "行走图",
+                "x": 386,
+                "y": 343,
+                "width": 192,
+                "height": 192,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "avatarID": 1,
+                "scaleNumberX": 1,
+                "scaleNumberY": 1,
+                "orientationIndex": 0,
+                "avatarFPS": 12,
+                "playOnce": false,
+                "isPlay": true,
+                "avatarFrame": 1,
+                "actionID": 1,
+                "avatarHue": 0
+            },
+            {
+                "id": "153621078363_0.4778368733375673",
+                "condition": [],
+                "type": "UIAvatar",
+                "name": "行走图2",
+                "x": 489,
+                "y": 455,
+                "width": 192,
+                "height": 192,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "avatarID": 1,
+                "scaleNumberX": 1,
+                "scaleNumberY": 1,
+                "orientationIndex": 0,
+                "avatarFPS": 12,
+                "playOnce": false,
+                "isPlay": true,
+                "avatarFrame": 1,
+                "actionID": 1,
+                "avatarHue": 0
+            }
+        ]
     },
-    "id": 14
+    "id": 14,
+    "instanceClassName": "GUI_TEST",
+    "hasRootCommand": [
+        null,
+        null,
+        null,
+        true
+    ]
 }

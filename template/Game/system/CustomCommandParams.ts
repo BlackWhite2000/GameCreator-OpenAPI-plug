@@ -1162,3 +1162,49 @@ class CustomCommandParams_15004 {
     retVar: number; // = 0;
     ret: boolean; // = false; 返回值
 }
+/**
+* 自定义指令 15005-拖拽界面组件
+*/
+class CustomCommandParams_15005 {
+    selectData: { uiID: number, compName:string, compID:string, varName:string }; // 界面组件
+    limit: boolean; // = false; 限制拖拽范围
+    startx: number; // = 0; 起始坐标X
+    starty: number; // = 0; 起始坐标Y
+    limitW: number; // = 0; 限制宽度
+    limitH: number; // = 0; 限制高度
+}
+/**
+* 自定义指令 15006-Steam初始化 Steam Init
+*/
+class CustomCommandParams_15006 {
+    validationMode: number; // = 1;
+    validationPrompt: string; // = "Please purchase the game!"; 验证提示 - Validation Prompt
+}
+/**
+* 自定义指令 15007-安装DLC Install DLC
+*/
+class CustomCommandParams_15007 {
+    dlc: number; // = 0; DLC ID
+}
+/**
+* 自定义指令 15008-卸载DLC Uninstall DLC
+*/
+class CustomCommandParams_15008 {
+    dlc: number; // = 0; DLC ID
+}
+/**
+* 自定义指令 15009-激活成就 +Achievement
+*/
+class CustomCommandParams_15009 {
+    achieveID: string; // = ""; Achieve ID
+    onSuccess: string; // = ""; 成功时 - on Success
+    onFail: string; // = ""; 失败时 - on Fail
+}
+/**
+* 自定义指令 15010-删除成就 -Achievement
+*/
+class CustomCommandParams_15010 {
+    achieveID: string; // = ""; Achieve ID
+    onSuccess: string; // = ""; 成功时 - on Success
+    onFail: string; // = ""; 失败时 - on Fail
+}

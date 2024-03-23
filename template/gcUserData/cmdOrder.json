@@ -567,6 +567,36 @@
             ]
         },
         {
+            "typeName": "测试Steam",
+            "commandList": [
+                [
+                    160006,
+                    "Steam初始化 Steam Init",
+                    false
+                ],
+                [
+                    160007,
+                    "安装DLC Install DLC",
+                    false
+                ],
+                [
+                    160008,
+                    "卸载DLC Uninstall DLC",
+                    false
+                ],
+                [
+                    160009,
+                    "激活成就 +Achievement",
+                    false
+                ],
+                [
+                    160010,
+                    "删除成就 -Achievement",
+                    false
+                ]
+            ]
+        },
+        {
             "typeName": "[#GAME_THE_PLUG-IN_COMMAND]",
             "commandList": [
                 [
@@ -587,6 +617,36 @@
                 [
                     160004,
                     "获取服务器时间",
+                    false
+                ],
+                [
+                    160005,
+                    "拖拽界面组件",
+                    false
+                ],
+                [
+                    160006,
+                    "Steam初始化 Steam Init",
+                    false
+                ],
+                [
+                    160007,
+                    "安装DLC Install DLC",
+                    false
+                ],
+                [
+                    160008,
+                    "卸载DLC Uninstall DLC",
+                    false
+                ],
+                [
+                    160009,
+                    "激活成就 +Achievement",
+                    false
+                ],
+                [
+                    160010,
+                    "删除成就 -Achievement",
                     false
                 ]
             ]

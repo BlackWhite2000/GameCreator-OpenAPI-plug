@@ -4,6 +4,7 @@
   "scripts": {
     "build": "node scripts/build_ts.mjs",
     "build:w": "node scripts/build_ts.mjs -w",
+    "build:test:w": "node scripts/build_test.mjs -w",
     "build:public": "node public/config.mjs",
     "build:ts": "tsc -p ./build/tsconfig.json && node scripts/copy_dist.mjs",
     "build:allTs": "node scripts/copy_ts.mjs",

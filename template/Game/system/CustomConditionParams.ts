@@ -50,3 +50,10 @@ class CustomConditionParams_5 {
 class CustomConditionParams_6 {
     playerData: CustomCompData; // 玩家设定的布尔值属性
 }
+/**
+* 自定义条件 7-Steam
+*/
+class CustomConditionParams_7 {
+    type: number; // = 0;
+    dlcID: number; // = 0;
+}

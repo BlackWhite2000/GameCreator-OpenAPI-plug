@@ -101,7 +101,7 @@
         },
         "avatarEditorConfig": {
             "showLastFrame": false,
-            "showRefObj": false
+            "showRefObj": true
         },
         "standAvatarEditorConfig": {
             "showLastFrame": true

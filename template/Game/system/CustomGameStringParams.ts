@@ -50,3 +50,9 @@ class CustomGameStringParams_7 {
     type: number; // = 0; 类别
     systemKeys: number; // = 0; 系统按键
 }
+/**
+* 自定义游戏字符串 8-Steam
+*/
+class CustomGameStringParams_8 {
+    type: number; // = 0;
+}

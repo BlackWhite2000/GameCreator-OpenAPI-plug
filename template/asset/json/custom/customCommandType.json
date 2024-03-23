@@ -104,7 +104,13 @@
             "获取日期",
             "获取时间戳",
             "获取时间",
-            "获取服务器时间"
+            "获取服务器时间",
+            "拖拽界面组件",
+            "Steam初始化 Steam Init",
+            "安装DLC Install DLC",
+            "卸载DLC Uninstall DLC",
+            "激活成就 +Achievement",
+            "删除成就 -Achievement"
         ]
     },
     "type": {

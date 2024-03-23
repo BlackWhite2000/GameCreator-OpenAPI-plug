@@ -95,3 +95,9 @@ class CustomGameNumberParams_8 {
 class CustomGameNumberParams_9 {
     normalNumber: number; // = 0; 常用数值
 }
+/**
+* 自定义游戏数值 10-Steam
+*/
+class CustomGameNumberParams_10 {
+    type: number; // = 0;
+}

@@ -1,4 +1,50 @@
 module OpenAPI {
+  /**
+   * Javascript Clipper
+   * @version 6.4.2.2
+   */
+  export class Clipper {
+    /**
+     * Clipper库，需要先执行init才能拿到库内容
+     */
+    static ClipperLib: any
+
+    /**
+     * 初始化
+     */
+    static Init() {
+      Clipper.ClipperLib = OpenAPI.Require.Init('clipper')
+    }
+
+    /**
+     * 定义点转换函数
+     */
+    static toClipperPoints(points: { x: number; y: number }[]) {
+      return points.map(point => ({ X: point.x, Y: point.y }))
+    }
+
+    /**
+     *  判断两个多边形是否相交的函数
+     */
+    static polygonsIntersect(polygon1: { X: number; Y: number }[], polygon2: { X: number; Y: number }[]) {
+      // 创建 Clipper 实例
+      const ClipperLib = OpenAPI.Clipper.ClipperLib
+      const clipper = new ClipperLib.Clipper()
+
+      // 将多边形路径添加到 Clipper 实例中
+      clipper.AddPath(polygon1, ClipperLib.PolyType.ptSubject, true)
+      clipper.AddPath(polygon2, ClipperLib.PolyType.ptClip, true)
+
+      // 执行相交判断
+      const solution = new ClipperLib.Paths()
+      clipper.Execute(ClipperLib.ClipType.ctIntersection, solution)
+
+      // 如果有交点，说明两个多边形相交
+      return solution.length > 0
+    }
+  }
+}
+module OpenAPI {
 
   /**
    * GameCreator相关API
@@ -119,7 +165,6 @@ module OpenAPI {
   }
 
 }
-/* eslint-disable unicorn/prefer-includes */
 module OpenAPI {
 
   /**
@@ -177,7 +222,7 @@ module OpenAPI {
      * @param {number} data 时间戳。输出格式 1970/01/01 00:00:00
      * @param {string} data_type 【可选】获取时间类型 y、m、d、h、i、s。如 s = 获取时间戳中的秒
      */
-    static timestampToDate(data: number, data_type = ''): string | number | undefined {
+    static timestampToDate(data: number, data_type: string = ''): string | number | undefined {
       let _data = 0
       if (String(data).length === 13)
         _data = data
@@ -223,7 +268,7 @@ module OpenAPI {
      * @param {number} index_type 选项类型 0 = 常量 1 = 变量
      * @param {number} variable_type 【默认数值】变量类型 0 = 数值, 1 = 字符串, 2 = 开关(返回 0 = 关闭, 1 = 开启)
      */
-    static JudgeTypeConstantVariable(constant: any, variable: number, index_type: number, variable_type = 0): any {
+    static JudgeTypeConstantVariable(constant: any, variable: number, index_type: number, variable_type: number = 0): any {
       let variable_value
       if (index_type === 0) {
         variable_value = constant
@@ -277,9 +322,9 @@ module OpenAPI {
     }
 
     /**
-     * 更简单的HttpRequest
+     * 更简单的HttpRequest - 即将弃用
      * @param {string} url 请求地址
-     * @param {any} json 数据, get写null即可
+     * @param {any} json 数据
      * @param {any} completeText 完成事件
      * @param {any} errorText 发生错误时事件
      * @param {any} trigger 触发器
@@ -307,12 +352,12 @@ module OpenAPI {
      * 解析文本内变量占位符
      * @param {string} text 文本
      */
-    static parseVarPlaceholderData(text: string) {
+    static parseVarPlaceholderData(text: string): string {
       const getData = [
-        (s) => { return Game.player.variable.getVariable(s) },
-        (s) => { return Game.player.variable.getString(s) },
-        (s) => { return ClientWorld.variable.getVariable(s) },
-        (s) => { return ClientWorld.variable.getString(s) },
+        (s: any) => { return Game.player.variable.getVariable(s) },
+        (s: any) => { return Game.player.variable.getString(s) },
+        (s: any) => { return ClientWorld.variable.getVariable(s) },
+        (s: any) => { return ClientWorld.variable.getString(s) },
       ]
       const regex = [
         /\[@v\w+\]/g,
@@ -336,7 +381,7 @@ module OpenAPI {
      * @param {number} start 起始位
      * @param {string} end 结束符号
      */
-    static replacePlaceholderData(text: string, regex: RegExp, getData: any, start = 3, end = ']') {
+    static replacePlaceholderData(text: string, regex: RegExp, getData: any, start: number = 3, end: string = ']'): string | null {
       const matches = text.match(regex)
       if (matches) {
         for (let i = 0; i < matches.length; i++) {
@@ -355,11 +400,56 @@ module OpenAPI {
     };
   }
 }
+module OpenAPI{
+  /**
+   * 点坐标
+   */
+  export class Points {
+    /**
+     * 数值坐标数组转对象坐标数组
+     */
+    static toCoordinateObjects(arr: number[]): { x: number; y: number }[] {
+      const result: { x: number; y: number }[] = []
+      for (let i = 0; i < arr.length; i += 2)
+        result.push({ x: arr[i], y: arr[i + 1] })
+
+      return result
+    }
+
+    /**
+     * 相对于父级容器的坐标
+     */
+    static relativeToParent(objectsArray: { x: number; y: number }[], parent: { x: number; y: number }) {
+      return objectsArray.map(point => ({
+        x: point.x + parent.x,
+        y: point.y + parent.y,
+      }))
+    }
+  }
+}
+module OpenAPI{
+  /**
+   * 第三方库
+   */
+  export class Require {
+    /**
+     * 库初始化
+     */
+    static Init(name: string, filename?: string) {
+      filename = filename ? `${name}/${filename}` : `${name}/${name}`
+      // @ts-expect-error 忽略处理
+      const path = os.inGC() ? `${decodeURIComponent(Laya.URL.formatURL('asset'))}/myally_modules/${filename}` : `${FileUtils.nativePath}/asset/myally_modules/${filename}`
+      // @ts-expect-error 忽略处理
+      const topRequire = typeof require != 'undefined' ? require : top.top.require
+      return topRequire(path)
+    }
+  }
+}
 /**
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 2.1
+ * @version 2.2
  */
 module OpenAPI {
 
@@ -370,7 +460,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 2.1
+    static Version = 2.2
 
     /**
      * 是否安装本插件

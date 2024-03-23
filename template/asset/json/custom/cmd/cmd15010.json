@@ -1,0 +1,146 @@
+{
+    "compAutoOrderLimitHeight": 0,
+    "id": 15010,
+    "blockList": [
+        {
+            "name": "设定",
+            "blockAttrs": [
+                {
+                    "attr": {
+                        "id": "153100331156_0.6034077552512109",
+                        "varName": "achieveID",
+                        "varType": 1,
+                        "compData": {
+                            "compType": 9,
+                            "compParam": {}
+                        },
+                        "defaultValue": "",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 1,
+                        "arrayMode": false,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "Achieve ID",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": false,
+                        "titleWidth": 80,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 15,
+                    "x": 15,
+                    "width": 341,
+                    "height": 32
+                }
+            ],
+            "blockCondition": [],
+            "blockHeight": 60,
+            "autoOrder": true,
+            "cmdColor": "#59acff",
+            "hideBlockTitle": true
+        },
+        {
+            "name": "事件",
+            "blockAttrs": [
+                {
+                    "attr": {
+                        "id": "153100738813_0.4357040223854418",
+                        "varName": "onSuccess",
+                        "varType": 1,
+                        "compData": {
+                            "compType": 35,
+                            "compParam": {}
+                        },
+                        "defaultValue": "",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 1,
+                        "arrayMode": false,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "成功时 - on Success",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": false,
+                        "titleWidth": 150,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 15,
+                    "x": 15,
+                    "width": 500,
+                    "height": 32
+                },
+                {
+                    "attr": {
+                        "id": "153100738813_0.5869939486807658",
+                        "varName": "onFail",
+                        "varType": 1,
+                        "compData": {
+                            "compType": 35,
+                            "compParam": {}
+                        },
+                        "defaultValue": "",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 1,
+                        "arrayMode": false,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "失败时 - on Fail",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": false,
+                        "titleWidth": 150,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 55,
+                    "x": 15,
+                    "width": 500,
+                    "height": 32
+                }
+            ],
+            "blockCondition": [],
+            "blockHeight": 100,
+            "autoOrder": true,
+            "hideBlockTitle": true
+        }
+    ],
+    "name": "删除成就 -Achievement",
+    "isCustomPhraseDesc": true,
+    "customPhraseDescTS": "// 根据属性名称值编写自定义短语描述，如：\"我的短语是\"+attrs.xxx\n// 使用下拉框组件的变量attrs.xxx有对应的attrs.xxxItems的属性以便获得标签名集合\n// 获取自定义模块的数据名称的函数：getModuleDataName(moduleID:number,dataID:number):string;\n// 获取各种列表内数据名称的函数：getTypeDataListName(typeID: number, dataID: number):string;\n// 获取自定义游戏数值描述的函数：getCustomGameNumber(customGameNumber: any[]):string;\n// 获取自定义游戏字符串描述的函数：getCustomGameString(customGameString: any[]):string;\n// 获取自定义游戏开关描述的函数：：getCustomGameSwitch(customGameSwitch: any[]):string;\n// -- typeID ：0-全局变量 1-全局开关 2-全局字符串 3-玩家变量 4-玩家开关 5-玩家字符串\n//           ：6-场景列表 7-场景对象原型列表 8-图块列表 9-行走图列表 10-行走图动作列表 11-立绘列表 12-立绘表情列表\n//           ：13-事件库列表 14-对话框列表 15-动画列表 16-动画信号列表 17-界面列表 18-数据结构列表 19-自定义模块列表\n//           ：20-自定义指令列表 21-自定义行为列表 22-自动元件列表 23-行走图部件列表 24-立绘部件列表 25-材质列表 26-场景对象模块\nlet str = \"\"\nstr += `\\nAchieve ID = ${attrs.achieveID}`\nif(attrs.onSuccess)\n    str += `\\n成功时 - on Success: 【${getFeDataMessage(attrs.onSuccess)}】`\nif(attrs.onFail)\n    str += `\\n失败时 - on Fail: 【${getFeDataMessage(attrs.onFail)}】`\nstr += \"\"\nfunction getFeDataMessage(eventPage:any) {\n    if (!eventPage) return \"无 Unnamed\";\n    var startIdx = eventPage.indexOf(String.fromCharCode(5));\n    var feName = eventPage.substr(0, startIdx);\n    return feName ? feName : \"未命名片段事件 Unnamed Fragment Event\";\n}",
+    "customPhraseDescJS": "var str = \"\";\nstr += \"\\nAchieve ID = \" + attrs.achieveID;\nif (attrs.onSuccess)\n    str += \"\\n\\u6210\\u529F\\u65F6 - on Success: \\u3010\" + getFeDataMessage(attrs.onSuccess) + \"\\u3011\";\nif (attrs.onFail)\n    str += \"\\n\\u5931\\u8D25\\u65F6 - on Fail: \\u3010\" + getFeDataMessage(attrs.onFail) + \"\\u3011\";\nstr += \"\";\nfunction getFeDataMessage(eventPage) {\n    if (!eventPage)\n        return \"无 Unnamed\";\n    var startIdx = eventPage.indexOf(String.fromCharCode(5));\n    var feName = eventPage.substr(0, startIdx);\n    return feName ? feName : \"未命名片段事件 Unnamed Fragment Event\";\n}\n"
+}

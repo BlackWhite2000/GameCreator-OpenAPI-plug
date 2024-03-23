@@ -396,16 +396,22 @@ class ListItem_13 extends UIListItemData {
 }
 
 /**
- * 14- [BASE]
+ * 14-TEST [BASE]
  */
 class GUI_14 extends GUI_BASE {
-
+   图片2:UIBitmap;
+   图片1:UIBitmap;
+   行走图:UIAvatar;
+   行走图2:UIAvatar;
    constructor(){
       super(14);
    }
 }
 class ListItem_14 extends UIListItemData {
-
+   图片2:string;
+   图片1:string;
+   行走图:number;
+   行走图2:number;
 }
 
 /**
