@@ -1,4 +1,4 @@
 {
-    "plugDatas": "[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[{\"type\":17,\"data\":[{\"filePath\":\"Game/GCplug/641/OpenAPI.ts\",\"isServer\":false}],\"isAutoRelation\":false,\"selected\":true,\"randID\":849,\"froms\":[]}]]",
-    "cloudPlugDataID": "641"
+    "plugDatas": "[null,null,null,null,null,null,null,[{\"type\":7,\"data\":\"asset/myally_modules/clipper/clipper.js\",\"isAutoRelation\":false,\"selected\":true,\"randID\":14025,\"froms\":[]}],null,null,null,null,null,null,null,null,null,[]]",
+    "cloudPlugDataID": "968"
 }
