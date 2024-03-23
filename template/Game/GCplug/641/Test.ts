@@ -27,7 +27,7 @@ class GUI_TEST extends GUI_14 {
 
       // 判断两个多边形是否相交
       const isIntersect = OpenAPI.Clipper.polygonsIntersect(polygon1, polygon2)
-
+      this.文本.text = `${isIntersect}`
       if (isIntersect)
         trace(isIntersect)
     }, 100)

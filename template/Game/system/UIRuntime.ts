@@ -403,6 +403,7 @@ class GUI_14 extends GUI_BASE {
    图片1:UIBitmap;
    行走图:UIAvatar;
    行走图2:UIAvatar;
+   文本:UIString;
    constructor(){
       super(14);
    }
@@ -412,6 +413,7 @@ class ListItem_14 extends UIListItemData {
    图片1:string;
    行走图:number;
    行走图2:number;
+   文本:string;
 }
 
 /**
@@ -422,6 +424,7 @@ class GUI_15 extends GUI_BASE {
    容器:UIRoot;
    物理:UIRoot;
    图片:UIBitmap;
+   文本:UIString;
    constructor(){
       super(15);
    }
@@ -429,6 +432,7 @@ class GUI_15 extends GUI_BASE {
 class ListItem_15 extends UIListItemData {
    图片2:string;
    图片:string;
+   文本:string;
 }
 
 /**
