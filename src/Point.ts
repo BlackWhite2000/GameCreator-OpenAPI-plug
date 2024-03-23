@@ -1,8 +1,8 @@
 module OpenAPI{
   /**
-   * 点坐标
+   * 点
    */
-  export class Points {
+  export class Point {
     /**
      * 数值坐标数组转对象坐标数组
      */

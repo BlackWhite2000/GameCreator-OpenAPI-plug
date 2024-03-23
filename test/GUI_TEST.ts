@@ -18,8 +18,8 @@ class GUI_TEST extends GUI_14 {
       const points2 = this.行走图2._avatar.avatarList[0]._refObjs[3].points
       const parent1 = this.行走图
       const parent2 = this.行走图2
-      const objectsArray = OpenAPI.Points.relativeToParent(OpenAPI.Points.toCoordinateObjects(points1), parent1)
-      const objectsArray2 = OpenAPI.Points.relativeToParent(OpenAPI.Points.toCoordinateObjects(points2), parent2)
+      const objectsArray = OpenAPI.Point.relativeToParent(OpenAPI.Point.toCoordinateObjects(points1), parent1)
+      const objectsArray2 = OpenAPI.Point.relativeToParent(OpenAPI.Point.toCoordinateObjects(points2), parent2)
 
       // 转换为 ClipperLib 格式的路径
       const polygon1 = OpenAPI.Clipper.toClipperPoints(objectsArray)

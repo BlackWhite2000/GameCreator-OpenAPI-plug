@@ -42,7 +42,92 @@
         {
             "name": "障碍",
             "color": "#FF0000",
-            "tips": "可直接涂绘的固定障碍块，最终障碍计算会与图块预设的障碍叠加"
+            "tips": "可直接涂绘的固定障碍块，最终障碍计算会与图块预设的障碍叠加",
+            "dataType": true,
+            "colorBlocks": [
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                },
+                {
+                    "name": null,
+                    "tips": null
+                }
+            ],
+            "selectBlocksIndex": 0,
+            "mode": 0
         },
         {
             "name": "遮罩",

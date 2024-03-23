@@ -1,0 +1,146 @@
+{
+    "root": {
+        "children": [
+            {
+                "id": "153571799634_0.9486823059546379",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "图片2",
+                "x": 738,
+                "y": 534,
+                "width": 52,
+                "height": 310,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 240,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/picture/control/uibitmap.png",
+                "grid9": "20,20,20,20,0",
+                "flip": false,
+                "isTile": false,
+                "pivotType": 0
+            },
+            {
+                "id": "153644302273_0.4005022875803579",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "容器",
+                "x": 283,
+                "y": 178,
+                "width": 652,
+                "height": 440,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "enabledLimitView": false,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0
+            },
+            {
+                "id": "153649190132_0.3970034411051093",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "物理",
+                "x": 282,
+                "y": 118,
+                "width": 648,
+                "height": 512,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "enabledLimitView": false,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0
+            },
+            {
+                "id": "153649825538_0.3634271493350396",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "图片",
+                "x": 282,
+                "y": 118,
+                "width": 60,
+                "height": 60,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/picture/control/uibitmap.png",
+                "grid9": "0,0,0,0,0",
+                "flip": false,
+                "isTile": false,
+                "pivotType": 0
+            }
+        ]
+    },
+    "id": 15,
+    "instanceClassName": "GUI_TEST2",
+    "hasRootCommand": [
+        null,
+        null,
+        null,
+        true
+    ]
+}

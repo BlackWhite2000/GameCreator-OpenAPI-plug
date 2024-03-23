@@ -415,6 +415,88 @@ class ListItem_14 extends UIListItemData {
 }
 
 /**
+ * 15-TEST2 [BASE]
+ */
+class GUI_15 extends GUI_BASE {
+   图片2:UIBitmap;
+   容器:UIRoot;
+   物理:UIRoot;
+   图片:UIBitmap;
+   constructor(){
+      super(15);
+   }
+}
+class ListItem_15 extends UIListItemData {
+   图片2:string;
+   图片:string;
+}
+
+/**
+ * 16- [BASE]
+ */
+class GUI_16 extends GUI_BASE {
+
+   constructor(){
+      super(16);
+   }
+}
+class ListItem_16 extends UIListItemData {
+
+}
+
+/**
+ * 17- [BASE]
+ */
+class GUI_17 extends GUI_BASE {
+
+   constructor(){
+      super(17);
+   }
+}
+class ListItem_17 extends UIListItemData {
+
+}
+
+/**
+ * 18- [BASE]
+ */
+class GUI_18 extends GUI_BASE {
+
+   constructor(){
+      super(18);
+   }
+}
+class ListItem_18 extends UIListItemData {
+
+}
+
+/**
+ * 19- [BASE]
+ */
+class GUI_19 extends GUI_BASE {
+
+   constructor(){
+      super(19);
+   }
+}
+class ListItem_19 extends UIListItemData {
+
+}
+
+/**
+ * 20- [BASE]
+ */
+class GUI_20 extends GUI_BASE {
+
+   constructor(){
+      super(20);
+   }
+}
+class ListItem_20 extends UIListItemData {
+
+}
+
+/**
  * 1001-档案_Item [BASE]
  */
 class GUI_1001 extends GUI_BASE {
