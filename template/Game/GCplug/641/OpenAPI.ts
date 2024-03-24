@@ -449,7 +449,7 @@ module OpenAPI{
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 2.2
+ * @version 2.3
  */
 module OpenAPI {
 
