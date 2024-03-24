@@ -26,6 +26,7 @@
     "node_modules"
   ],
   "files":[
-    "test/Matter.d.ts"
+    "types/Matter.d.d.ts",
+    "types/spine-canvas.d.ts",
   ]
 }

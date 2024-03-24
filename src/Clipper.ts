@@ -1,7 +1,7 @@
 module OpenAPI {
   /**
    * Javascript Clipper
-   * @version 6.4.2.2
+   * @version 6.4.2
    */
   export class Clipper {
     /**
