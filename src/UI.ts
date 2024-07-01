@@ -57,6 +57,14 @@ module OpenAPI {
         this.tipUI = GameUI.show(id)
         this.tipUI.x = stage.mouseX + 15
         this.tipUI.y = stage.mouseY + 15
+        const maxWidth = Config.WINDOW_WIDTH - 5
+        const maxHeight = Config.WINDOW_HEIGHT - 15
+        if (this.tipUI.tipRoot) {
+          if (this.tipUI.x + this.tipUI.tipRoot.width > maxWidth)
+            this.tipUI.x = maxWidth - this.tipUI.tipRoot.width
+          if (this.tipUI.y + this.tipUI.tipRoot.height > maxHeight)
+            this.tipUI.y = maxHeight - this.tipUI.tipRoot.height
+        }
         this.tipUI.mouseEnabled = false
         for (const data in tipData) {
           if (this.tipUI[data] && tipData[data]) {
@@ -68,6 +76,14 @@ module OpenAPI {
       else {
         this.tipUI.x = stage.mouseX + 15
         this.tipUI.y = stage.mouseY + 15
+        const maxWidth = Config.WINDOW_WIDTH - 5
+        const maxHeight = Config.WINDOW_HEIGHT - 15
+        if (this.tipUI.tipRoot) {
+          if (this.tipUI.x + this.tipUI.tipRoot.width > maxWidth)
+            this.tipUI.x = maxWidth - this.tipUI.tipRoot.width
+          if (this.tipUI.y + this.tipUI.tipRoot.height > maxHeight)
+            this.tipUI.y = maxHeight - this.tipUI.tipRoot.height
+        }
       }
     }
 
