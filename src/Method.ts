@@ -231,8 +231,11 @@ module OpenAPI {
      */
     static parseGameVarPlaceholderData(text: string, gameData: any[]): string {
       const getData = [
+      // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomGameNumber[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
+      // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomGameString[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
+      // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomCondition[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
       ];
       const regex = [
