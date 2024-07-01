@@ -189,17 +189,60 @@ module OpenAPI {
       const getData = [
         (s: any) => { return Game.player.variable.getVariable(s) },
         (s: any) => { return Game.player.variable.getString(s) },
+        (s: any) => { return Game.player.variable.getSwitch(s) },
         (s: any) => { return ClientWorld.variable.getVariable(s) },
         (s: any) => { return ClientWorld.variable.getString(s) },
+        (s: any) => { return ClientWorld.variable.getSwitch(s) },
+        (s: any) => { return Game.player.variable.getVariable(Game.player.variable.getVariable(s)) },
+        (s: any) => { return Game.player.variable.getString(Game.player.variable.getVariable(s)) },
+        (s: any) => { return Game.player.variable.getSwitch(Game.player.variable.getVariable(s)) },
+        (s: any) => { return ClientWorld.variable.getVariable(ClientWorld.variable.getVariable(s)) },
+        (s: any) => { return ClientWorld.variable.getString(ClientWorld.variable.getVariable(s)) },
+        (s: any) => { return ClientWorld.variable.getSwitch(ClientWorld.variable.getVariable(s)) },
       ]
       const regex = [
         /\[@v\w+\]/g,
         /\[@s\w+\]/g,
+        /\[@b\w+\]/g,
         /\[\$v\w+\]/g,
         /\[\$s\w+\]/g,
-      ]
+        /\[\$b\w+\]/g,
+        /\[@@v\w+\]/g,
+        /\[@@s\w+\]/g,
+        /\[@@b\w+\]/g,
+        /\[\$\$v\w+\]/g,
+        /\[\$\$s\w+\]/g,
+        /\[\$\$b\w+\]/g,
+      ];
+
       for (let i = 0; i < getData.length; i++) {
-        const result = this.replacePlaceholderData(text, regex[i], getData[i])
+        const start = i > 6 ? 4 : 3
+        const result = this.replacePlaceholderData(text, regex[i], getData[i], start)
+        if (result)
+          text = result
+      }
+      return text
+    }
+
+    /**
+     * 解析文本内游戏变量占位符
+     * @param {string} text 文本
+     * @param {string} gameData 游戏变量数据
+     */
+    static parseGameVarPlaceholderData(text: string, gameData: any[]): string {
+      const getData = [
+        (s: any) => gameData[s] && gameData[s][0] ? CustomGameNumber[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
+        (s: any) => gameData[s] && gameData[s][0] ? CustomGameString[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
+        (s: any) => gameData[s] && gameData[s][0] ? CustomCondition[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
+      ];
+      const regex = [
+        /\[@gv\w+\]/g,
+        /\[@gs\w+\]/g,
+        /\[@gb\w+\]/g,
+      ];
+
+      for (let i = 0; i < getData.length; i++) {
+        const result = this.replacePlaceholderData(text, regex[i], getData[i], 4)
         if (result)
           text = result
       }
@@ -233,9 +276,9 @@ module OpenAPI {
     };
 
     /**
-* 解析文本内函数组合
-* @param {string} text 文本
-*/
+    * 解析文本内函数组合
+    * @param {string} text 文本
+    */
     static parseCombinedFunctions(text: string): string {
       const getData = [
         (...args: number[]) => { return Math.max(...args) },
