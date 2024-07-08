@@ -433,7 +433,7 @@ module OpenAPI {
         for (let i = 0; i < matches.length; i++) {
           const d = matches[i]
           const s = Number(d.slice(start, d.indexOf(end)))
-          if (s) {
+          if (s || s == 0) {
             const v = getData(s)
             text = text.replace(d, v)
           }
