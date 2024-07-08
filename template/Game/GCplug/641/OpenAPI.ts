@@ -383,7 +383,7 @@ module OpenAPI {
       ];
 
       for (let i = 0; i < getData.length; i++) {
-        const start = i > 6 ? 4 : 3
+        const start = i >= 6 ? 4 : 3
         const result = this.replacePlaceholderData(text, regex[i], getData[i], start)
         if (result)
           text = result
@@ -728,7 +728,7 @@ module OpenAPI{
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 2.4
+ * @version 2.5
  */
 module OpenAPI {
 
@@ -739,7 +739,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 2.4
+    static Version = 2.5
 
     /**
      * 是否安装本插件
