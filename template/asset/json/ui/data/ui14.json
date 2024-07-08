@@ -174,6 +174,157 @@
                 "shadowDy": 1,
                 "stroke": 0,
                 "strokeColor": "#000000"
+            },
+            {
+                "id": "154406229340_0.42814815634439274",
+                "condition": [],
+                "type": "UISlider",
+                "name": "滑块控件",
+                "x": 607,
+                "y": 285,
+                "width": 191,
+                "height": 10,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image1": "asset/image/picture/control/slider_bg.png",
+                "bgGrid9": "4,5,4,5,0",
+                "image2": "asset/image/picture/control/slider_block.png",
+                "blockGrid9": "5,5,5,5,0",
+                "image3": "asset/image/picture/control/slider_bgfill.png",
+                "blockFillGrid9": "3,5,3,5,0",
+                "step": 0.1,
+                "min": 0,
+                "max": 1,
+                "value": 0.2,
+                "transverseMode": true,
+                "blockFillMode": 2,
+                "blockPosMode": 0,
+                "fillStrething": false,
+                "isBindingVarID": false,
+                "bindingVarID": -1
+            },
+            {
+                "id": "154406235581_0.20143045346463984",
+                "condition": [],
+                "type": "UICustomGameNumber",
+                "name": "游戏数值",
+                "x": 460,
+                "y": 148,
+                "width": 200,
+                "height": 30,
+                "opacity": 1,
+                "blend": 0,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": false,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "customData": [
+                    5,
+                    {
+                        "type": 1,
+                        "uiComp": {
+                            "uiID": 14,
+                            "type": 1,
+                            "compName": "滑块控件",
+                            "compID": "154406229340_0.42814815634439274",
+                            "attrs": [
+                                "x:[#GAME_HORIZONTAL_COORDINATE_POSITION]",
+                                "y:[#GAME_VERTICAL_COORDINATE_POSITION]",
+                                "width:[#GAME_THE_WIDTH_OF_THE]",
+                                "height:[#GAME_HIGHLY]",
+                                "rotation:[#GAME_ROTATION_ANGLE]",
+                                "alpha:[#GAME_TRANSPARENCY]",
+                                "blend:[#GAME_MIXED_MODE]",
+                                "step:[#GAME_THE_STEP_VALUE]",
+                                "min:[#GAME_THE_MINIMUM_VALUE]",
+                                "max:[#GAME_THE_MAXIMUM]",
+                                "value:[#GAME_VALUE]",
+                                "blockFillMode:[#GAME_DISPLAY_MODE]",
+                                "blockPosMode:[#GAME_INITIAL_SLIDER_POSITION]",
+                                "bindingVarID:[#GAME_VALUE_BOUND_VARIABLES]"
+                            ],
+                            "varName": "value"
+                        },
+                        "uiAttrName": "",
+                        "uiID": 0,
+                        "useVarID": 0,
+                        "uiIDVarID": 0
+                    },
+                    [
+                        {
+                            "42668903158_0.7751461913844166": 1,
+                            "52384717862_0.6844171222070412": {
+                                "uiID": 14,
+                                "type": 1,
+                                "compName": "滑块控件",
+                                "compID": "154406229340_0.42814815634439274",
+                                "attrs": [
+                                    "x:[#GAME_HORIZONTAL_COORDINATE_POSITION]",
+                                    "y:[#GAME_VERTICAL_COORDINATE_POSITION]",
+                                    "width:[#GAME_THE_WIDTH_OF_THE]",
+                                    "height:[#GAME_HIGHLY]",
+                                    "rotation:[#GAME_ROTATION_ANGLE]",
+                                    "alpha:[#GAME_TRANSPARENCY]",
+                                    "blend:[#GAME_MIXED_MODE]",
+                                    "step:[#GAME_THE_STEP_VALUE]",
+                                    "min:[#GAME_THE_MINIMUM_VALUE]",
+                                    "max:[#GAME_THE_MAXIMUM]",
+                                    "value:[#GAME_VALUE]",
+                                    "blockFillMode:[#GAME_DISPLAY_MODE]",
+                                    "blockPosMode:[#GAME_INITIAL_SLIDER_POSITION]",
+                                    "bindingVarID:[#GAME_VALUE_BOUND_VARIABLES]"
+                                ],
+                                "varName": "value"
+                            },
+                            "42669029245_0.32016014234982837": "",
+                            "52384979849_0.2614831919098186": 0,
+                            "52384979849_0.010548273064308278": 0,
+                            "52384979849_0.293082004072015": 0
+                        }
+                    ]
+                ],
+                "previewNum": 2,
+                "previewFixed": 4,
+                "fontSize": 24,
+                "color": "#00ff00",
+                "bold": false,
+                "italic": false,
+                "smooth": false,
+                "align": 0,
+                "valign": 0,
+                "leading": 0,
+                "letterSpacing": 0,
+                "font": "Source_Han_Sans",
+                "wordWrap": true,
+                "overflow": 0,
+                "shadowEnabled": false,
+                "shadowColor": "#000000",
+                "shadowDx": 1,
+                "shadowDy": 1,
+                "stroke": 0,
+                "strokeColor": "#000000"
             }
         ]
     },

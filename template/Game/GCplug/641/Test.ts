@@ -18,6 +18,7 @@ class GUI_TEST extends GUI_14 {
       const points2 = this.行走图2._avatar.avatarList[0]._refObjs[3].points
       const parent1 = this.行走图
       const parent2 = this.行走图2
+      trace(points1,points2)
       const objectsArray = OpenAPI.Point.relativeToParent(OpenAPI.Point.toCoordinateObjects(points1), parent1)
       const objectsArray2 = OpenAPI.Point.relativeToParent(OpenAPI.Point.toCoordinateObjects(points2), parent2)
 

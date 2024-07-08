@@ -127,7 +127,7 @@
         },
         "gridObsDebug": {
             "varType": 2,
-            "value": false,
+            "value": true,
             "copy": false
         },
         "rectObsDebug": {
@@ -582,6 +582,11 @@
         "word_keyboardInput": {
             "varType": 1,
             "value": "第$1个键位：请按下键位",
+            "copy": false
+        },
+        "timeApi_yyvhc": {
+            "varType": 1,
+            "value": "https://api.gcw.wiki/TimeStamp",
             "copy": false
         }
     }

@@ -7,11 +7,10 @@
     "build:test:w": "node scripts/build_test.mjs -w",
     "build:public": "node public/config.mjs",
     "build:ts": "tsc -p ./build/tsconfig.json && node scripts/copy_dist.mjs",
-    "build:allTs": "node scripts/copy_ts.mjs",
+    "build:allTs": "node scripts/copy_ts.mjs"
   },
   "devDependencies": {
     "dotenv": "^16.3.1",
-    "eslint": "^8.54.0",
     "typescript": "5.2.2"
   }
 }

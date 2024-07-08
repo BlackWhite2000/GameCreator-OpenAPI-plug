@@ -216,7 +216,7 @@ module OpenAPI {
       ];
 
       for (let i = 0; i < getData.length; i++) {
-        const start = i > 6 ? 4 : 3
+        const start = i >= 6 ? 4 : 3
         const result = this.replacePlaceholderData(text, regex[i], getData[i], start)
         if (result)
           text = result
