@@ -352,8 +352,9 @@ module OpenAPI {
      * 解析文本内变量占位符
      * @param {string} text 文本
      * @param {[] | null} getData 返回函数
+     * @param {RegExp[]} regex 正则表达式
      */
-    static parseVarPlaceholderData(text: string, getData: (((s: any) => number) | ((s: any) => string))[] | null = null): string {
+    static parseVarPlaceholderData(text: string, getData: (((s: any) => number) | ((s: any) => string))[] | null = null, regex: RegExp[] | null = null): string {
       if (getData == null) {
         getData = [
           (s: any) => { return Game.player.variable.getVariable(s) },
@@ -371,20 +372,23 @@ module OpenAPI {
         ]
       }
 
-      const regex = [
-        /\[@v\w+\]/g,
-        /\[@s\w+\]/g,
-        /\[@b\w+\]/g,
-        /\[\$v\w+\]/g,
-        /\[\$s\w+\]/g,
-        /\[\$b\w+\]/g,
-        /\[@@v\w+\]/g,
-        /\[@@s\w+\]/g,
-        /\[@@b\w+\]/g,
-        /\[\$\$v\w+\]/g,
-        /\[\$\$s\w+\]/g,
-        /\[\$\$b\w+\]/g,
-      ];
+      if (regex == null) {
+        regex = [
+          /\[@v\w+\]/g,
+          /\[@s\w+\]/g,
+          /\[@b\w+\]/g,
+          /\[\$v\w+\]/g,
+          /\[\$s\w+\]/g,
+          /\[\$b\w+\]/g,
+          /\[@@v\w+\]/g,
+          /\[@@s\w+\]/g,
+          /\[@@b\w+\]/g,
+          /\[\$\$v\w+\]/g,
+          /\[\$\$s\w+\]/g,
+          /\[\$\$b\w+\]/g,
+        ];
+      }
+
 
       for (let i = 0; i < getData.length; i++) {
         const start = i >= 6 ? 4 : 3
@@ -399,8 +403,9 @@ module OpenAPI {
      * 解析文本内游戏变量占位符
      * @param {string} text 文本
      * @param {string} gameData 游戏变量数据
+     * @param {RegExp[]} regex 正则表达式
      */
-    static parseGameVarPlaceholderData(text: string, gameData: any[]): string {
+    static parseGameVarPlaceholderData(text: string, gameData: any[], regex: RegExp[] | null = null): string {
       const getData = [
         // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomGameNumber[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
@@ -409,11 +414,13 @@ module OpenAPI {
         // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomCondition[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
       ];
-      const regex = [
-        /\[@gv\w+\]/g,
-        /\[@gs\w+\]/g,
-        /\[@gb\w+\]/g,
-      ];
+      if (regex == null) {
+        regex = [
+          /\[@gv\w+\]/g,
+          /\[@gs\w+\]/g,
+          /\[@gb\w+\]/g,
+        ];
+      }
 
       for (let i = 0; i < getData.length; i++) {
         const result = this.replacePlaceholderData(text, regex[i], getData[i], 4)
@@ -452,8 +459,9 @@ module OpenAPI {
     /**
     * 解析文本内函数组合
     * @param {string} text 文本
+    * @param {RegExp[]} regex 正则表达式
     */
-    static parseCombinedFunctions(text: string): string {
+    static parseCombinedFunctions(text: string, regex: RegExp[] | null = null): string {
       const getData = [
         (...args: number[]) => { return Math.max(...args) },
         (...args: number[]) => { return Math.min(...args) },
@@ -467,15 +475,17 @@ module OpenAPI {
         (num: number) => { return Math.round(num) },
       ];
 
-      const regex = [
-        /max\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-        /min\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-        /random\(\d+(\.\d+)?(,\s*)?\d+(\.\d+)?\)/g,
-        /reduce\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-        /abs\(\d+(\.\d+)?\)/g,
-        /sqrt\(\d+(\.\d+)?\)/g,
-        /round\(\d+(\.\d+)?\)/g,
-      ];
+      if (regex == null) {
+        regex = [
+          /max\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
+          /min\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
+          /random\(\d+(\.\d+)?(,\s*)?\d+(\.\d+)?\)/g,
+          /reduce\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
+          /abs\(\d+(\.\d+)?\)/g,
+          /sqrt\(\d+(\.\d+)?\)/g,
+          /round\(\d+(\.\d+)?\)/g,
+        ];
+      }
 
       for (let i = 0; i < getData.length; i++) {
         const result = this.replaceFunctionCombinations(text, regex[i], getData[i]);
@@ -513,8 +523,9 @@ module OpenAPI {
      * 解析并计算复杂表达式的函数
      * @param {string} expression - 要解析的表达式
      * @returns {any} 计算结果，如果表达式无效则返回 null
+     * @returns {operators} 正则表达式
      */
-    static evaluateComplexExpression(expression: string): any {
+    static evaluateComplexExpression(expression: string, operators: any[]): any {
       // 去除表达式中的空格
       expression = expression.replace(/\s+/g, '');
 
@@ -523,33 +534,13 @@ module OpenAPI {
        * @param {string} expr - 要解析的子表达式
        * @returns {any} 子表达式的计算结果
        */
-      function parseExpression(expr: string): any {
+      function parseExpression(expr: string, operators: any[]): any {
         // 处理括号内的表达式
         while (expr.includes('(')) {
           expr = expr.replace(/\([^()]*\)/g, match => {
-            return String(parseExpression(match.slice(1, -1)));
+            return String(parseExpression(match.slice(1, -1), operators));
           });
         }
-
-        // 定义运算符优先级和对应的计算函数
-        const operators: any[] = [
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\^((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => Math.pow(a, b) }, // 幂运算
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\*((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a * b }, // 乘法
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\/((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a / b }, // 除法
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))%((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a % b }, // 求余
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\+((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a + b }, // 加法
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\-((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a - b }, // 减法
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\>((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a > b }, // 大于
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\<((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a < b }, // 小于
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))==((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: any, b: any) => a == b }, // 等于
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\!=((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: any, b: any) => a != b }, // 不等于
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\>=((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a >= b }, // 大于等于
-          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\<=((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a <= b }, // 小于等于
-          { regex: /(?<!["'])(.+?)&&\s*(.+)(?!["'])/, func: (a: boolean, b: boolean) => a && b }, // 逻辑与
-          { regex: /(?<!["'])(.+?)\|\|\s*(.+)(?!["'])/, func: (a: boolean, b: boolean) => a || b }, // 逻辑或
-          { regex: /(?<!["'])(.+?)\!<>\s*(.+)(?!["'])/, func: (a: string, b: string) => a.indexOf(b) == -1 }, // 字符串不包含
-          { regex: /(?<!["'])(.+?)<>\s*(.+)(?!["'])/, func: (a: string, b: string) => a.indexOf(b) != -1 } // 字符串包含
-        ];
 
         // 逐个运算符处理表达式
         for (const { regex, func } of operators) {
@@ -565,7 +556,7 @@ module OpenAPI {
         // 处理逻辑非运算符
         if (expr.startsWith('!')) {
           const operand = expr.slice(1);
-          return !parseExpression(operand);
+          return !parseExpression(operand, operators);
         }
 
         // 返回最终结果
@@ -574,7 +565,7 @@ module OpenAPI {
       }
 
       // 解析并计算输入表达式
-      return parseExpression(expression);
+      return parseExpression(expression, operators);
     }
 
     /**
@@ -732,7 +723,7 @@ module OpenAPI{
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 2.7
+ * @version 2.9
  */
 module OpenAPI {
 
@@ -743,7 +734,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 2.7
+    static Version = 2.9
 
     /**
      * 是否安装本插件
