@@ -529,22 +529,22 @@ module OpenAPI {
 
         // 定义运算符优先级和对应的计算函数
         const operators = [
-          { regex: /([\d.]+|\w+)\^([\d.]+|\w+)/, func: (a: any, b: any) => Math.pow(a, b) },          // 幂运算
-          { regex: /([\d.]+|\w+)\*([\d.]+|\w+)/, func: (a: number, b: number) => a * b },             // 乘法
-          { regex: /([\d.]+|\w+)\/([\d.]+|\w+)/, func: (a: number, b: number) => a / b },             // 除法
-          { regex: /([\d.]+|\w+)%([\d.]+|\w+)/, func: (a: number, b: number) => a % b },              // 求余
-          { regex: /([\d.]+|\w+)\+([\d.]+|\w+)/, func: (a: number, b: number) => a + b },             // 加法
-          { regex: /([\d.]+|\w+)-([\d.]+|\w+)/, func: (a: number, b: number) => a - b },              // 减法
-          { regex: /([\d.]+|\w+)\>([\d.]+|\w+)/, func: (a: number, b: number) => a > b },             // 大于
-          { regex: /([\d.]+|\w+)\<([\d.]+|\w+)/, func: (a: number, b: number) => a < b },             // 小于
-          { regex: /([\d.]+|\w+)==([\d.]+|\w+)/, func: (a: number, b: number) => a == b },            // 等于
-          { regex: /([\d.]+|\w+)\!=([\d.]+|\w+)/, func: (a: number, b: number) => a != b },           // 不等于
-          { regex: /([\d.]+|\w+)\>=(\d+|\w+)/, func: (a: number, b: number) => a >= b },              // 大于等于
-          { regex: /([\d.]+|\w+)\<=(\d+|\w+)/, func: (a: number, b: number) => a <= b },              // 小于等于
-          { regex: /(.+?)&&\s*(.+)/, func: (a: any, b: any) => a && b },                              // 逻辑与
-          { regex: /(.+?)\|\|\s*(.+)/, func: (a: boolean, b: boolean) => a || b },                    // 逻辑或
-          { regex: /(.+?)\!<>\s*(.+)/, func: (a: string, b: string) => a.indexOf(b) == -1 },          // 字符串不包含
-          { regex: /(.+?)<>\s*(.+)/, func: (a: string, b: string) => a.indexOf(b) !== -1 },           // 字符串包含
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\^([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: any, b: any) => Math.pow(a, b) },          // 幂运算
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\*([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a * b },             // 乘法
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\/([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a / b },             // 除法
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)%([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a % b },              // 求余
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\+([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a + b },             // 加法
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)-([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a - b },              // 减法
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\>([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a > b },             // 大于
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\<([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a < b },             // 小于
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)==([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: any, b: any) => a == b },                  // 等于
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\!=([\d.]+|[^><=!&|^+\-*/%]+)/, func: (a: any, b: any) => a != b },                 // 不等于
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\>=(\d+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a >= b },              // 大于等于
+          { regex: /([\d.]+|[^><=!&|^+\-*/%]+)\<=(\d+|[^><=!&|^+\-*/%]+)/, func: (a: number, b: number) => a <= b },              // 小于等于
+          { regex: /(.+?)&&\s*(.+)/, func: (a: any, b: any) => a && b },                                                         // 逻辑与
+          { regex: /(.+?)\|\|\s*(.+)/, func: (a: boolean, b: boolean) => a || b },                                               // 逻辑或
+          { regex: /(.+?)\!<>\s*(.+)/, func: (a: string, b: string) => a.indexOf(b) == -1 },                                     // 字符串不包含
+          { regex: /(.+?)<>\s*(.+)/, func: (a: string, b: string) => a.indexOf(b) != -1 },                                       // 字符串包含
         ];
 
         // 逐个运算符处理表达式
@@ -728,7 +728,7 @@ module OpenAPI{
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 2.5
+ * @version 2.6
  */
 module OpenAPI {
 
@@ -739,7 +739,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 2.5
+    static Version = 2.6
 
     /**
      * 是否安装本插件

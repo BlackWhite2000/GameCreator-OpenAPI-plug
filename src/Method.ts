@@ -184,22 +184,26 @@ module OpenAPI {
     /**
      * 解析文本内变量占位符
      * @param {string} text 文本
+     * @param {[] | null} getData 返回函数
      */
-    static parseVarPlaceholderData(text: string): string {
-      const getData = [
-        (s: any) => { return Game.player.variable.getVariable(s) },
-        (s: any) => { return Game.player.variable.getString(s) },
-        (s: any) => { return Game.player.variable.getSwitch(s) },
-        (s: any) => { return ClientWorld.variable.getVariable(s) },
-        (s: any) => { return ClientWorld.variable.getString(s) },
-        (s: any) => { return ClientWorld.variable.getSwitch(s) },
-        (s: any) => { return Game.player.variable.getVariable(Game.player.variable.getVariable(s)) },
-        (s: any) => { return Game.player.variable.getString(Game.player.variable.getVariable(s)) },
-        (s: any) => { return Game.player.variable.getSwitch(Game.player.variable.getVariable(s)) },
-        (s: any) => { return ClientWorld.variable.getVariable(ClientWorld.variable.getVariable(s)) },
-        (s: any) => { return ClientWorld.variable.getString(ClientWorld.variable.getVariable(s)) },
-        (s: any) => { return ClientWorld.variable.getSwitch(ClientWorld.variable.getVariable(s)) },
-      ]
+    static parseVarPlaceholderData(text: string, getData: (((s: any) => number) | ((s: any) => string))[] | null = null): string {
+      if (getData == null) {
+        getData = [
+          (s: any) => { return Game.player.variable.getVariable(s) },
+          (s: any) => { return Game.player.variable.getString(s) },
+          (s: any) => { return Game.player.variable.getSwitch(s) },
+          (s: any) => { return ClientWorld.variable.getVariable(s) },
+          (s: any) => { return ClientWorld.variable.getString(s) },
+          (s: any) => { return ClientWorld.variable.getSwitch(s) },
+          (s: any) => { return Game.player.variable.getVariable(Game.player.variable.getVariable(s)) },
+          (s: any) => { return Game.player.variable.getString(Game.player.variable.getVariable(s)) },
+          (s: any) => { return Game.player.variable.getSwitch(Game.player.variable.getVariable(s)) },
+          (s: any) => { return ClientWorld.variable.getVariable(ClientWorld.variable.getVariable(s)) },
+          (s: any) => { return ClientWorld.variable.getString(ClientWorld.variable.getVariable(s)) },
+          (s: any) => { return ClientWorld.variable.getSwitch(ClientWorld.variable.getVariable(s)) },
+        ]
+      }
+
       const regex = [
         /\[@v\w+\]/g,
         /\[@s\w+\]/g,
@@ -231,11 +235,11 @@ module OpenAPI {
      */
     static parseGameVarPlaceholderData(text: string, gameData: any[]): string {
       const getData = [
-      // @ts-ignore 忽略处理
+        // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomGameNumber[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
-      // @ts-ignore 忽略处理
+        // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomGameString[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
-      // @ts-ignore 忽略处理
+        // @ts-ignore 忽略处理
         (s: any) => gameData[s] && gameData[s][0] ? CustomCondition[`f${gameData[s][0]}`](null, gameData[s][1]) : 0,
       ];
       const regex = [
@@ -361,23 +365,23 @@ module OpenAPI {
         }
 
         // 定义运算符优先级和对应的计算函数
-        const operators = [
-          { regex: /([\d.]+|\w+)\^([\d.]+|\w+)/, func: (a: any, b: any) => Math.pow(a, b) },          // 幂运算
-          { regex: /([\d.]+|\w+)\*([\d.]+|\w+)/, func: (a: number, b: number) => a * b },             // 乘法
-          { regex: /([\d.]+|\w+)\/([\d.]+|\w+)/, func: (a: number, b: number) => a / b },             // 除法
-          { regex: /([\d.]+|\w+)%([\d.]+|\w+)/, func: (a: number, b: number) => a % b },              // 求余
-          { regex: /([\d.]+|\w+)\+([\d.]+|\w+)/, func: (a: number, b: number) => a + b },             // 加法
-          { regex: /([\d.]+|\w+)-([\d.]+|\w+)/, func: (a: number, b: number) => a - b },              // 减法
-          { regex: /([\d.]+|\w+)\>([\d.]+|\w+)/, func: (a: number, b: number) => a > b },             // 大于
-          { regex: /([\d.]+|\w+)\<([\d.]+|\w+)/, func: (a: number, b: number) => a < b },             // 小于
-          { regex: /([\d.]+|\w+)==([\d.]+|\w+)/, func: (a: number, b: number) => a == b },            // 等于
-          { regex: /([\d.]+|\w+)\!=([\d.]+|\w+)/, func: (a: number, b: number) => a != b },           // 不等于
-          { regex: /([\d.]+|\w+)\>=(\d+|\w+)/, func: (a: number, b: number) => a >= b },              // 大于等于
-          { regex: /([\d.]+|\w+)\<=(\d+|\w+)/, func: (a: number, b: number) => a <= b },              // 小于等于
-          { regex: /(.+?)&&\s*(.+)/, func: (a: any, b: any) => a && b },                              // 逻辑与
-          { regex: /(.+?)\|\|\s*(.+)/, func: (a: boolean, b: boolean) => a || b },                    // 逻辑或
-          { regex: /(.+?)\!<>\s*(.+)/, func: (a: string, b: string) => a.indexOf(b) == -1 },          // 字符串不包含
-          { regex: /(.+?)<>\s*(.+)/, func: (a: string, b: string) => a.indexOf(b) !== -1 },           // 字符串包含
+        const operators: any[] = [
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\^((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => Math.pow(a, b) }, // 幂运算
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\*((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a * b }, // 乘法
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\/((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a / b }, // 除法
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))%((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a % b }, // 求余
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\+((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a + b }, // 加法
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\-((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a - b }, // 减法
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\>((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a > b }, // 大于
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\<((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a < b }, // 小于
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))==((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: any, b: any) => a == b }, // 等于
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\!=((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: any, b: any) => a != b }, // 不等于
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\>=((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a >= b }, // 大于等于
+          { regex: /(?<!["'])((?:[\d.]+|[^><=!&|^+\-*/%]+))\<=((?:[\d.]+|[^><=!&|^+\-*/%]+))(?!["'])/, func: (a: number, b: number) => a <= b }, // 小于等于
+          { regex: /(?<!["'])(.+?)&&\s*(.+)(?!["'])/, func: (a: boolean, b: boolean) => a && b }, // 逻辑与
+          { regex: /(?<!["'])(.+?)\|\|\s*(.+)(?!["'])/, func: (a: boolean, b: boolean) => a || b }, // 逻辑或
+          { regex: /(?<!["'])(.+?)\!<>\s*(.+)(?!["'])/, func: (a: string, b: string) => a.indexOf(b) == -1 }, // 字符串不包含
+          { regex: /(?<!["'])(.+?)<>\s*(.+)(?!["'])/, func: (a: string, b: string) => a.indexOf(b) != -1 } // 字符串包含
         ];
 
         // 逐个运算符处理表达式
