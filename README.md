@@ -4,7 +4,7 @@ OpenAPI 更多API插件。
 
 ## 在线文档
 
-https://openapi.docs.gcw.wiki
+https://new.gcw.wiki/zh_hans/plug/openapi
 
 ## 开始
 
