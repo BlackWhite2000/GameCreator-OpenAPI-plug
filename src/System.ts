@@ -1,8 +1,13 @@
 /**
+ * OpenAPI 部分函数来自 es-toolkit
+ * @see https://github.com/toss/es-toolkit
+ */
+
+/**
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 2.9
+ * @version 3.0
  */
 module OpenAPI {
 
@@ -13,7 +18,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 2.9
+    static Version = 3.0
 
     /**
      * 是否安装本插件
@@ -32,3 +37,4 @@ module OpenAPI {
     }
   }, 1000)
 };
+
