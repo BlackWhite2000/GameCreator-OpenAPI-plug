@@ -1,6 +1,6 @@
 module OpenAPI {
     /**
-     * Promise 操作
+     * Promise 操作工具
      */
     export class PromiseUtilities {
 

@@ -1,6 +1,6 @@
 module OpenAPI {
     /**
-     * 函数操作
+     * 函数操作工具
      */
     export class FunctionUtilities {
 

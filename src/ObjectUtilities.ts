@@ -1,6 +1,6 @@
 module OpenAPI {
     /**
-     * 对象操作
+     * 对象操作工具
      */
     export class ObjectUtilities {
 

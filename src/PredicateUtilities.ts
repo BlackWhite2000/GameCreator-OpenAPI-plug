@@ -1,6 +1,6 @@
 module OpenAPI {
     /**
-     * 谓词操作
+     * 谓词操作工具
      */
     export class PredicateUtilities {
 

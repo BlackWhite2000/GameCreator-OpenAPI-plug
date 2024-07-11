@@ -278,7 +278,8 @@
                     "49520771123_0.27311479097864666": false,
                     "49611947752_0.41521729946538755": false
                 },
-                "153572095548_0.19542556307422587"
+                "163119191686_0.6443824958128206",
+                true
             ],
             [
                 14,
@@ -340,6 +341,15 @@
                 {
                     "___cmdID": "153488689478_0.5262417896511355",
                     "disabled": true
+                }
+            ],
+            [
+                20,
+                "",
+                "const { takeWhile } = OpenAPI.ArrayUtilities\n\ntrace(takeWhile([1, 2, 3, 4], x => x > 3))\ntrace(takeWhile([1, 2, 3, 4], x => x < 3))\ntrace(takeWhile([3, 2, 3, 4], x => x > 2))\n",
+                "var takeWhile = OpenAPI.ArrayUtilities.takeWhile;\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x > 3; }));\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x < 3; }));\ntrace(takeWhile([3, 2, 3, 4], function (x) { return x > 2; }));\n",
+                {
+                    "___cmdID": "163119112802_0.9698192672215815"
                 }
             ],
             [

@@ -4,7 +4,7 @@ module OpenAPI {
     type Unzip<K extends unknown[]> = { [I in keyof K]: Array<K[I]> };
 
     /**
-     * 数组操作
+     * 数组操作工具
      */
     export class ArrayUtilities {
 
@@ -527,7 +527,6 @@ module OpenAPI {
             });
         }
 
-
         /**
          * 根据提供的键生成函数，将数组中的每个元素映射为一个对象。
          *
@@ -992,7 +991,7 @@ module OpenAPI {
          * takeWhile([1, 2, 3, 4], x => x < 3);
          *
          * @example
-         * // 返回 [4]
+         * // 返回 []
          * takeWhile([1, 2, 3, 4], x => x > 3);
          */
         static takeWhile<T>(arr: readonly T[], shouldContinueTaking: (element: T) => boolean): T[] {

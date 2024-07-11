@@ -1,6 +1,6 @@
 module OpenAPI {
     /**
-     * 数学操作
+     * 数学操作工具工具
      */
     export class MathUtilities {
 

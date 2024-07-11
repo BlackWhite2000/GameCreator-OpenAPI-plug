@@ -1,6 +1,6 @@
 module OpenAPI {
     /**
-     * 字符串操作
+     * 字符串操作工具
      */
     export class StringUtilities {
 
