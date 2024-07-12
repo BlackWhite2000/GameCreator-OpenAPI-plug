@@ -4,7 +4,7 @@ module OpenAPI {
     type Unzip<K extends unknown[]> = { [I in keyof K]: Array<K[I]> };
 
     /**
-     * 数组操作
+     * 数组操作工具
      */
     export class ArrayUtilities {
 
@@ -527,7 +527,6 @@ module OpenAPI {
             });
         }
 
-
         /**
          * 根据提供的键生成函数，将数组中的每个元素映射为一个对象。
          *
@@ -992,7 +991,7 @@ module OpenAPI {
          * takeWhile([1, 2, 3, 4], x => x < 3);
          *
          * @example
-         * // 返回 [4]
+         * // 返回 []
          * takeWhile([1, 2, 3, 4], x => x > 3);
          */
         static takeWhile<T>(arr: readonly T[], shouldContinueTaking: (element: T) => boolean): T[] {
@@ -1529,7 +1528,7 @@ module OpenAPI {
 }
 module OpenAPI{
     /**
-     * 固定值操作
+     * 常量操作工具
      */
     export class ConstantsUtilities{
         static CASE_SPLIT_PATTERN = /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g;
@@ -1547,7 +1546,7 @@ module OpenAPI{
     }
 }module OpenAPI {
     /**
-     * 函数操作
+     * 函数操作工具
      */
     export class FunctionUtilities {
 
@@ -1832,7 +1831,7 @@ module OpenAPI{
 }
 module OpenAPI {
     /**
-     * 数学操作
+     * 数学操作工具工具
      */
     export class MathUtilities {
 
@@ -2590,7 +2589,7 @@ module OpenAPI {
 }
 module OpenAPI {
     /**
-     * 对象操作
+     * 对象操作工具
      */
     export class ObjectUtilities {
 
@@ -2771,7 +2770,7 @@ module OpenAPI {
 }
 module OpenAPI {
     /**
-     * 谓词操作
+     * 谓词操作工具
      */
     export class PredicateUtilities {
 
@@ -2869,7 +2868,7 @@ module OpenAPI {
 }
 module OpenAPI {
     /**
-     * Promise 操作
+     * Promise 操作工具
      */
     export class PromiseUtilities {
 
@@ -2946,7 +2945,7 @@ module OpenAPI {
 }
 module OpenAPI {
     /**
-     * 字符串操作
+     * 字符串操作工具
      */
     export class StringUtilities {
 
@@ -2970,11 +2969,6 @@ module OpenAPI {
         };
     }
 }/**
- * OpenAPI 部分函数来自 es-toolkit
- * @see https://github.com/toss/es-toolkit
- */
-
-/**
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
@@ -3008,6 +3002,34 @@ module OpenAPI {
     }
   }, 1000)
 };
+
+/**
+ * OpenAPI 部分函数来自 es-toolkit
+ * @see https://github.com/toss/es-toolkit
+ * @version 1.9.0
+ *
+  MIT License
+
+  Copyright (c) 2024 Viva Republica, Inc
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to deal
+  in the Software without restriction, including without limitation the rights
+  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all
+  copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
+ */
 
 module OpenAPI {
 
