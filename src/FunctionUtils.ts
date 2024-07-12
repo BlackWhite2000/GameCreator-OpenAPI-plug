@@ -2,7 +2,7 @@ module OpenAPI {
     /**
      * 函数操作工具
      */
-    export class FunctionUtilities {
+    export class FunctionUtils {
 
         /**
          * 创建一个防抖函数，延迟调用提供的函数，直到上次调用后已经过去了 `debounceMs` 毫秒。

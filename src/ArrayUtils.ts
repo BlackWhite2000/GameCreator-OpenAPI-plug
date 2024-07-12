@@ -6,7 +6,7 @@ module OpenAPI {
     /**
      * 数组操作工具
      */
-    export class ArrayUtilities {
+    export class ArrayUtils {
 
         /**
         * 将数组拆分成指定长度的小数组。
@@ -779,7 +779,7 @@ module OpenAPI {
             const selected = new Set();
 
             for (let step = array.length - size, resultIndex = 0; step < array.length; step++, resultIndex++) {
-                let index = OpenAPI.MathUtilities.randomInt(0, step + 1);
+                let index = OpenAPI.MathUtils.randomInt(0, step + 1);
 
                 if (selected.has(index)) {
                     index = step;

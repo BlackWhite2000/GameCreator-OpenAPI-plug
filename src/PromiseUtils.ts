@@ -2,7 +2,7 @@ module OpenAPI {
     /**
      * Promise 操作工具
      */
-    export class PromiseUtilities {
+    export class PromiseUtils {
 
         /**
          * 延迟执行指定毫秒数的代码。

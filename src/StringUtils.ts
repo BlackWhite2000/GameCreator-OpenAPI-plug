@@ -2,7 +2,7 @@ module OpenAPI {
     /**
      * 字符串操作工具
      */
-    export class StringUtilities {
+    export class StringUtils {
 
         /**
          * 将字符串转换为蛇形命名法（snake_case）。
@@ -19,7 +19,7 @@ module OpenAPI {
          * const convertedStr4 = snakeCase('HTTPRequest') // 返回 'http_request'
          */
         static snakeCase = (str: string): string => {
-            const splitWords = str.match(OpenAPI.ConstantsUtilities.CASE_SPLIT_PATTERN) || [];
+            const splitWords = str.match(OpenAPI.ConstantsUtils.CASE_SPLIT_PATTERN) || [];
             return splitWords.map(word => word.toLowerCase()).join('_');
         };
     }

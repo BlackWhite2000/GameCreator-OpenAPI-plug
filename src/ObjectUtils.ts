@@ -2,7 +2,7 @@ module OpenAPI {
     /**
      * 对象操作工具
      */
-    export class ObjectUtilities {
+    export class ObjectUtils {
 
         /**
          * 反转对象的键和值。输入对象的键变为输出对象的值，而输入对象的值变为输出对象的键。

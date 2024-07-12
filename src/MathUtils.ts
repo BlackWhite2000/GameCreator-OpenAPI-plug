@@ -2,7 +2,7 @@ module OpenAPI {
     /**
      * 数学操作工具工具
      */
-    export class MathUtilities {
+    export class MathUtils {
 
         /**
          * 将一个数字限制在包括的下限和上限范围内。

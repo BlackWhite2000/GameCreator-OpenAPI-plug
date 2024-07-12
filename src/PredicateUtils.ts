@@ -2,7 +2,7 @@ module OpenAPI {
     /**
      * 谓词操作工具
      */
-    export class PredicateUtilities {
+    export class PredicateUtils {
 
         /**
          * 检查给定值是否为 null 或 undefined。
