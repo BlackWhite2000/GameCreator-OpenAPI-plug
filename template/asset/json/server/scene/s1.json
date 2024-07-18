@@ -346,8 +346,8 @@
             [
                 20,
                 "",
-                "const { takeWhile } = OpenAPI.ArrayUtilities\n\ntrace(takeWhile([1, 2, 3, 4], x => x > 3))\ntrace(takeWhile([1, 2, 3, 4], x => x < 3))\ntrace(takeWhile([3, 2, 3, 4], x => x > 2))\n",
-                "var takeWhile = OpenAPI.ArrayUtilities.takeWhile;\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x > 3; }));\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x < 3; }));\ntrace(takeWhile([3, 2, 3, 4], function (x) { return x > 2; }));\n",
+                "const { takeWhile } = OpenAPI.ArrayUtils\n\ntrace(takeWhile([1, 2, 3, 4], x => x > 3))\ntrace(takeWhile([1, 2, 3, 4], x => x < 3))\ntrace(takeWhile([3, 2, 3, 4], x => x > 2))\n",
+                "var takeWhile = OpenAPI.ArrayUtils.takeWhile;\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x > 3; }));\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x < 3; }));\ntrace(takeWhile([3, 2, 3, 4], function (x) { return x > 2; }));\n",
                 {
                     "___cmdID": "163119112802_0.9698192672215815"
                 }

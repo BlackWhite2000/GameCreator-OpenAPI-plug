@@ -1,4 +1,147 @@
 module OpenAPI {
+    /**
+     * 动画操作工具
+     */
+    export class AnimationUtils {
+
+        /**
+         * 设置对象数据
+         * @param object_1 来源
+         * @param object_2 目标
+         */
+        private static setObjectData(object_1: GameSprite, object_2: GameSprite) {
+            Object.assign(object_2, {
+                x: object_1.x,
+                y: object_1.y,
+                scaleX: object_1.scaleX,
+                scaleY: object_1.scaleY,
+                dpX: object_1.dpX,
+                dpY: object_1.dpY,
+                dpZ: object_1.dpZ,
+                dpScaleX: object_1.dpScaleX,
+                dpScaleY: object_1.dpScaleY,
+                rotation1: object_1.rotation1,
+                opacity: object_1.opacity,
+            });
+        }
+
+        /**
+         * 设置动画
+         * @param object 目标对象
+         * @param aniID 动画编号
+         * @param complete 回调
+         */
+        static setAnimation(object: GameSprite, aniID: number, complete?: Callback) {
+            const ui = new UIRoot()
+            const ani = new GCAnimation()
+            this.setObjectData(object, ui)
+            object.parent.addChild(ui)
+            ui.addChild(object)
+            ani.id = aniID
+            ani.target = object
+            ani.play()
+            ani.once(GCAnimation.PLAY_COMPLETED, this, (ani: GCAnimation, object: GameSprite, ui: UIRoot) => {
+                ani.dispose()
+                ui.parent.addChild(object)
+                this.setObjectData(ui, object)
+                ui.dispose()
+                if (complete) {
+                    complete.run()
+                }
+            }, [ani, object, ui]);
+        }
+
+        /**
+         * 设置图像动画
+         * @param taskName 任务名称, 如果为空则不使用SyncTask
+         * @param passageID 图像编号
+         * @param aniID 动画编号
+         * @param complete 回调
+         */
+        static setImageAnimation(taskName: string | null, passageID: number, aniID: number, complete?: Callback) {
+            const a = GameImageLayer.getImageSprite(passageID) as UIStandAvatar
+            if (!a) return
+            if (taskName) {
+                new SyncTask(taskName, () => {
+                    this.setAnimation(a, aniID, Callback.New(() => {
+                        SyncTask.taskOver(taskName);
+                        if (complete) {
+                            complete.run()
+                        }
+                    }, this))
+                })
+            } else {
+                this.setAnimation(a, aniID, Callback.New(() => {
+                    if (complete) {
+                        complete.run()
+                    }
+                }, this))
+            }
+        }
+
+        /**
+         * 设置界面动画
+         * @param taskName 任务名称, 如果为空则不使用SyncTask
+         * @param uiID 界面编号
+         * @param aniID 动画编号
+         * @param complete 回调
+         */
+        static setUIAnimation(taskName: string | null, uiID: number, aniID: number, complete?: Callback) {
+            const a = GameUI.load(uiID) as GUI_BASE
+            if (!a) return
+            if (taskName) {
+                new SyncTask(taskName, () => {
+                    this.setAnimation(a, aniID, Callback.New(() => {
+                        SyncTask.taskOver(taskName);
+                        if (complete) {
+                            complete.run()
+                        }
+                    }, this))
+                })
+            } else {
+                this.setAnimation(a, aniID, Callback.New(() => {
+                    if (complete) {
+                        complete.run()
+                    }
+                }, this))
+            }
+        }
+
+        /**
+          * 设置场景对象动画
+          * @param taskName 任务名称, 如果为空则不使用SyncTask
+          * @param a 场景对象
+          * @param aniID 动画编号
+          * @param loop 是否循环播放
+          * @param isHit 是否显示被击中的效果，动画编辑器支持动画层仅命中时显示，如果设置为true即表示该动画所有层均显示
+         * @param complete 回调
+          */
+        static setSceneObjectAnimation(taskName: string | null, a: ProjectClientSceneObject, aniID: number, loop: boolean = false, isHit: boolean = false, complete?: Callback) {
+            if (!a) return
+            if (taskName) {
+                new SyncTask(taskName, () => {
+                    const soAni = a.playAnimation(aniID, loop, isHit)
+                    soAni.once(GCAnimation.PLAY_COMPLETED, this, () => {
+                        SyncTask.taskOver(taskName);
+                        if (complete) {
+                            complete.run()
+                        }
+                    })
+                })
+            } else {
+                const soAni = a.playAnimation(aniID, loop, isHit)
+                soAni.once(GCAnimation.PLAY_COMPLETED, this, () => {
+                    if (complete) {
+                        complete.run()
+                    }
+                })
+            }
+        }
+    }
+}
+
+
+module OpenAPI {
     type NotFalsey<T> = Exclude<T, false | null | 0 | '' | undefined>;
     type Order = 'asc' | 'desc';
     type Unzip<K extends unknown[]> = { [I in keyof K]: Array<K[I]> };
@@ -6,7 +149,7 @@ module OpenAPI {
     /**
      * 数组操作工具
      */
-    export class ArrayUtilities {
+    export class ArrayUtils {
 
         /**
         * 将数组拆分成指定长度的小数组。
@@ -779,7 +922,7 @@ module OpenAPI {
             const selected = new Set();
 
             for (let step = array.length - size, resultIndex = 0; step < array.length; step++, resultIndex++) {
-                let index = OpenAPI.MathUtilities.randomInt(0, step + 1);
+                let index = OpenAPI.MathUtils.randomInt(0, step + 1);
 
                 if (selected.has(index)) {
                     index = step;
@@ -1530,7 +1673,7 @@ module OpenAPI{
     /**
      * 常量操作工具
      */
-    export class ConstantsUtilities{
+    export class ConstantsUtils{
         static CASE_SPLIT_PATTERN = /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g;
     }
 }module OpenAPI {
@@ -1548,7 +1691,7 @@ module OpenAPI{
     /**
      * 函数操作工具
      */
-    export class FunctionUtilities {
+    export class FunctionUtils {
 
         /**
          * 创建一个防抖函数，延迟调用提供的函数，直到上次调用后已经过去了 `debounceMs` 毫秒。
@@ -1833,7 +1976,7 @@ module OpenAPI {
     /**
      * 数学操作工具工具
      */
-    export class MathUtilities {
+    export class MathUtils {
 
         /**
          * 将一个数字限制在包括的下限和上限范围内。
@@ -2591,7 +2734,7 @@ module OpenAPI {
     /**
      * 对象操作工具
      */
-    export class ObjectUtilities {
+    export class ObjectUtils {
 
         /**
          * 反转对象的键和值。输入对象的键变为输出对象的值，而输入对象的值变为输出对象的键。
@@ -2772,7 +2915,7 @@ module OpenAPI {
     /**
      * 谓词操作工具
      */
-    export class PredicateUtilities {
+    export class PredicateUtils {
 
         /**
          * 检查给定值是否为 null 或 undefined。
@@ -2870,7 +3013,7 @@ module OpenAPI {
     /**
      * Promise 操作工具
      */
-    export class PromiseUtilities {
+    export class PromiseUtils {
 
         /**
          * 延迟执行指定毫秒数的代码。
@@ -2947,7 +3090,7 @@ module OpenAPI {
     /**
      * 字符串操作工具
      */
-    export class StringUtilities {
+    export class StringUtils {
 
         /**
          * 将字符串转换为蛇形命名法（snake_case）。
@@ -2964,7 +3107,7 @@ module OpenAPI {
          * const convertedStr4 = snakeCase('HTTPRequest') // 返回 'http_request'
          */
         static snakeCase = (str: string): string => {
-            const splitWords = str.match(OpenAPI.ConstantsUtilities.CASE_SPLIT_PATTERN) || [];
+            const splitWords = str.match(OpenAPI.ConstantsUtils.CASE_SPLIT_PATTERN) || [];
             return splitWords.map(word => word.toLowerCase()).join('_');
         };
     }
@@ -2972,7 +3115,7 @@ module OpenAPI {
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 3.0
+ * @version 3.2
  */
 module OpenAPI {
 
@@ -2983,7 +3126,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 3.0
+    static Version = 3.2
 
     /**
      * 是否安装本插件
