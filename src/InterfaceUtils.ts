@@ -67,10 +67,6 @@ module OpenAPI {
             // 输入值获得焦点事件
             comp.off(EventObject.FOCUS, ui, OpenAPI.InterfaceUtils.onNumberInput);
             comp.on(EventObject.FOCUS, ui, OpenAPI.InterfaceUtils.onNumberInput, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
-
-            // 输入值键盘事件
-            stage.off(EventObject.KEY_DOWN, ui, OpenAPI.InterfaceUtils.onNumberInputKeyDown);
-            stage.on(EventObject.KEY_DOWN, ui, OpenAPI.InterfaceUtils.onNumberInputKeyDown, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
         }
 
         /**
@@ -238,41 +234,6 @@ module OpenAPI {
                 // 最大值情况下，禁用最大值按钮
                 maxBtn.disabled = numValue >= max;
             }
-        }
-
-        /**
-         * 输入值键盘事件
-         * @param e 事件
-         * @param comp 输入组件
-         * @param min 最小值
-         * @param max 最大值
-         * @param subBtn 减少按钮
-         * @param addBtn 增加按钮
-         * @param minBtn 最小值按钮
-         * @param maxBtn 最大值按钮
-         */
-        private static onNumberInputKeyDown(e: EventObject, comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
-            // 输入值
-            let numValue: number = Number(comp.text);
-            if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.LEFT)) {
-                // 输入值减少
-                numValue--;
-            }
-            else if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.RIGHT)) {
-                // 输入值增加
-                numValue++;
-            }
-            else if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.DOWN)) {
-                // 输入值减少 10
-                numValue -= 10;
-            }
-            else if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.UP)) {
-                // 输入值增加 10
-                numValue += 10;
-            }
-
-            // 检查输入值状态
-            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
         }
     }
 }
