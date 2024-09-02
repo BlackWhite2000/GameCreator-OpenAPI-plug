@@ -54,16 +54,15 @@ module OpenAPI {
         /**
          * 设置图像动画
          * @param taskName 任务名称, 如果为空则不使用SyncTask
-         * @param passageID 图像编号
+         * @param object 图像
          * @param aniID 动画编号
          * @param complete 回调
          */
-        static setImageAnimation(taskName: string | null, passageID: number, aniID: number, complete?: Callback) {
-            const a = GameImageLayer.getImageSprite(passageID) as UIStandAvatar
-            if (!a) return
+        static setImageAnimation(taskName: string | null, object: UIStandAvatar, aniID: number, complete?: Callback) {
+            if (!object) return
             if (taskName) {
                 new SyncTask(taskName, () => {
-                    this.setAnimation(a, aniID, Callback.New(() => {
+                    this.setAnimation(object, aniID, Callback.New(() => {
                         SyncTask.taskOver(taskName);
                         if (complete) {
                             complete.run()
@@ -71,7 +70,7 @@ module OpenAPI {
                     }, this))
                 })
             } else {
-                this.setAnimation(a, aniID, Callback.New(() => {
+                this.setAnimation(object, aniID, Callback.New(() => {
                     if (complete) {
                         complete.run()
                     }
@@ -82,16 +81,15 @@ module OpenAPI {
         /**
          * 设置界面动画
          * @param taskName 任务名称, 如果为空则不使用SyncTask
-         * @param uiID 界面编号
+         * @param object 界面
          * @param aniID 动画编号
          * @param complete 回调
          */
-        static setUIAnimation(taskName: string | null, uiID: number, aniID: number, complete?: Callback) {
-            const a = GameUI.load(uiID) as GUI_BASE
-            if (!a) return
+        static setUIAnimation(taskName: string | null, object: GUI_BASE, aniID: number, complete?: Callback) {
+            if (!object) return
             if (taskName) {
                 new SyncTask(taskName, () => {
-                    this.setAnimation(a, aniID, Callback.New(() => {
+                    this.setAnimation(object, aniID, Callback.New(() => {
                         SyncTask.taskOver(taskName);
                         if (complete) {
                             complete.run()
@@ -99,7 +97,7 @@ module OpenAPI {
                     }, this))
                 })
             } else {
-                this.setAnimation(a, aniID, Callback.New(() => {
+                this.setAnimation(object, aniID, Callback.New(() => {
                     if (complete) {
                         complete.run()
                     }
@@ -110,17 +108,17 @@ module OpenAPI {
         /**
           * 设置场景对象动画
           * @param taskName 任务名称, 如果为空则不使用SyncTask
-          * @param a 场景对象
+          * @param object 场景对象
           * @param aniID 动画编号
           * @param loop 是否循环播放
           * @param isHit 是否显示被击中的效果，动画编辑器支持动画层仅命中时显示，如果设置为true即表示该动画所有层均显示
          * @param complete 回调
           */
-        static setSceneObjectAnimation(taskName: string | null, a: ProjectClientSceneObject, aniID: number, loop: boolean = false, isHit: boolean = false, complete?: Callback) {
-            if (!a) return
+        static setSceneObjectAnimation(taskName: string | null, object: ProjectClientSceneObject, aniID: number, loop: boolean = false, isHit: boolean = false, complete?: Callback) {
+            if (!object) return
             if (taskName) {
                 new SyncTask(taskName, () => {
-                    const soAni = a.playAnimation(aniID, loop, isHit)
+                    const soAni = object.playAnimation(aniID, loop, isHit)
                     soAni.once(GCAnimation.PLAY_COMPLETED, this, () => {
                         SyncTask.taskOver(taskName);
                         if (complete) {
@@ -129,7 +127,7 @@ module OpenAPI {
                     })
                 })
             } else {
-                const soAni = a.playAnimation(aniID, loop, isHit)
+                const soAni = object.playAnimation(aniID, loop, isHit)
                 soAni.once(GCAnimation.PLAY_COMPLETED, this, () => {
                     if (complete) {
                         complete.run()
@@ -139,5 +137,3 @@ module OpenAPI {
         }
     }
 }
-
-

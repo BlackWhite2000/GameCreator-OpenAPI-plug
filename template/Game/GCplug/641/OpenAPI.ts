@@ -54,16 +54,15 @@ module OpenAPI {
         /**
          * 设置图像动画
          * @param taskName 任务名称, 如果为空则不使用SyncTask
-         * @param passageID 图像编号
+         * @param object 图像
          * @param aniID 动画编号
          * @param complete 回调
          */
-        static setImageAnimation(taskName: string | null, passageID: number, aniID: number, complete?: Callback) {
-            const a = GameImageLayer.getImageSprite(passageID) as UIStandAvatar
-            if (!a) return
+        static setImageAnimation(taskName: string | null, object: UIStandAvatar, aniID: number, complete?: Callback) {
+            if (!object) return
             if (taskName) {
                 new SyncTask(taskName, () => {
-                    this.setAnimation(a, aniID, Callback.New(() => {
+                    this.setAnimation(object, aniID, Callback.New(() => {
                         SyncTask.taskOver(taskName);
                         if (complete) {
                             complete.run()
@@ -71,7 +70,7 @@ module OpenAPI {
                     }, this))
                 })
             } else {
-                this.setAnimation(a, aniID, Callback.New(() => {
+                this.setAnimation(object, aniID, Callback.New(() => {
                     if (complete) {
                         complete.run()
                     }
@@ -82,16 +81,15 @@ module OpenAPI {
         /**
          * 设置界面动画
          * @param taskName 任务名称, 如果为空则不使用SyncTask
-         * @param uiID 界面编号
+         * @param object 界面
          * @param aniID 动画编号
          * @param complete 回调
          */
-        static setUIAnimation(taskName: string | null, uiID: number, aniID: number, complete?: Callback) {
-            const a = GameUI.load(uiID) as GUI_BASE
-            if (!a) return
+        static setUIAnimation(taskName: string | null, object: GUI_BASE, aniID: number, complete?: Callback) {
+            if (!object) return
             if (taskName) {
                 new SyncTask(taskName, () => {
-                    this.setAnimation(a, aniID, Callback.New(() => {
+                    this.setAnimation(object, aniID, Callback.New(() => {
                         SyncTask.taskOver(taskName);
                         if (complete) {
                             complete.run()
@@ -99,7 +97,7 @@ module OpenAPI {
                     }, this))
                 })
             } else {
-                this.setAnimation(a, aniID, Callback.New(() => {
+                this.setAnimation(object, aniID, Callback.New(() => {
                     if (complete) {
                         complete.run()
                     }
@@ -110,17 +108,17 @@ module OpenAPI {
         /**
           * 设置场景对象动画
           * @param taskName 任务名称, 如果为空则不使用SyncTask
-          * @param a 场景对象
+          * @param object 场景对象
           * @param aniID 动画编号
           * @param loop 是否循环播放
           * @param isHit 是否显示被击中的效果，动画编辑器支持动画层仅命中时显示，如果设置为true即表示该动画所有层均显示
          * @param complete 回调
           */
-        static setSceneObjectAnimation(taskName: string | null, a: ProjectClientSceneObject, aniID: number, loop: boolean = false, isHit: boolean = false, complete?: Callback) {
-            if (!a) return
+        static setSceneObjectAnimation(taskName: string | null, object: ProjectClientSceneObject, aniID: number, loop: boolean = false, isHit: boolean = false, complete?: Callback) {
+            if (!object) return
             if (taskName) {
                 new SyncTask(taskName, () => {
-                    const soAni = a.playAnimation(aniID, loop, isHit)
+                    const soAni = object.playAnimation(aniID, loop, isHit)
                     soAni.once(GCAnimation.PLAY_COMPLETED, this, () => {
                         SyncTask.taskOver(taskName);
                         if (complete) {
@@ -129,7 +127,7 @@ module OpenAPI {
                     })
                 })
             } else {
-                const soAni = a.playAnimation(aniID, loop, isHit)
+                const soAni = object.playAnimation(aniID, loop, isHit)
                 soAni.once(GCAnimation.PLAY_COMPLETED, this, () => {
                     if (complete) {
                         complete.run()
@@ -139,8 +137,6 @@ module OpenAPI {
         }
     }
 }
-
-
 module OpenAPI {
     type NotFalsey<T> = Exclude<T, false | null | 0 | '' | undefined>;
     type Order = 'asc' | 'desc';
@@ -1974,6 +1970,283 @@ module OpenAPI{
 }
 module OpenAPI {
     /**
+     * UI操作工具
+     */
+    export class InterfaceUtils {
+        /**
+         * 封装数值类型的输入值
+         * @param ui UI根节点
+         * @param comp 输入组件
+         * @param value 输入值
+         * @param min 最小值
+         * @param max 最大值
+         * @param sub 减少按钮
+         * @param add 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        static NumberInput(ui: UIRoot, comp: UIInput, value: number, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值不允许为空
+            if (!value) {
+                value = 0;
+            }
+            let numValue: number = value;
+
+            // 输入值赋值
+            comp.text = numValue.toString();
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+
+            if (subBtn) {
+                // 减少按钮点击事件
+                subBtn.off(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputSubClick);
+                subBtn.on(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputSubClick, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+            }
+
+            if (addBtn) {
+                // 增加按钮点击事件
+                addBtn.off(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputAddClick);
+                addBtn.on(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputAddClick, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+            }
+
+            if (minBtn) {
+                // 最小值按钮点击事件
+                minBtn.off(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputMinClick);
+                minBtn.on(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputMinClick, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+            }
+
+            if (maxBtn) {
+                // 最大值按钮点击事件
+                maxBtn.off(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputMaxClick);
+                maxBtn.on(EventObject.CLICK, ui, OpenAPI.InterfaceUtils.onNumberInputMaxClick, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+            }
+
+            // 输入值输入事件
+            comp.off(EventObject.INPUT, ui, OpenAPI.InterfaceUtils.onNumberInput);
+            comp.on(EventObject.INPUT, ui, OpenAPI.InterfaceUtils.onNumberInput, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+
+            // 输入值失去焦点事件
+            comp.off(EventObject.BLUR, ui, OpenAPI.InterfaceUtils.onNumberInput);
+            comp.on(EventObject.BLUR, ui, OpenAPI.InterfaceUtils.onNumberInput, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+
+            // 输入值改变事件
+            comp.off(EventObject.CHANGE, ui, OpenAPI.InterfaceUtils.onNumberInput);
+            comp.on(EventObject.CHANGE, ui, OpenAPI.InterfaceUtils.onNumberInput, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+
+            // 输入值获得焦点事件
+            comp.off(EventObject.FOCUS, ui, OpenAPI.InterfaceUtils.onNumberInput);
+            comp.on(EventObject.FOCUS, ui, OpenAPI.InterfaceUtils.onNumberInput, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+
+            // 输入值键盘事件
+            stage.off(EventObject.KEY_DOWN, ui, OpenAPI.InterfaceUtils.onNumberInputKeyDown);
+            stage.on(EventObject.KEY_DOWN, ui, OpenAPI.InterfaceUtils.onNumberInputKeyDown, [comp, min, max, subBtn, addBtn, minBtn, maxBtn]);
+        }
+
+        /**
+         * 减少按钮点击事件
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInputSubClick(comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值转换为数值
+            let numValue: number = Number(comp.text);
+
+            // 输入值减少
+            numValue--;
+
+            // 输入值小于最小值
+            if (numValue < min) {
+                numValue = min;
+            }
+
+            // 输入值赋值
+            comp.text = numValue.toString();
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+        }
+
+        /**
+         * 增加按钮点击事件
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInputAddClick(comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值转换为数值
+            let numValue: number = Number(comp.text);
+
+            // 输入值增加
+            numValue++;
+
+            // 输入值大于最大值
+            if (numValue > max) {
+                numValue = max;
+            }
+
+            // 输入值赋值
+            comp.text = numValue.toString();
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+        }
+
+        /**
+         * 最小值按钮点击事件
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInputMinClick(comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值
+            let numValue: number = min;
+
+            // 输入值赋值
+            comp.text = numValue.toString();
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+        }
+
+        /**
+         * 最大值按钮点击事件
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInputMaxClick(comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值
+            let numValue: number = max;
+
+            // 输入值赋值
+            comp.text = numValue.toString();
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+        }
+
+        /**
+         * 输入值改变事件
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInput(comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值
+            let numValue: number = Number(comp.text);
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+        }
+
+        /**
+         * 检查输入值状态
+         * @param value 输入值
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInputCheck(value: number, comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值
+            let numValue: number = value;
+
+            // 输入值小于最小值
+            if (numValue < min) {
+                numValue = min;
+            }
+
+            // 输入值大于最大值
+            if (numValue > max) {
+                numValue = max;
+            }
+
+            // 输入值赋值
+            comp.text = numValue.toString();
+
+            if (subBtn) {
+                // 最小值情况下，启用减少按钮
+                subBtn.disabled = numValue <= min;
+            }
+
+            if (addBtn) {
+                // 最大值情况下，启用增加按钮
+                addBtn.disabled = numValue >= max;
+            }
+
+            if (minBtn) {
+                // 最小值情况下，禁用最小值按钮
+                minBtn.disabled = numValue <= min;
+            }
+
+            if (maxBtn) {
+                // 最大值情况下，禁用最大值按钮
+                maxBtn.disabled = numValue >= max;
+            }
+        }
+
+        /**
+         * 输入值键盘事件
+         * @param e 事件
+         * @param comp 输入组件
+         * @param min 最小值
+         * @param max 最大值
+         * @param subBtn 减少按钮
+         * @param addBtn 增加按钮
+         * @param minBtn 最小值按钮
+         * @param maxBtn 最大值按钮
+         */
+        private static onNumberInputKeyDown(e: EventObject, comp: UIInput, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
+            // 输入值
+            let numValue: number = Number(comp.text);
+            if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.LEFT)) {
+                // 输入值减少
+                numValue--;
+            }
+            else if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.RIGHT)) {
+                // 输入值增加
+                numValue++;
+            }
+            else if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.DOWN)) {
+                // 输入值减少 10
+                numValue -= 10;
+            }
+            else if (GUI_Setting.IS_KEY(e.keyCode, GUI_Setting.KEY_BOARD.UP)) {
+                // 输入值增加 10
+                numValue += 10;
+            }
+
+            // 检查输入值状态
+            OpenAPI.InterfaceUtils.onNumberInputCheck(numValue, comp, min, max, subBtn, addBtn, minBtn, maxBtn);
+        }
+    }
+}module OpenAPI {
+    /**
      * 数学操作工具工具
      */
     export class MathUtils {
@@ -3115,7 +3388,7 @@ module OpenAPI {
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 3.2
+ * @version 3.4
  */
 module OpenAPI {
 
@@ -3126,7 +3399,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 3.2
+    static Version = 3.4
 
     /**
      * 是否安装本插件
