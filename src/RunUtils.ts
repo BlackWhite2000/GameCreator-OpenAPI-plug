@@ -50,6 +50,7 @@ module OpenAPI {
 
         /**
          * process库
+         * const process = OpenAPI.RunUtils.process // 返回引入的process库
          */
         static get process(): any | undefined {
             return OpenAPI.RunUtils.require('process');
