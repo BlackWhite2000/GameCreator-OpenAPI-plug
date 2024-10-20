@@ -1673,6 +1673,59 @@ module OpenAPI{
         static CASE_SPLIT_PATTERN = /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g;
     }
 }module OpenAPI {
+
+    /**
+     * 光标工具
+     */
+    export class CursorUtils {
+
+        /**
+         * 光标系统样式名称
+         * 
+         * @example
+         * const cursorStyle = OpenAPI.CursorUtils.cursorSystemStyleName // 返回 ['default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize']
+         */
+        static get cursorSystemStyleName(): ['default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize'] {
+            return OpenAPI.Method.cursorSystemStyleName as any;
+        }
+    }
+}
+module OpenAPI {
+    /**
+     * 日期工具
+     */
+    export class DateUtils {
+
+        /**
+         * 日期转时间戳
+         * 
+         * @param {string} date - 日期
+         * 
+         * @example
+         * const timestamp = dateToTimestamp('2024-01-01') // 返回 1704038400000
+         * const timestamp = dateToTimestamp('2024/01/01') // 返回 1704038400000
+         * const timestamp = dateToTimestamp('2024-01-01 00:00:00') // 返回 1704038400000
+         * const timestamp = dateToTimestamp('2024/01/01 00:00:00') // 返回 1704038400000
+         */
+        static dateToTimestamp = (date: string): number => {
+            return OpenAPI.Method.dateToTimestamp(date);
+        };
+
+        /**
+         * 时间戳转日期
+         * 
+         * @param {number} timestamp - 时间戳
+         * @param {string} data_type - 返回的数据类型 默认返回 '2024/01/01 00:00:00'
+         * 
+         * @example
+         * const date = timestampToDate(1704038400000) // 返回 '2024/01/01 00:00:00'
+         * const date = timestampToDate(1704038400000, 'y') // 返回 '2024'
+         */
+        static timestampToDate = (timestamp: number, data_type: '' | 'y' | 'm' | 'd' | 'h' | 'i' | 's' = ''): string | number | undefined => {
+            return OpenAPI.Method.timestampToDate(timestamp, data_type);
+        }
+    }
+}module OpenAPI {
     /**
      * 表示一个中止操作的错误类。
      * @augments Error
@@ -1681,6 +1734,22 @@ module OpenAPI{
         constructor(message = 'The operation was aborted') {
             super(message);
             this.name = 'AbortError';
+        }
+    }
+}module OpenAPI {
+    /**
+     * 事件工具
+     */
+    export class EventUtils {
+
+        /**
+         * 获取事件页名称
+         * 
+         * @example
+         * 
+         */
+        static eventPageName(eventPage: string): string | null {
+            return OpenAPI.Method.getFeDataMessage(eventPage);
         }
     }
 }module OpenAPI {
@@ -2472,9 +2541,9 @@ module OpenAPI {
     /**
      * 随机字符串
      * @param {number} len 随机字符串的长度
+     * @param {string} _charStr 随机的字符串
      */
-    static getRandomString(len: number): string {
-      const _charStr = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
+    static getRandomString(len: number, _charStr = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'): string {
       const min = 0
       const max = _charStr.length - 1
       let _str = ''
@@ -2612,12 +2681,14 @@ module OpenAPI {
     }
 
     /**
-     * 更简单的HttpRequest - 即将弃用
+     * 更简单的HttpRequest
      * @param {string} url 请求地址
      * @param {any} json 数据
      * @param {any} completeText 完成事件
      * @param {any} errorText 发生错误时事件
      * @param {any} trigger 触发器
+     * 
+     * @deprecated 请使用 new HttpRequest()
      */
     static sendRequest(url: string, json: any, completeText: any, errorText: any, trigger: any = null, requestType = 'post'): void {
       const ur = new HttpRequest()
@@ -2767,13 +2838,13 @@ module OpenAPI {
 
       if (regex == null) {
         regex = [
-          /max\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-          /min\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-          /random\(\d+(\.\d+)?(,\s*)?\d+(\.\d+)?\)/g,
-          /reduce\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-          /abs\(\d+(\.\d+)?\)/g,
-          /sqrt\(\d+(\.\d+)?\)/g,
-          /round\(\d+(\.\d+)?\)/g,
+          /max\((-?\d+(\.\d+)?(,\s*)?)*-?\d+(\.\d+)?\)/g,
+          /min\((-?\d+(\.\d+)?(,\s*)?)*-?\d+(\.\d+)?\)/g,
+          /random\(-?\d+(\.\d+)?(,\s*)?-?\d+(\.\d+)?\)/g,
+          /reduce\((-?\d+(\.\d+)?(,\s*)?)*-?\d+(\.\d+)?\)/g,
+          /abs\(-?\d+(\.\d+)?\)/g,
+          /sqrt\((\d+(\.\d+)?)\)/g,
+          /round\(-?\d+(\.\d+)?\)/g,
         ];
       }
 
@@ -2966,6 +3037,28 @@ module OpenAPI {
 }
 module OpenAPI {
     /**
+     * 模块工具
+     */
+    export class ModuleUtils {
+
+        /**
+         * 获得模块数据
+         * 
+         * @param {number} id - 模块ID
+         * @param {Callback} comp 回调
+         * @param {number} length 类别长度 默认16
+         * 
+         * @example
+         * const moduleData = getModuleData(1, (data) => {
+         *     console.log(data)
+         * }) // 返回 '模块数据'
+         */
+        static getModuleData = (id: number, comp: Callback, length: number = 16): void => {
+            return OpenAPI.Method.getModuleData(id, comp, length);
+        }
+    }
+}module OpenAPI {
+    /**
      * 对象操作工具
      */
     export class ObjectUtils {
@@ -3116,6 +3209,78 @@ module OpenAPI {
             }
 
             return result;
+        }
+    }
+}module OpenAPI {
+
+    /**
+     * 操作系统工具
+     */
+    export class OsUtils {
+
+        /**
+         * 获取当前操作系统的用户名称
+         */
+        static get systemUserName(): string {
+            const userInfo = OpenAPI.RunUtils.os.userInfo();
+            if (userInfo == null) {
+                return "";
+            }
+            if (userInfo.username == null) {
+                return "";
+            }
+
+            try {
+                let fullName = "";
+                let buffer = OpenAPI.RunUtils.child_process.execSync(`wmic useraccount where name="${userInfo.username}" get fullname`, { encoding: 'buffer' });
+                const langInfo = window.navigator.language;
+                let decoder;
+                if (langInfo == "zh-CN") {
+                    decoder = new TextDecoder('gbk');
+                }
+                else {
+                    decoder = new TextDecoder();
+                }
+                let info: string = decoder.decode(buffer);
+                let fullNameInfo = info.split("\n")[1];
+                fullName = fullNameInfo.trim();
+                if (fullName == "") {
+                    //如果是空的时候就用用户名
+                    fullName = userInfo.username;
+                }
+                return fullName;
+            }
+            catch (e) {
+                console.error(e);
+                return userInfo.username;
+            }
+        }
+    }
+}module OpenAPI {
+    /**
+     * 路径工具
+     */
+    export class PathUtils {
+        
+        /**
+         * 获取当前游戏根路径
+         * 
+         * @example
+         * const gamePath = OpenAPI.RunUtils.gamePath // 返回当前游戏根路径
+         */
+        static get gamePath(): string | undefined {
+            let path = '';
+            if (!Config.RELEASE_GAME) {
+                const random = OpenAPI.MathUtils.randomInt(1000, 100000);
+                const tempIdentifier = `OpenAPITempGamePathIdentifier${random}`;
+                //@ts-ignore
+                path = decodeURIComponent(Laya.URL.formatURL(tempIdentifier)).replace(`/${tempIdentifier}`, '');
+            }
+            else {
+                //@ts-ignore
+                path = FileUtils.nativePath;
+            }
+            return path;
         }
     }
 }module OpenAPI{
@@ -3321,6 +3486,84 @@ module OpenAPI {
   }
 }
 module OpenAPI {
+
+    /**
+     * 运行时工具
+     */
+    export class RunUtils {
+
+        /**
+         * 获取默认引入的库
+         * 
+         * @param {string} name - 库名
+         * 
+         * @example
+         * const fs = OpenAPI.RunUtils.require('fs') // 返回引入的库
+         */
+        static require(name: string): any | undefined {
+            // @ts-ignore
+            return mainDomain_require(name);
+        }
+
+        /**
+         * fs库
+         * 
+         * @example
+         * const fs = OpenAPI.RunUtils.fs // 返回引入的fs库
+         */
+        static get fs(): any | undefined {
+            return OpenAPI.RunUtils.require('fs');
+        }
+
+        /**
+         * path库
+         * 
+         * @example
+         * const path = OpenAPI.RunUtils.path // 返回引入的path库
+         */
+        static get path(): any | undefined {
+            return OpenAPI.RunUtils.require('path');
+        }
+
+        /**
+         * os库
+         * 
+         * @example
+         * const os = OpenAPI.RunUtils.os // 返回引入的os库
+         */
+        static get os(): any | undefined {
+            return OpenAPI.RunUtils.require('os');
+        }
+
+        /**
+         * process库
+         */
+        static get process(): any | undefined {
+            return OpenAPI.RunUtils.require('process');
+        }
+
+        /**
+         * child_process库
+         * 
+         * @example
+         * const child_process = OpenAPI.RunUtils.child_process // 返回引入的child_process库
+         */
+        static get child_process(): any | undefined {
+            return OpenAPI.RunUtils.require('child_process');
+        }
+
+        /**
+         * nw.gui库
+         * 
+         * @example
+         * const nw_gui = OpenAPI.RunUtils.nw_gui // 返回引入的nw.gui库
+         */
+        static get nw_gui(): any | undefined {
+            return OpenAPI.RunUtils.require('nw.gui');
+        }
+    }
+}
+module OpenAPI {
     /**
      * 字符串操作工具
      */
@@ -3344,12 +3587,104 @@ module OpenAPI {
             const splitWords = str.match(OpenAPI.ConstantsUtils.CASE_SPLIT_PATTERN) || [];
             return splitWords.map(word => word.toLowerCase()).join('_');
         };
+
+        /**
+         * 随机字符串
+         * 
+         * @param {number} length - 字符串长度
+         * @param {string} str - 随机的字符串
+         * 
+         * @example
+         * const randomStr = randomString(10) // 返回 'a1b2c3d4e5'
+         */
+        static randomString = (length: number, str: string = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'): string => {
+            return OpenAPI.Method.getRandomString(length, str);
+        }
+
+        /**
+         * 随机颜色
+         * 
+         * @example
+         * const randomColor = randomColor() // 返回 '#ffffff'
+         */
+        static get randomColor(): string {
+            return OpenAPI.Method.getRandomColor();
+        }
+
+        /**
+         * 解析文本内变量占位符数据, 可自定义获取数据的方法以及正则表达式
+         * 
+         * @param {string} text - 文本
+         * @param {(((s: any) => number) | ((s: any) => string))[]} getData - 获取数据的方法
+         * @param {RegExp[]} regex - 正则表达式
+         * 
+         * @example
+         * const text = '你好, 我是[@s1], 今年[@v1]岁'
+         * return parseVariableText(text) // 返回 '你好, 我是黑白, 今年18岁'
+         */
+        static parseVariableText = (text: string, getData: (((s: any) => number) | ((s: any) => string))[] | null = null, regex: RegExp[] | null = null): string => {
+            return OpenAPI.Method.parseVarPlaceholderData(text, getData, regex);
+        }
+
+        /**
+         * 解析文本内游戏变量占位符数据
+         * 
+         * @param {string} text - 文本
+         * @param {any[]} gameData - 游戏数据
+         * @param {RegExp[]} regex - 正则表达式
+         * 
+         * @example
+         * const text = '你好, 我是[@gs0], 今年[@gv1]岁'
+         * // gameData 需要从编辑器中获取, 例如游戏变量组件
+         * return parseGameVariableText(text, gameData) // 返回 '你好, 我是黑白, 今年18岁'
+         */
+        static parseGameVariableText = (text: string, gameData: any[], regex: RegExp[] | null = null): string => {
+            return OpenAPI.Method.parseGameVarPlaceholderData(text, gameData, regex);
+        }
+
+        /**
+         * 解析文本内函数组合占位符数据
+         * 
+         * @param {string} text - 文本
+         * @param {RegExp[]} regex - 正则表达式
+         * 
+         * @example
+         * const text = 'max(1,100)' // 获取最大值
+         * return parseFunctionText(text) // 返回 '100'
+         * const text = 'min(1,100)' // 获取最小值
+         * return parseFunctionText(text) // 返回 '1'
+         * const text = 'random(1,100)' // 获取随机数
+         * return parseFunctionText(text) // 返回 '18.1234...' 不会取整
+         * const text = 'reduce(50,100)' // 获取平均值
+         * return parseFunctionText(text) // 返回 '150'
+         * const text = 'abs(-18)' // 获取绝对值
+         * return parseFunctionText(text) // 返回 '18'
+         * const text = 'sqrt(18)' // 获取开方
+         * return parseFunctionText(text) // 返回 '4.2426...' 不会取整
+         * const text = 'round(1.1234)' // 获取整数
+         * return parseFunctionText(text) // 返回 '1'
+         */
+        static parseFunctionText = (text: string, regex: RegExp[] | null = null): string => {
+            return OpenAPI.Method.parseCombinedFunctions(text, regex);
+        }
+
+        /**
+         * 将阿拉伯数字转换为罗马数字的函数
+         * 
+         * @param {number} num - 阿拉伯数字
+         * 
+         * @example
+         * const romanNum = arabicToRoman(2024) // 返回 'MMXXIV'
+         */
+        static arabicToRoman = (num: number): string => {
+            return OpenAPI.Method.intToRoman(num);
+        }
     }
 }/**
  * 更多API插件
  * @author BlackWhite
  * @see https://www.gamecreator.com.cn/plug/det/641
- * @version 3.5
+ * @version 3.6
  */
 module OpenAPI {
 
@@ -3360,7 +3695,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 3.5
+    static Version = 3.6
 
     /**
      * 是否安装本插件

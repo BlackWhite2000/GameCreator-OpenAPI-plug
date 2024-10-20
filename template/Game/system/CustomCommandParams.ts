@@ -1208,3 +1208,34 @@ class CustomCommandParams_15010 {
     onSuccess: string; // = ""; 成功时 - on Success
     onFail: string; // = ""; 失败时 - on Fail
 }
+/**
+* 自定义指令 15011-光标自定义plus
+*/
+class CustomCommandParams_15011 {
+    cursorStyle_Model: number; // = 0; 选择光标样式
+}
+/**
+* 自定义指令 15012-高级数值运算
+*/
+class CustomCommandParams_15012 {
+    math: string; // = ""; 运算方式
+    set: number; // = 0; 设置至
+    setGameNumber: boolean; // = false; 定义游戏数值
+    label1: boolean; // = false; 查看使用说明
+    label2: boolean; // = false; 查看高级用法
+    gVar: boolean; // = false; 二周目变量
+    setG: number; // = 0; 设置至
+    debug: boolean; // = false; Debug
+    abs: boolean; // = false; 取绝对值
+    sqrt: boolean; // = false; 开方
+    round: boolean; // = false; 取整
+    decimal: number; // = 0;  
+    gameNumber: any[]; // = [];
+}
+/**
+* 自定义指令 15013-字体切换
+*/
+class CustomCommandParams_15013 {
+    fontMap: number; // = 0; 要切换的字体模块
+    restoreOriFont: boolean; // = false; 切换回原字体
+}

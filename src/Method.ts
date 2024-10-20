@@ -15,9 +15,9 @@ module OpenAPI {
     /**
      * 随机字符串
      * @param {number} len 随机字符串的长度
+     * @param {string} _charStr 随机的字符串
      */
-    static getRandomString(len: number): string {
-      const _charStr = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'
+    static getRandomString(len: number, _charStr = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'): string {
       const min = 0
       const max = _charStr.length - 1
       let _str = ''
@@ -155,12 +155,14 @@ module OpenAPI {
     }
 
     /**
-     * 更简单的HttpRequest - 即将弃用
+     * 更简单的HttpRequest
      * @param {string} url 请求地址
      * @param {any} json 数据
      * @param {any} completeText 完成事件
      * @param {any} errorText 发生错误时事件
      * @param {any} trigger 触发器
+     * 
+     * @deprecated 请使用 new HttpRequest()
      */
     static sendRequest(url: string, json: any, completeText: any, errorText: any, trigger: any = null, requestType = 'post'): void {
       const ur = new HttpRequest()
@@ -310,13 +312,13 @@ module OpenAPI {
 
       if (regex == null) {
         regex = [
-          /max\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-          /min\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-          /random\(\d+(\.\d+)?(,\s*)?\d+(\.\d+)?\)/g,
-          /reduce\((?:\d+(\.\d+)?(,\s*)?)*\d+(\.\d+)?\)/g,
-          /abs\(\d+(\.\d+)?\)/g,
-          /sqrt\(\d+(\.\d+)?\)/g,
-          /round\(\d+(\.\d+)?\)/g,
+          /max\((-?\d+(\.\d+)?(,\s*)?)*-?\d+(\.\d+)?\)/g,
+          /min\((-?\d+(\.\d+)?(,\s*)?)*-?\d+(\.\d+)?\)/g,
+          /random\(-?\d+(\.\d+)?(,\s*)?-?\d+(\.\d+)?\)/g,
+          /reduce\((-?\d+(\.\d+)?(,\s*)?)*-?\d+(\.\d+)?\)/g,
+          /abs\(-?\d+(\.\d+)?\)/g,
+          /sqrt\((\d+(\.\d+)?)\)/g,
+          /round\(-?\d+(\.\d+)?\)/g,
         ];
       }
 

@@ -110,7 +110,10 @@
             "安装DLC Install DLC",
             "卸载DLC Uninstall DLC",
             "激活成就 +Achievement",
-            "删除成就 -Achievement"
+            "删除成就 -Achievement",
+            "光标自定义plus",
+            "高级数值运算",
+            "字体切换"
         ]
     },
     "type": {

@@ -56,3 +56,8 @@ class CustomGameStringParams_7 {
 class CustomGameStringParams_8 {
     type: number; // = 0;
 }
+/**
+* 自定义游戏字符串 9-获取用户全名
+*/
+class CustomGameStringParams_9 {
+}

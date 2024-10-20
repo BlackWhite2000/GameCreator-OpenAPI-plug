@@ -349,7 +349,17 @@
                 "const { takeWhile } = OpenAPI.ArrayUtils\n\ntrace(takeWhile([1, 2, 3, 4], x => x > 3))\ntrace(takeWhile([1, 2, 3, 4], x => x < 3))\ntrace(takeWhile([3, 2, 3, 4], x => x > 2))\n",
                 "var takeWhile = OpenAPI.ArrayUtils.takeWhile;\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x > 3; }));\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x < 3; }));\ntrace(takeWhile([3, 2, 3, 4], function (x) { return x > 2; }));\n",
                 {
-                    "___cmdID": "163119112802_0.9698192672215815"
+                    "___cmdID": "163119112802_0.9698192672215815",
+                    "disabled": true
+                }
+            ],
+            [
+                20,
+                "",
+                "// // 当前的事件触发器：trigger: CommandTrigger;\n// let d = OpenAPI.DateUtils.dateToTimestamp('2024/01/01')\n// trace(d)\n// d = OpenAPI.DateUtils.dateToTimestamp('2024/01/01 00:00:00')\n// trace(d)\n// let c = OpenAPI.DateUtils.timestampToDate(d)\n// trace(c)\n// c = OpenAPI.DateUtils.timestampToDate(d,'y')\n// trace(c)\n// d = OpenAPI.DateUtils.dateToTimestamp('2024-01-01 00:00:00')\n// trace(d)\n// d = OpenAPI.DateUtils.dateToTimestamp('2024-01-01')\n// trace(d)\n\n// trace(OpenAPI.Method.cursorSystemStyleName_spliceName(['default']))\n\n// trace(OpenAPI.StringUtils.randomColor)\n\n// let text = ''\n\n// const parseFunctionText = OpenAPI.StringUtils.parseFunctionText\n\n// text = 'max(-1000,100)' // 获取最大值\n// trace(parseFunctionText(text)) // 返回 '100'\n// text = 'min(-1000,100)' // 获取最小值\n// trace(parseFunctionText(text)) // 返回 '1'\n// text = 'random(-101,100)' // 获取随机数\n// trace(parseFunctionText(text)) // 返回 '18.4515...' 未取整\n// text = 'reduce(1,100,10,100)' // 获取平均值\n// trace(parseFunctionText(text)) // 返回 '101'\n// text = 'abs(-18)' // 获取绝对值\n// trace(parseFunctionText(text),111) // 返回 '1'\n// text = 'sqrt(18)' // 获取开方\n// trace(parseFunctionText(text),222) // 返回 '1'\n// text = 'round(1.123)' // 获取整数\n// trace(parseFunctionText(text)) // 返回 '1'\n// const gamePath = OpenAPI.RunUtils.gamePath\n// trace(gamePath)\n// alert(gamePath)\n\ntrace(OpenAPI.OsUtils.getSystemUserName)",
+                "trace(OpenAPI.OsUtils.getSystemUserName);\n",
+                {
+                    "___cmdID": "171863475134_0.6540122576099598"
                 }
             ],
             [

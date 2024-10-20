@@ -33,6 +33,23 @@ class WorldData {
     static word_gamepadInput: string; // = ""; 请按下游戏手柄键位
     static word_keyboardInput: string; // = ""; 请输入键盘键位
     static timeApi_yyvhc: string; // = "https://api.gcw.wiki/TimeStamp"; API地址
+    static cursorStyle_Bind: DataStructure_cursorStyle_DataBind[]; // = [];
+    static w26_traceControl_record_log: boolean; // = true; 记录log和trace
+    static w26_traceControl_record_warn: boolean; // = true; 记录warn
+    static w26_traceControl_record_error: boolean; // = true; 记录error
+    static w26_traceControl_record_systemInfo: boolean; // = true; 记录系统信息
+    static w26_traceControl_debugger: boolean; // = true; 未导出时调试
+    static w26_traceControl_upload: boolean; // = false; 允许触发未捕捉异常时上传log至服务器
+    static w26_traceControl_enable: boolean; // = true; 启用
+    static w26_traceControl_gameName: string; // = "填写你的游戏名称 以便于生成文件夹"; 游戏名称
+    static w26_traceControl_userApp: boolean; // = false; 保存在用户文件
+    static w26_traceControl_onClose: boolean; // = false; 游戏关闭时上传log
+    static w26_traceControl_quiet: boolean; // = false; 静默上传
+    static w26_traceControl_ignore: string[]; // = [];
+    static w26_traceControl_event_error_upload: boolean; // = true; 只有事件发生错误时才上传
+    static w26_traceControl_server_host: string; // = "122.51.13.82"; host
+    static w26_traceControl_server_port: number; // = 12336; port
+    static w26_traceControl_server_email: string; // = "填写你的邮箱"; 报错文件发送至
 }
 class PlayerData {
     sceneObject: SceneObject;

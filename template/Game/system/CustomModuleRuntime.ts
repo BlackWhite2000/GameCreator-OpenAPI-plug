@@ -13,3 +13,18 @@ class Module_Item {
     se: string; // = ""; 使用时音效
     callEvent: string; // = ""; 使用后执行的事件
 }
+/**
+ * #2 光标样式
+ */
+class Module_cursorStyleDiy_yyvhc {
+    id: number;
+    name: string;
+}
+/**
+ * #3 字体切换
+ */
+class Module_W26_FontMap {
+    id: number;
+    name: string;
+    fontMap: DataStructure_W26_FontMap[]; // = [];
+}
