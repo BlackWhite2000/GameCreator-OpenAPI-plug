@@ -4,6 +4,30 @@ module OpenAPI {
      */
     export class InterfaceUtils {
         /**
+         * 初始化一个空白的列表
+         * @param ui UI根节点
+         * @param list 列表组件
+         * @param model 列表项模型
+         * @param len 列表长度
+         * @param isFocus 是否设置焦点
+         */
+        static initList(list: UIList, model: any, len: number, isFocus: boolean = false): void {
+            // 初始化列表数据
+            let arr: any[] = [];
+            for (let i = 1; i <= len; i++) {
+                arr.push(new model());
+            }
+
+            // 列表赋值
+            list.items = arr;
+
+            // 是否设置焦点
+            if (isFocus) {
+                UIList.focus = list;
+            }
+        }
+
+        /**
          * 封装数值类型的输入值
          * @param ui UI根节点
          * @param comp 输入组件

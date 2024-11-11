@@ -46,8 +46,8 @@ module OpenAPI {
 
         /**
          * os库
-         * 
-         * 只支持PC端
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
          * 
          * @example
          * const os = OpenAPI.RunUtils.os // 返回引入的os库
@@ -90,6 +90,17 @@ module OpenAPI {
          */
         static get nw_gui(): any | undefined {
             return OpenAPI.RunUtils.require('nw.gui');
+        }
+
+        /**
+         * 当前游戏环境
+         * 
+         * 0-编辑器 1-PC 2-WEB
+         */
+        static get gameEnv(): number {
+            if (Config.EDIT_MODE) return 0;
+            if (os.platform == 2) return 1;
+            return 2;
         }
     }
 }

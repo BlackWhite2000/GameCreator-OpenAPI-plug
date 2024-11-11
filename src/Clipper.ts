@@ -2,6 +2,8 @@ module OpenAPI {
   /**
    * Javascript Clipper
    * @version 6.4.2
+   * 
+   * @deprecated 该类库已经废弃，不再维护。未来版本将删除该类库。
    */
   export class Clipper {
     /**
@@ -13,7 +15,7 @@ module OpenAPI {
      * 初始化
      */
     static Init() {
-      Clipper.ClipperLib = OpenAPI.Require.Init('clipper')
+      OpenAPI.Clipper.ClipperLib = OpenAPI.Require.Init('clipper')
     }
 
     /**

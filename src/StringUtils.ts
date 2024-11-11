@@ -32,7 +32,7 @@ module OpenAPI {
          * @example
          * const randomStr = randomString(10) // 返回 'a1b2c3d4e5'
          */
-        static randomString = (length: number, str: string = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'): string => {
+        static randomString = (length: number, str: string = OpenAPI.ConstantsUtils.RANDOM_STRING_RANGE): string => {
             return OpenAPI.Method.getRandomString(length, str);
         }
 

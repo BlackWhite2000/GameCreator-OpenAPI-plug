@@ -1,5 +1,8 @@
 /**
- * OpenAPI 部分函数来自 es-toolkit
+ * OpenAPI 部分函数来自于以下项目
+ */
+
+/**
  * @see https://github.com/toss/es-toolkit
  * @version 1.9.0
  *
