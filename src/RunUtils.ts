@@ -7,6 +7,8 @@ module OpenAPI {
 
         /**
          * 获取默认引入的库
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
          * 
          * @param {string} name - 库名
          * 
@@ -20,6 +22,8 @@ module OpenAPI {
 
         /**
          * fs库
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
          * 
          * @example
          * const fs = OpenAPI.RunUtils.fs // 返回引入的fs库
@@ -30,6 +34,8 @@ module OpenAPI {
 
         /**
          * path库
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
          * 
          * @example
          * const path = OpenAPI.RunUtils.path // 返回引入的path库
@@ -41,6 +47,8 @@ module OpenAPI {
         /**
          * os库
          * 
+         * 只支持PC端
+         * 
          * @example
          * const os = OpenAPI.RunUtils.os // 返回引入的os库
          */
@@ -50,6 +58,10 @@ module OpenAPI {
 
         /**
          * process库
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
+         * 
+         * @example
          * const process = OpenAPI.RunUtils.process // 返回引入的process库
          */
         static get process(): any | undefined {
@@ -58,6 +70,8 @@ module OpenAPI {
 
         /**
          * child_process库
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
          * 
          * @example
          * const child_process = OpenAPI.RunUtils.child_process // 返回引入的child_process库
@@ -68,6 +82,8 @@ module OpenAPI {
 
         /**
          * nw.gui库
+         * -- 只支持PC版本
+         * -- WEB版本基于LocalStorage
          * 
          * @example
          * const nw_gui = OpenAPI.RunUtils.nw_gui // 返回引入的nw.gui库

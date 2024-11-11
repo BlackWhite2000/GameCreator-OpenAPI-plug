@@ -2,6 +2,8 @@ module OpenAPI {
 
   /**
    * 通用API
+   * 
+   * @deprecated 尽管这个类在以前很常用，但是现在已经不推荐使用了。请使用新的类。当然，如果你有特殊需求，你仍然可以使用这个类。
    */
   export class Method {
     /**
