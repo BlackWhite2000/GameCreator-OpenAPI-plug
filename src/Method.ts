@@ -354,7 +354,7 @@ module OpenAPI {
           const [min, max] = a < b ? [a, b] : [b, a];
           return Math.random() * (max - min) + min;
         },
-        (...args: number[]) => { return args.reduce((acc, val) => acc + val, 0) },
+        (...args: number[]) => { return args.reduce((acc, val) => acc + val, 0) / args.length },
         (num: number) => { return Math.abs(num) },
         (num: number) => { return Math.sqrt(num) },
         (num: number) => { return Math.round(num) },
