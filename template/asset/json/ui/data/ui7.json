@@ -11,6 +11,7 @@
                 "width": 400,
                 "height": 200,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -27,6 +28,7 @@
                 "image": "asset/image/picture/control/PopupWindow.png",
                 "grid9": "15,15,15,15,0",
                 "flip": null,
+                "isTile": false,
                 "pivotType": 0
             },
             {
@@ -39,6 +41,7 @@
                 "width": 280,
                 "height": 36,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -55,6 +58,7 @@
                 "image": "asset/image/picture/control/InputBox.png",
                 "grid9": "15,15,15,15,0",
                 "flip": null,
+                "isTile": false,
                 "pivotType": 0,
                 "children": [
                     {
@@ -67,6 +71,7 @@
                         "width": 280,
                         "height": 36,
                         "opacity": 1,
+                        "blend": 0,
                         "rotation": 0,
                         "show": true,
                         "mouseEventEnabledData": true,
@@ -114,6 +119,7 @@
                 "width": 165,
                 "height": 48,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,

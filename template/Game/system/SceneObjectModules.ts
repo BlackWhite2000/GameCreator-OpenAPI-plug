@@ -52,10 +52,11 @@ class SceneObjectCommon extends ClientSceneObject {
     keepMoveActWhenCollsionObstacleAndIgnoreCantMove: boolean; // = false; 当碰到障碍时且处于忽略无法移动的场合时保持移动动作
     behaviorDir4: boolean; // = false; 行为四方向限定
     repeatedTouchEnabled: boolean; // = false; 允许重复接触
-    onlyPlayerTouch: boolean; // = false; 仅允许玩家触发碰触事件
-    waitTouchEvent: boolean; // = false; 碰触事件执行时等待
+    onlyPlayerTouch: boolean; // = true; 仅允许玩家触发碰触事件
+    waitTouchEvent: boolean; // = true; 碰触事件执行时等待
     moveSpeed: number; // = 150; 移动速度
     defBehavior: string; // = ""; 默认行为
+    collisionGroup: number; // = 0; 碰撞组
     constructor(soData: SceneObject, scene: ClientScene) {
         super(soData,scene);
     }

@@ -192,14 +192,16 @@
                         "arrayAllowUpdate": false,
                         "accessMode": 1,
                         "syncMode": 0,
-                        "attrTips": "勾选此项后将使用字符串变量决定音效地址。\\n字符串储存地址规格：相对路径,音量,音调\\n可以省略音量和音调 \\n比如：asset/audio/se/xxx.mp3,1,1\\n或者：asset/audio/se/xxx.mp3",
+                        "attrTips": "",
                         "alias": "系统音效",
                         "onlyConfig": false,
                         "preview": false,
                         "autoTitleWidth": true,
                         "titleWidth": 100,
                         "eyeShow": true,
-                        "lockBlock": false
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
                     },
                     "attrConditions": [],
                     "y": 45,

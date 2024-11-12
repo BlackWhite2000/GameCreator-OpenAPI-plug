@@ -11,6 +11,7 @@
                 "width": 219,
                 "height": 58,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -24,6 +25,7 @@
                 "showOnEditor": true,
                 "hasCommand": [],
                 "isOpen": true,
+                "enabledLimitView": false,
                 "scrollShowType": 2,
                 "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
                 "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
@@ -45,6 +47,7 @@
                         "width": 219,
                         "height": 58,
                         "opacity": 1,
+                        "blend": 0,
                         "rotation": 0,
                         "show": true,
                         "mouseEventEnabledData": true,
@@ -60,6 +63,8 @@
                         "isOpen": true,
                         "image": "asset/image/picture/control/selected.png",
                         "grid9": "10,25,10,10,0",
+                        "flip": false,
+                        "isTile": false,
                         "pivotType": 0
                     }
                 ]

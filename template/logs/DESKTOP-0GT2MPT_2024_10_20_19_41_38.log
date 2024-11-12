@@ -1,45 +1,0 @@
-游戏名: OpenAPI
-
-当前版本: 1.0
-
-系统:
-Windows_NT 10.0.19045 x64 Caption                      
-Microsoft Windows 10 企业版  
-主板:
-Product                
-TUF GAMING B460M-PLUS  
-内存:
-31.91 GB(总内存)  7.85 GB(剩余内存)
-Capacity     Manufacturer  PartNumber          Speed  
-17179869184  Corsair       CM4X16GD3200C16K2E  2666   
-17179869184  Corsair       CM4X16GD3200C16K2E  2666   
-CPU:
-Name                                        
-Intel(R) Core(TM) i5-10600KF CPU @ 4.10GHz  
-GPU:
-Name                     
-OrayIddDriver Device     
-NVIDIA GeForce RTX 3060  
-声卡:
-Manufacturer     Name                                                 
-Realtek          Realtek High Definition Audio                        
-(通用 USB 音频)  USB Audio Device                                     
-NVIDIA           NVIDIA High Definition Audio                         
-NVIDIA           NVIDIA Virtual Audio Device (Wave Extensible) (WDM)  
-网卡:
-DeviceID  MACAddress         Manufacturer  Name                                        
-11        C8:3A:35:61:94:74  AIC Corp      Tenda Wireless USB Adapter                  
-13        00:50:56:C0:00:01  VMware, Inc.  VMware Virtual Ethernet Adapter for VMnet1  
-14        00:50:56:C0:00:08  VMware, Inc.  VMware Virtual Ethernet Adapter for VMnet8  
-{类型: trace 
-{
-  "0": "OpenAPI v3.6 => OK",
-  "length": "1"
-}
-当前时间: 2024_10_20_19_41_39}
-{类型: trace 
-{
-  "0": "pc-03",
-  "length": "1"
-}
-当前时间: 2024_10_20_19_41_39}

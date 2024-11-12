@@ -11,6 +11,7 @@
                 "width": 1200,
                 "height": 720,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -26,6 +27,8 @@
                 "isOpen": true,
                 "image": "asset/image/picture/other/White.png",
                 "grid9": "3,3,3,3,0",
+                "flip": false,
+                "isTile": false,
                 "pivotType": 0
             }
         ]

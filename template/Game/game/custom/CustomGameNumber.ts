@@ -26,7 +26,7 @@ module CustomGameNumber {
                 return p.dynamicObs ? (scene.sceneUtils.isObstacleGrid(ProjectUtils.pointHelper, soc) ? 1 : 0) : (scene.sceneUtils.isFixedObstacleGrid(ProjectUtils.pointHelper) ? 1 : 0);
             }
             else {
-                return scene.getDataGridState(p.dataGridIndex, xGrid, yGrid) == 1 ? 1 : 0;
+                return scene.getDataGridState(p.dataGridIndex, xGrid, yGrid);
             }
         }
         if (p.type == 5) {
@@ -95,6 +95,8 @@ module CustomGameNumber {
                 varName = p.customAttr.varName;
             }
             if (so[varName] == undefined) return 0;
+            //@ts-ignore
+            if (p.customAttr.isCustomModule) return so[varName].id;
             //指定界面
             if (p.customAttr.compAttrEnable) {
                 // 获取界面
@@ -123,6 +125,8 @@ module CustomGameNumber {
                 varName = p.soModuleAttr.varName;
             }
             if (soModule[varName] == undefined) return 0;
+            //@ts-ignore
+            if (p.soModuleAttr.isCustomModule) return soModule[varName].id;
             //指定界面
             if (p.soModuleAttr.compAttrEnable) {
                 // 获取界面
@@ -186,6 +190,8 @@ module CustomGameNumber {
                 varName = p.playerData.varName;
             }
             if (Game.player.data[varName] == undefined) return 0;
+            //@ts-ignore
+            if (p.playerData.isCustomModule) return Game.player.data[varName].id;
             return MathUtils.float(Game.player.data[varName]);
         }
     }
@@ -291,6 +297,8 @@ module CustomGameNumber {
             varName = p.modelData.varName;
         }
         if (moduleData[varName] == undefined) return 0;
+        //@ts-ignore
+        if (p.modelData.isCustomModule) return moduleData[varName].id;
         return MathUtils.float(moduleData[varName]);
     }
     /**
@@ -318,6 +326,8 @@ module CustomGameNumber {
                 varName = p.worldData.varName;
             }
             if (WorldData[varName] == undefined) return 0;
+            //@ts-ignore
+            if (p.worldData.isCustomModule) return WorldData[varName].id;
             return MathUtils.float(WorldData[varName]);
         }
     }

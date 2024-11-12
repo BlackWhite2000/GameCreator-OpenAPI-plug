@@ -168,7 +168,7 @@ class ProjectClientScene extends ClientScene {
      * DEBUG显示障碍数据
      */
     private debugRender() {
-        if (WorldData.gridObsDebug && os.inGC()) {
+        if (WorldData.gridObsDebug && os.inGC() && !Config.RELEASE_GAME) {
             if (!this.debugLayer) {
                 this.debugLayer = new ClientSceneLayer(this);
                 this.addLayer(this.debugLayer);

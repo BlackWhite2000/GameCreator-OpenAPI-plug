@@ -32,7 +32,7 @@ class GUI_SaveFileManager {
         list.on(EventObject.DISPLAY, this, GUI_SaveFileManager.onSaveFileListDisplay, [list]);
         list.on(UIList.ITEM_CREATE, this, GUI_SaveFileManager.onCreateSaveFileItem, [saveMode]);
         list.on(UIList.ITEM_CLICK, this, GUI_SaveFileManager.onListItemClick, [list, saveMode]);
-        stage.on(EventObject.KEY_DOWN, this, GUI_SaveFileManager.onKeyDown, [list]);
+        stage.on(EventObject.KEY_DOWN, list, GUI_SaveFileManager.onKeyDown, [list]);
     }
     /**
      * 存档
@@ -79,6 +79,8 @@ class GUI_SaveFileManager {
         // 读取中的情况不再能够读取
         if (GUI_SaveFileManager.isLoading) return;
         GUI_SaveFileManager.isLoading = true;
+        // 读取存档时清理下玩家输入状态
+        GameCommand.isNeedPlayerInput = false;
         // 如果已在游戏内的话则进行一次性重启读档
         if (Game.currentScene != ClientScene.EMPTY) {
             if (SinglePlayerGame.getSaveInfoByID(id) == null) return;
@@ -208,11 +210,10 @@ class GUI_SaveFileManager {
      */
     private static getCustomSaveIndexInfo() {
         // -- 游戏截图：隐藏界面后截图，先全屏再缩放后截一次
-        let per = 0.1;
-        let oldUILayerVisible = Game.layer.uiLayer.visible;
-        Game.layer.uiLayer.visible = false;
+        let per = 0.25;
+        Game.layer.uiLayer.alpha = 0;
         let fullScreenTex = AssetManager.drawToTexture(Game.layer, stage.width, stage.height);
-        Game.layer.uiLayer.visible = oldUILayerVisible;
+        Game.layer.uiLayer.alpha = 1;
         let screenRoot = new GameSprite();
         let screenBitmap = new UIBitmap;
         screenBitmap.texture = fullScreenTex;

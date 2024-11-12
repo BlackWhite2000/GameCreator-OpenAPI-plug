@@ -3,8 +3,8 @@
  */
 class DataStructure_preloadAsset {
     assetType: number; // = 0; 资源类型
-    asset0: string; // = "1"; 图片
-    asset1: string; // = "1"; 音频
+    asset0: string; // = ""; 图片
+    asset1: string; // = ""; 音频
     asset2: number; // = 1; 行走图
     asset3: number; // = 1; 立绘
     asset4: number; // = 1; 动画
@@ -61,28 +61,9 @@ class DataStructure_inputMessage {
     stringValue: any; // 游戏字符串
 }
 /**
- * #14001 定义游戏变量
+ * #8 collisionGroupSetting
  */
-class DataStructure_定义游戏变量 {
-    type: number; // = 0;  
-    gameNumber: any; //  
-    gameString: any; //  
-    gameBoolean: any; //  
-}
-/**
- * #15001 设定_光标绑定
- */
-class DataStructure_cursorStyle_DataBind {
-    cursorBind: number; // = 0; 指定光标
-    cursorStyleBind: string; // = ""; 指定样式
-    cursorSystemStyleBind: number; // = 0; 指定样式
-    isCursorSystemStyle: boolean; // = false; 系统样式
-}
-/**
- * #15002 字体切换
- */
-class DataStructure_W26_FontMap {
-    oriFont: string; // = ""; 原字体
-    font: string; // = ""; 现字体
-    fontSizeDt: number; // = 0; 字体大小增量
+class DataStructure_collisionGroupSetting {
+    group1: number; // = 0; 组-1
+    group2: number; // = 0; 组-2
 }

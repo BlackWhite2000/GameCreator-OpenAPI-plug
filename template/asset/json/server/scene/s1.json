@@ -4,17 +4,17 @@
         {
             "modelID": 1,
             "index": 1,
-            "name": "未命名1",
-            "x": 767,
-            "y": 342,
+            "name": "柯瑞尔特(GC娘)",
+            "x": 600,
+            "y": 408,
             "z": 0,
             "materialData": [
                 {
                     "materials": []
                 }
             ],
-            "avatarID": 3,
-            "avatarOri": 6,
+            "avatarID": 14001,
+            "avatarOri": 2,
             "avatarAct": 1,
             "avatarFPS": 12,
             "avatarFrame": 1,
@@ -27,7 +27,7 @@
             "displayList": {
                 "avatar": {
                     "type": 1,
-                    "id": 3
+                    "id": 14001
                 }
             },
             "moduleDisplayList": [],
@@ -184,111 +184,6 @@
     "customCommands": [
         [
             [
-                160006,
-                {
-                    "153094414581_0.46826503945697384": 1,
-                    "153094654132_0.5187895734427981": "Please purchase the game!"
-                },
-                "153574577927_0.220324908424665",
-                true
-            ],
-            [
-                160009,
-                {
-                    "153099405190_0.8547799722936906": "adADWDADWDWDW",
-                    "153100393130_0.9699341243101791": "\u0005153574695709_0.3400118026202317\u0005[[11,1,null,\"\",3,-3,\"<span style='color:#FfFffF'>1</span>\",null,1,0,null,{\"id\":1,\"atts\":[],\"time\":60,\"transitionMode\":null,\"nonTweenType\":0,\"mode\":0},{\"___cmdID\":\"153574691840_0.465639510954722\"}],[-1,{\"___cmdID\":\"153574689543_0.8631541563163581\"}]]",
-                    "153100458442_0.6837677289102617": "\u0005153574699045_0.5362934154347108\u0005[[11,1,null,\"\",3,-3,\"<span style='color:#FfFffF'>2</span>\",null,1,0,null,{\"id\":1,\"atts\":[],\"time\":60,\"transitionMode\":null,\"nonTweenType\":0,\"mode\":0},{\"___cmdID\":\"153574696937_0.5843456510363461\"}],[-1,{\"___cmdID\":\"153574696262_0.2634237226989322\"}]]"
-                },
-                "153574684050_0.1277039223874199",
-                true
-            ],
-            [
-                14,
-                {
-                    "___cmdID": "153574544400_0.9454599647611734",
-                    "disabled": true
-                }
-            ],
-            [
-                20,
-                "",
-                "// 当前的事件触发器：trigger: CommandTrigger;\n",
-                "",
-                {
-                    "___cmdID": "153575373859_0.21196415407423164",
-                    "disabled": true
-                }
-            ],
-            [
-                11,
-                1,
-                null,
-                "",
-                3,
-                -3,
-                "<span style='color:#FfFffF'>1</span>",
-                null,
-                1,
-                0,
-                "",
-                {
-                    "id": 1,
-                    "atts": [],
-                    "time": 60,
-                    "transitionMode": null,
-                    "nonTweenType": 0,
-                    "mode": 0
-                },
-                {
-                    "___cmdID": "153573336640_0.22753091399783854",
-                    "disabled": true
-                }
-            ],
-            [
-                40010,
-                {
-                    "49809728719_0.046619702255007": 0,
-                    "24538808102_0.9970934946254328": 1,
-                    "49612012650_0.7509974095572418": 1,
-                    "24538808435_0.6230939565765392": 14,
-                    "49518385245_0.9308839798952664": 1,
-                    "50689082740_0.526404642451832": true,
-                    "49141521249_0.2965750598394892": 0,
-                    "49519573910_0.08853124862540018": 1,
-                    "49141521416_0.0884961804795068": 0,
-                    "49519590084_0.3058131165318816": 1,
-                    "49150249927_0.6881795527970145": 100,
-                    "49519636189_0.2521948025226537": 1,
-                    "49232462793_0.7622411974016037": 1,
-                    "49520636693_0.8404154506260593": 1,
-                    "49232464582_0.12430969584603324": 1,
-                    "49520744730_0.6026838995761481": 1,
-                    "49232999716_0.2133484967243402": 0,
-                    "49520812848_0.5734967173507821": 1,
-                    "49234813142_0.3142568229981375": 1,
-                    "49520873912_0.5927053372462527": 1,
-                    "49599648354_0.3738368266485066": false,
-                    "49518248081_0.4367396293869368": false,
-                    "49599660535_0.0823572381286597": 1,
-                    "49518318443_0.5988810162565685": false,
-                    "49519399740_0.07229930251623617": false,
-                    "49519436070_0.9418611019894294": false,
-                    "49519475735_0.9428268094401824": false,
-                    "49519529748_0.519982170810438": false,
-                    "49520771123_0.27311479097864666": false,
-                    "49611947752_0.41521729946538755": false
-                },
-                "163119191686_0.6443824958128206",
-                true
-            ],
-            [
-                14,
-                {
-                    "___cmdID": "153572099218_0.9161495955025611",
-                    "disabled": true
-                }
-            ],
-            [
                 30002,
                 {
                     "42682144777_0.3487209414476453": 0,
@@ -299,68 +194,7 @@
                     "42682256265_0.9585521481462491": 1,
                     "42682458307_0.09379042465303233": 0
                 },
-                "111333662693_0.8634534052255232",
-                true
-            ],
-            [
-                160001,
-                {
-                    "117848026202_0.38259148675685073": 0,
-                    "117848097312_0.4445859388407085": false,
-                    "117849665613_0.5800707990292897": 1,
-                    "117848161801_0.013776549907919877": 0,
-                    "117857386776_0.4543086410489696": false,
-                    "118114114742_0.1867554805373981": 1,
-                    "118119513445_0.38490652011237514": 1,
-                    "117848339837_0.34560107504187565": 0,
-                    "118119533553_0.08403690879396919": 0
-                },
-                "153488687667_0.9461732046763109",
-                true
-            ],
-            [
-                11,
-                1,
-                null,
-                "",
-                3,
-                -3,
-                "<span style='color:#FfFffF'>[@s1]</span>",
-                null,
-                1,
-                0,
-                "",
-                {
-                    "id": 1,
-                    "atts": [],
-                    "time": 60,
-                    "transitionMode": null,
-                    "nonTweenType": 0,
-                    "mode": 0
-                },
-                {
-                    "___cmdID": "153488689478_0.5262417896511355",
-                    "disabled": true
-                }
-            ],
-            [
-                20,
-                "",
-                "const { takeWhile } = OpenAPI.ArrayUtils\n\ntrace(takeWhile([1, 2, 3, 4], x => x > 3))\ntrace(takeWhile([1, 2, 3, 4], x => x < 3))\ntrace(takeWhile([3, 2, 3, 4], x => x > 2))\n",
-                "var takeWhile = OpenAPI.ArrayUtils.takeWhile;\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x > 3; }));\ntrace(takeWhile([1, 2, 3, 4], function (x) { return x < 3; }));\ntrace(takeWhile([3, 2, 3, 4], function (x) { return x > 2; }));\n",
-                {
-                    "___cmdID": "163119112802_0.9698192672215815",
-                    "disabled": true
-                }
-            ],
-            [
-                20,
-                "",
-                "// // 当前的事件触发器：trigger: CommandTrigger;\n// let d = OpenAPI.DateUtils.dateToTimestamp('2024/01/01')\n// trace(d)\n// d = OpenAPI.DateUtils.dateToTimestamp('2024/01/01 00:00:00')\n// trace(d)\n// let c = OpenAPI.DateUtils.timestampToDate(d)\n// trace(c)\n// c = OpenAPI.DateUtils.timestampToDate(d,'y')\n// trace(c)\n// d = OpenAPI.DateUtils.dateToTimestamp('2024-01-01 00:00:00')\n// trace(d)\n// d = OpenAPI.DateUtils.dateToTimestamp('2024-01-01')\n// trace(d)\n\n// trace(OpenAPI.Method.cursorSystemStyleName_spliceName(['default']))\n\n// trace(OpenAPI.StringUtils.randomColor)\n\n// let text = ''\n\n// const parseFunctionText = OpenAPI.StringUtils.parseFunctionText\n\n// text = 'max(-1000,100)' // 获取最大值\n// trace(parseFunctionText(text)) // 返回 '100'\n// text = 'min(-1000,100)' // 获取最小值\n// trace(parseFunctionText(text)) // 返回 '1'\n// text = 'random(-101,100)' // 获取随机数\n// trace(parseFunctionText(text)) // 返回 '18.4515...' 未取整\n// text = 'reduce(1,100,10,100)' // 获取平均值\n// trace(parseFunctionText(text)) // 返回 '101'\n// text = 'abs(-18)' // 获取绝对值\n// trace(parseFunctionText(text),111) // 返回 '1'\n// text = 'sqrt(18)' // 获取开方\n// trace(parseFunctionText(text),222) // 返回 '1'\n// text = 'round(1.123)' // 获取整数\n// trace(parseFunctionText(text)) // 返回 '1'\n// const gamePath = OpenAPI.RunUtils.gamePath\n// trace(gamePath)\n// alert(gamePath)\n\ntrace(OpenAPI.OsUtils.getSystemUserName)",
-                "trace(OpenAPI.OsUtils.getSystemUserName);\n",
-                {
-                    "___cmdID": "171863475134_0.6540122576099598"
-                }
+                "111333662693_0.8634534052255232"
             ],
             [
                 -1,
@@ -441,6 +275,11 @@
             "defBehavior": {
                 "varType": 1,
                 "value": "",
+                "copy": false
+            },
+            "collisionGroup": {
+                "varType": 0,
+                "value": 0,
                 "copy": false
             }
         },
@@ -748,8 +587,39 @@
         {
             "condition": [],
             "customCommands": [
-                [],
-                [],
+                [
+                    [
+                        11,
+                        6,
+                        null,
+                        "",
+                        2,
+                        1,
+                        "<span style='color:#FfFffF'>欢迎使用GameCreator！我是柯瑞尔特，你也可以叫我的昵称GC娘，让我们从这里开始你的游戏制作梦想之旅！</span>",
+                        null,
+                        1,
+                        0,
+                        null,
+                        null,
+                        {
+                            "___cmdID": "61354014678_0.35825318457704136"
+                        }
+                    ],
+                    [
+                        -1,
+                        {
+                            "___cmdID": "87414845431_0.9493168433471604"
+                        }
+                    ]
+                ],
+                [
+                    [
+                        -1,
+                        {
+                            "___cmdID": "87412192009_0.5453951499939449"
+                        }
+                    ]
+                ],
                 [],
                 [],
                 []

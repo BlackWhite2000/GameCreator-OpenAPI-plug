@@ -27,9 +27,21 @@ class ProjectClientSceneObject extends SceneObjectCommon {
      * 碰撞事件 onCollision(touchRes:{ isObstacle: boolean, touchSceneObjects: ProjectClientSceneObject[] })
      */
     static COLLISION: string = "so_1COLLISION";
+    /**
+     * 碰触事件 onTouch(toucher:ProjectClientSceneObject)
+     */
+    static TOUCH: string = "so_TOUCH";
+    /**
+     * 离开碰触事件 onTouch(awayer:ProjectClientSceneObject)
+     */
+    static AWAY_TOUCH: string = "so_AWAY_TOUCH";
     //------------------------------------------------------------------------------------------------------
     // RPG通用属性
     //------------------------------------------------------------------------------------------------------
+    /**
+     * 唯一ID
+     */
+    sid: number = ObjectUtils.getInstanceID();
     /**
      * 所属的场景
      */
@@ -59,6 +71,14 @@ class ProjectClientSceneObject extends SceneObjectCommon {
      */
     recordMoveRoadInfo: any;
     /**
+     * 禁止行为
+     */
+    banBehavior: boolean;
+    /**
+     * 禁止动作
+     */
+    banAvatarAction: boolean;
+    /**
      * 事件开始等待的状态记录（需要进入存档）
      */
     protected eventStartWaitInfo: any;
@@ -77,7 +97,7 @@ class ProjectClientSceneObject extends SceneObjectCommon {
     /**
      * 是否来自恢复存档数据
      */
-    protected isFromRecorySaveData: boolean;
+    isFromRecorySaveData: boolean;
     /**
      * 恢复存档时的帧记录，以便在当前不会新触发事件
      */
@@ -90,6 +110,10 @@ class ProjectClientSceneObject extends SceneObjectCommon {
      * 禁止发送下一个移动结束事件
      */
     protected stopSendNextMoveOverEvent: boolean;
+    /**
+     * 记录的行为
+     */
+    protected _recordBehaviors: ProjectSceneObjectBehaviors[];
     //------------------------------------------------------------------------------------------------------
     // 辅助计算
     //------------------------------------------------------------------------------------------------------
@@ -114,7 +138,7 @@ class ProjectClientSceneObject extends SceneObjectCommon {
         super(soData, scene);
         if (!this.root) return;
         // Debug-显示碰撞盒
-        if (WorldData.rectObsDebug && os.inGC()) {
+        if (WorldData.rectObsDebug && os.inGC() && !Config.RELEASE_GAME) {
             let size = WorldData.sceneObjectCollisionSize;
             let rect = new Rectangle(-size / 2, -size / 2, size - 1, size - 1);
             this.root.graphics.drawLines(0, 0, [rect.x, rect.y, rect.right, rect.y, rect.right, rect.bottom, rect.x, rect.bottom, rect.x, rect.y], "#FF0000", 1);
@@ -125,19 +149,27 @@ class ProjectClientSceneObject extends SceneObjectCommon {
         }
         // 否则等待进入完毕后再执行
         else {
-            let initCB = Callback.New(() => {
-                if (GameGate.gateState == GameGate.STATE_3_IN_SCENE_COMPLETE) {
-                    this.init();
-                    EventUtils.removeEventListener(GameGate, GameGate.EVENT_IN_SCENE_STATE_CHANGE, initCB);
-                }
-            }, this);
-            EventUtils.addEventListener(GameGate, GameGate.EVENT_IN_SCENE_STATE_CHANGE, initCB);
+            EventUtils.addEventListenerFunction(GameGate, GameGate.EVENT_IN_SCENE_STATE_CHANGE, this.initState3, this);
+        }
+    }
+    /**
+     * 等待进入完毕后再执行初始化
+     */
+    private initState3(): void {
+        if (GameGate.gateState == GameGate.STATE_3_IN_SCENE_COMPLETE) {
+            this.init();
+            EventUtils.removeEventListenerFunction(GameGate, GameGate.EVENT_IN_SCENE_STATE_CHANGE, this.initState3, this);
         }
     }
     /**
      * 释放函数
      */
     dispose() {
+        if (!this.isDisposed) {
+            EventUtils.removeEventListenerFunction(GameGate, GameGate.EVENT_IN_SCENE_STATE_CHANGE, this.initState3, this);
+            EventUtils.removeEventListenerFunction(Game, Game.EVENT_PAUSE_CHANGE, this.onGamePauseChangeHandle, this);
+            EventUtils.removeEventListenerFunction(Game, Game.EVENT_PAUSE_CHANGE, this.onStausPageChange, this);
+        }
         super.dispose();
     }
     /**
@@ -260,6 +292,21 @@ class ProjectClientSceneObject extends SceneObjectCommon {
     getBehaviorLayer(): number {
         return this.behaviors.length;
     }
+    /**
+     * 记录行为
+     */
+    recordBehavior(): void {
+        this._recordBehaviors = this.behaviors.concat();
+    }
+    /**
+     * 恢复行为
+     */
+    recoveryBehavior(): void {
+        if (this._recordBehaviors) {
+            this.behaviors = this._recordBehaviors;
+            this._recordBehaviors = null;
+        }
+    }
     //------------------------------------------------------------------------------------------------------
     // 移动、跳跃、设置坐标
     //------------------------------------------------------------------------------------------------------
@@ -354,7 +401,7 @@ class ProjectClientSceneObject extends SceneObjectCommon {
             }
             // 计算A星寻路：目的地强行视为空地或不视为空地时计算两者的寻路
             if (useAstar && (SceneUtils.twoPointHasObstacle(this.x, this.y, toP.x, toP.y, Game.currentScene as ProjectClientScene, this, ifObstacleHandleMode == 2) || moveDir4)) {
-                realLineArr = AstarUtils.moveTo(this.x, this.y, toP.x, toP.y, Game.currentScene.gridWidth, Game.currentScene.gridHeight, Game.currentScene, moveDir4, ifObstacleHandleMode == 2);
+                realLineArr = AstarUtils.moveTo(this.x, this.y, toP.x, toP.y, Game.currentScene.gridWidth, Game.currentScene.gridHeight, Game.currentScene, moveDir4, ifObstacleHandleMode == 2, false, this);
                 if (!realLineArr) {
                     if (whenCantMoveRetry) {
                         this.retryAutoFindRoadMove(toX, toY, ifObstacleHandleMode, costTime, useAstar, whenCantMoveRetry, useGridObstacle);
@@ -822,13 +869,13 @@ class ProjectClientSceneObject extends SceneObjectCommon {
                     ArrayUtils.matchAttributes(this.avatar.actionList, { id: WorldData.sceneObjectMoveStartAct2 }, true)[0]) {
                     moveAct = WorldData.sceneObjectMoveStartAct2;
                 }
-                this.avatarAct = moveAct;
+                if (this.avatar.hasActionID(moveAct)) this.avatarAct = moveAct;
             }
         }
         else {
             // 当开启了自动变更移动时动作的话
             if (this.moveAutoChangeAction) {
-                this.avatarAct = 1;
+                if (this.avatarAct == WorldData.sceneObjectMoveStartAct || this.avatarAct == WorldData.sceneObjectMoveStartAct2) this.avatarAct = 1;
             }
         }
     }
@@ -1088,9 +1135,9 @@ class ProjectClientSceneObject extends SceneObjectCommon {
         // 刷新位置
         this.refreshCoordinate(false, false, true, false);
         // 监听状态页更改时事件执行 onStausPageChange(false)
-        EventUtils.addEventListener(this, SceneObjectEntity.EVENT_CHANGE_STATUS_PAGE_FOR_INSTANCE, Callback.New(this.onStausPageChange, this, [false]));
+        EventUtils.addEventListenerFunction(this, SceneObjectEntity.EVENT_CHANGE_STATUS_PAGE_FOR_INSTANCE, this.onStausPageChange, this, [false]);
         // 监听游戏暂停事件
-        EventUtils.addEventListener(Game, Game.EVENT_PAUSE_CHANGE, Callback.New(this.onGamePauseChangeHandle, this));
+        EventUtils.addEventListenerFunction(Game, Game.EVENT_PAUSE_CHANGE, this.onGamePauseChangeHandle, this);
         // 开始执行当前状态页的默认行为和出现事件
         if (this.inScene && this.scene && this.scene.sceneObjects[this.index] == this) {
             this.onStausPageChange(true);
@@ -1110,7 +1157,7 @@ class ProjectClientSceneObject extends SceneObjectCommon {
         if (!this.inScene) return;
         // 暂停的话等待取消暂停后执行
         if (Game.pause) {
-            EventUtils.addEventListener(Game, Game.EVENT_PAUSE_CHANGE, Callback.New(this.onStausPageChange, this, []), true);
+            EventUtils.addEventListenerFunction(Game, Game.EVENT_PAUSE_CHANGE, this.onStausPageChange, this, [], true);
             return;
         }
         // 非恢复存档时
@@ -1129,6 +1176,12 @@ class ProjectClientSceneObject extends SceneObjectCommon {
                 Callback.CallLaterBeforeRender(this.refreshCoordinate, this)
             }
         }
+    }
+    /**
+     * 当状态页更改前
+     */
+    protected onBeforeStausPageChange(): void {
+
     }
     //------------------------------------------------------------------------------------------------------
     // 内部实现-行为
@@ -1153,6 +1206,8 @@ class ProjectClientSceneObject extends SceneObjectCommon {
         if (Config.BEHAVIOR_EDIT_MODE) return;
         // 游戏暂停时不执行
         if (Game.pause) return;
+        // 禁止行为的话
+        if (this.banBehavior) return;
         // 未能真正进入场景或场景不存在时不执行
         if (!this.inScene || GameGate.gateState < GameGate.STATE_3_IN_SCENE_COMPLETE || Game.currentScene.sceneObjects[this.index] != this) return;
         // 存在行为的话则执行
@@ -1228,6 +1283,13 @@ ObjectUtils.reDefineGetSet("ProjectClientSceneObject.prototype", {
         if (this.avatar) {
             if (this.avatar.orientation != v) this.avatar.orientation = v;
             this.event(ProjectClientSceneObject.CHANGE_ORI);
+        }
+    },
+    avatarAct: function (v: number) {
+        if (this.avatar && this.avatar.actionID != v) {
+            if (!this.banAvatarAction) {
+                this.avatar.actionID = v;
+            }
         }
     }
 });

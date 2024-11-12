@@ -119,6 +119,18 @@ EventUtils.addEventListener(GameUI, GameUI.EVENT_CREATE_UI, Callback.New((ui: GU
 // 对话框扩展：
 // -- 当关闭对话框时
 //------------------------------------------------------------------------------------------------------
+// 界面关闭时处理
+EventUtils.addEventListener(GameUI, GameUI.EVENT_CLOSE_SYSTEM_UI, Callback.New((ui: GUI_BASE) => {
+    // -- 按键焦点：关闭界面时如果焦点不存在或不在舞台上则重新回到可能存在的选项中
+    if (GameDialog.isInDialog && GameDialog.lastDialog) {
+        let optionList = GameDialog.lastDialog.optionList;
+        if (optionList && optionList.stage) {
+            if (!UIList.focus || !UIList.focus.stage) {
+                UIList.focus = optionList;
+            }
+        }
+    }
+}, this));
 let ___lastListFocus: UIList;
 let ___lastButtonsFocus: FocusButtonsManager;
 let ___lastFocusIsList = false;

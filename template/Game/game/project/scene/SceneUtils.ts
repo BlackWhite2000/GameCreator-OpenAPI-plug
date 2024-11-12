@@ -6,6 +6,10 @@
  */
 class SceneUtils {
     /**
+     * 禁止碰撞的信息（根据场景对象的碰撞组）
+     */
+    static banCollisionMapping: { [sign: string]: boolean };
+    /**
      * 格子上的场景对象：初始化时即设置了gridWidth x gridHeight的空数组
      */
     gridSceneObjects: ProjectClientSceneObject[][][] = [];
@@ -137,6 +141,17 @@ class SceneUtils {
      */
     constructor(scene: Scene) {
         this.scene = scene;
+        // 碰撞组数据缓存
+        if (SceneUtils.banCollisionMapping == null) {
+            SceneUtils.banCollisionMapping = {};
+            for (var i = 0; i < WorldData.banCollisionSetting.length; i++) {
+                let setting = WorldData.banCollisionSetting[i];
+                let collisionSign1 = setting.group1 + "_" + setting.group2;
+                let collisionSign2 = setting.group2 + "_" + setting.group1;
+                SceneUtils.banCollisionMapping[collisionSign1] = true;
+                SceneUtils.banCollisionMapping[collisionSign2] = true;
+            }
+        }
         this.halfGridPlus = Config.SCENE_GRID_SIZE / 2 + 1;
         // 计算内边界
         this.innerBoundaryRect = new Rectangle(Config.SCENE_GRID_SIZE / 2, Config.SCENE_GRID_SIZE / 2, scene.width - Config.SCENE_GRID_SIZE + 1, scene.height - Config.SCENE_GRID_SIZE + 1);
@@ -227,12 +242,14 @@ class SceneUtils {
     /**
      * 是否是障碍格子（含动态障碍）
      * @param gridP 格子坐标 
+     * @param except 排除者
+     * @param checker 检查者
      * @return [boolean] 
      */
-    isObstacleGrid(gridP: Point, except: ProjectClientSceneObject = null): boolean {
+    isObstacleGrid(gridP: Point, except: ProjectClientSceneObject = null, checker: ProjectClientSceneObject = null): boolean {
         if (this.isOutsideByGrid(gridP)) { return true; }
         // 检查是否具备动态穿透属性
-        let gridStatus = this.getGridDynamicObsStatus(gridP, except);
+        let gridStatus = this.getGridDynamicObsStatus(gridP, except, null, checker);
         if (gridStatus == 1) { return false; }
         else if (gridStatus == 2) { return true; }
         // 检查地图阻碍
@@ -336,9 +353,10 @@ class SceneUtils {
      * @param gridP 当前格子
      * @param excepter [可选] 默认值=null 排除在外的对象（比如自己）
      * @param gridSceneObjects [可选] 默认值=null 所在当前格子的场景对象（如有）
+     * @param checker [可选] 默认值=null 如果与检查者是穿透关系，则不作为
      * @return [number] 0-无障碍 1-桥属性 2-存在障碍
      */
-    getGridDynamicObsStatus(gridP: Point, excepter: ProjectClientSceneObject = null, gridSceneObjects: ProjectClientSceneObject[] = null): number {
+    getGridDynamicObsStatus(gridP: Point, excepter: ProjectClientSceneObject = null, gridSceneObjects: ProjectClientSceneObject[] = null, checker: ProjectClientSceneObject = null): number {
         // 忽略超过边界的情况
         if (this.isOutsideByGrid(gridP)) return 2;
         // 不存在外部传入进来的在当前格的对象集的话就重新取得一下
@@ -360,6 +378,13 @@ class SceneUtils {
             // 如果发现一个存在桥属性的人则返回1，表示允许通行
             if (so.bridge) {
                 return 1
+            }
+            // 目标与你是穿透关系的话
+            if (checker) {
+                let sign = checker.collisionGroup + "_" + so.collisionGroup;
+                if (SceneUtils.banCollisionMapping[sign]) {
+                    continue;
+                }
             }
             // 目标不是穿透且行走图存在的话：这里设置hasDyncmicObs而非返回，因为后面可能会存在bridge
             if (!so.through && so.avatarID != 0) {
@@ -589,7 +614,7 @@ class SceneUtils {
                 }
             }
         }
-        let dynamicObsState = this.getGridDynamicObsStatus(posGridP, checker, gridSceneObjects);
+        let dynamicObsState = this.getGridDynamicObsStatus(posGridP, checker, gridSceneObjects, checker);
         // 如果是动态障碍则计算为障碍
         if (dynamicObsState == 2) {
             res.isObstacle = true;
@@ -635,13 +660,13 @@ class SceneUtils {
         let hasBridge = false;
         // 如果该格子已是固定桥属性则表示接触到了桥允许走出去
         if (this.isFixedBridgeGrid(gridP)) hasBridge = true;
-        else if (this.getGridDynamicObsStatus(gridP, checker) == 1) hasBridge = true;
+        else if (this.getGridDynamicObsStatus(gridP, checker, null, checker) == 1) hasBridge = true;
         // 当前格不是桥但再计算趋势格子是否是桥
         else {
             let trendPToGrid = new Point(gridP.x + Math.round(trendP.x - p.x), gridP.y + Math.round(trendP.y - p.y));
             if (!this.isOutsideByGrid(trendPToGrid)) {
                 if (this.isFixedBridgeGrid(trendPToGrid)) hasBridge = true;
-                else if (this.getGridDynamicObsStatus(trendPToGrid, checker) == 1) hasBridge = true;
+                else if (this.getGridDynamicObsStatus(trendPToGrid, checker, null, checker) == 1) hasBridge = true;
             }
         }
         // 遍历周围九个格子：查询接触的对象
@@ -676,6 +701,11 @@ class SceneUtils {
                             if (tSo.bridge) hasBridge = true;
                             // 双方都不是穿透的话则视为障碍（但趋势是远离我的话则不视为障碍）
                             else if (!checker.through && !tSo.through && tSo.avatar.id != 0) {
+                                // -- 禁止碰撞的不再检测
+                                let collisionSign = checker.collisionGroup + "_" + tSo.collisionGroup;
+                                if (SceneUtils.banCollisionMapping[collisionSign]) {
+                                    continue;
+                                }
                                 let d1 = Point.distanceSquare(tSo.pos, p);
                                 let d2 = Point.distanceSquare(tSo.pos, trendP);
                                 if (d2 < d1) {

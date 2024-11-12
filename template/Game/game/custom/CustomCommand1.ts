@@ -524,7 +524,7 @@ module CommandExecute {
         let yGrid = p.useVar ? Game.player.variable.getVariable(p.yVarID) : p.y;
         if (xGrid < 0 || xGrid >= Game.currentScene.gridWidth) return;
         if (yGrid < 0 || yGrid >= Game.currentScene.gridHeight) return;
-        let state = p.on == 0 ? 1 : 0;
+        let state = p.on == 2 ? p.value : (p.on == 0 ? 1 : 0);
         let dataLayerIndex = p.layer;
         Game.currentScene.setDataGridState(dataLayerIndex, xGrid, yGrid, state);
     }
@@ -997,18 +997,35 @@ module CommandExecute {
                 }
             } else {
                 //普通模式
+                let count = (oldValue: number, value: number) => {
+                    if (typeof oldValue != "number" || typeof value != "number") return value;
+                    let v: number;
+                    //@ts-ignore
+                    if (!p.attributeData.operationType) v = value;
+                    //@ts-ignore
+                    switch (p.attributeData.operationType) {
+                        case 1: v = oldValue + value; break;//加
+                        case 2: v = oldValue - value; break;//减
+                        case 3: v = oldValue * value; break;//乘
+                        case 4: v = oldValue / value; break;//除
+                        case 5: v = oldValue % value; break;//余
+                        case 6: v = Math.pow(oldValue, value); break;//幂
+                    }
+                    //@ts-ignore
+                    return p.attributeData.isRounded ? MathUtils.int(v) : v;
+                }
                 if (p.attributeData.valueType == 0) {
                     let v = p.attributeData.value;
                     if (v) {
                         //object类型
                         if (p.attributeData.selectMode == 1 && p.attributeData.inputModeInfo.typeIndex == 3) {
                             try {
-                                v.value = JSON.parse(v.value);
+                                v.value = JSON.parse(v.value as any);
                             } catch (e) {
-                                v.value = {};
+                                (v.value as any) = {};
                             }
                         }
-                        soc[varName] = v.value;
+                        soc[varName] = count(soc[varName], v.value);
                     }
                 }
                 else {
@@ -1017,7 +1034,7 @@ module CommandExecute {
                         let varID: number = v.value;
                         switch (v.varType) {
                             case 0:
-                                soc[varName] = Game.player.variable.getVariable(varID);
+                                soc[varName] = count(soc[varName], Game.player.variable.getVariable(varID));
                                 break;
                             case 1:
                                 soc[varName] = Game.player.variable.getString(varID);
@@ -1212,18 +1229,35 @@ module CommandExecute {
             varName = p.worldData.varName;
         }
         if (WorldData[varName] == undefined) return;
+        let count = (oldValue: number, value: number) => {
+            if (typeof oldValue != "number" || typeof value != "number") return value;
+            let v: number;
+            //@ts-ignore
+            if (!p.worldData.operationType) v = value;
+            //@ts-ignore
+            switch (p.worldData.operationType) {
+                case 1: v = oldValue + value; break;//加
+                case 2: v = oldValue - value; break;//减
+                case 3: v = oldValue * value; break;//乘
+                case 4: v = oldValue / value; break;//除
+                case 5: v = oldValue % value; break;//余
+                case 6: v = Math.pow(oldValue, value); break;//幂
+            }
+            //@ts-ignore
+            return p.worldData.isRounded ? MathUtils.int(v) : v;
+        }
         if (p.worldData.valueType == 0) {
             let v = p.worldData.value;
             if (v) {
                 //object类型
                 if (p.worldData.selectMode == 1 && p.worldData.inputModeInfo.typeIndex == 3) {
                     try {
-                        v.value = JSON.parse(v.value);
+                        v.value = JSON.parse(v.value as any);
                     } catch (e) {
-                        v.value = {};
+                        (v.value as any) = {};
                     }
                 }
-                WorldData[varName] = v.value;
+                WorldData[varName] = count(WorldData[varName], v.value);
             }
         }
         else {
@@ -1232,7 +1266,7 @@ module CommandExecute {
                 let varID: number = v.value;
                 switch (v.varType) {
                     case 0:
-                        WorldData[varName] = Game.player.variable.getVariable(varID);
+                        WorldData[varName] = count(WorldData[varName], Game.player.variable.getVariable(varID));
                         break;
                     case 1:
                         WorldData[varName] = Game.player.variable.getString(varID);
@@ -1259,18 +1293,35 @@ module CommandExecute {
             varName = p.playerData.varName;
         }
         if (Game.player.data[varName] == undefined) return;
+        let count = (oldValue: number, value: number) => {
+            if (typeof oldValue != "number" || typeof value != "number") return value;
+            let v: number;
+            //@ts-ignore
+            if (!p.playerData.operationType) v = value;
+            //@ts-ignore
+            switch (p.playerData.operationType) {
+                case 1: v = oldValue + value; break;//加
+                case 2: v = oldValue - value; break;//减
+                case 3: v = oldValue * value; break;//乘
+                case 4: v = oldValue / value; break;//除
+                case 5: v = oldValue % value; break;//余
+                case 6: v = Math.pow(oldValue, value); break;//幂
+            }
+            //@ts-ignore
+            return p.playerData.isRounded ? MathUtils.int(v) : v;
+        }
         if (p.playerData.valueType == 0) {
             let v = p.playerData.value;
             if (v) {
                 //object类型
                 if (p.playerData.selectMode == 1 && p.playerData.inputModeInfo.typeIndex == 3) {
                     try {
-                        v.value = JSON.parse(v.value);
+                        v.value = JSON.parse(v.value as any);
                     } catch (e) {
-                        v.value = {};
+                        (v.value as any) = {};
                     }
                 }
-                Game.player.data[varName] = v.value;
+                Game.player.data[varName] = count(Game.player.data[varName], v.value);
             }
         }
         else {
@@ -1279,7 +1330,7 @@ module CommandExecute {
                 let varID: number = v.value;
                 switch (v.varType) {
                     case 0:
-                        Game.player.data[varName] = Game.player.variable.getVariable(varID);
+                        Game.player.data[varName] = count(Game.player.data[varName], Game.player.variable.getVariable(varID));
                         break;
                     case 1:
                         Game.player.data[varName] = Game.player.variable.getString(varID);
@@ -1461,7 +1512,24 @@ module CommandExecute {
                             soModule[varName] = gui;
                             p.addChildAt(soModule[varName], index);
                         }
-                        else soModule[varName] = value;
+                        else soModule[varName] = count(soModule[varName], value);
+                    }
+                    let count = (oldValue: number, value: number) => {
+                        if (typeof oldValue != "number" || typeof value != "number") return value;
+                        let v: number;
+                        //@ts-ignore
+                        if (!p.attr.operationType) v = value;
+                        //@ts-ignore
+                        switch (p.attr.operationType) {
+                            case 1: v = oldValue + value; break;//加
+                            case 2: v = oldValue - value; break;//减
+                            case 3: v = oldValue * value; break;//乘
+                            case 4: v = oldValue / value; break;//除
+                            case 5: v = oldValue % value; break;//余
+                            case 6: v = Math.pow(oldValue, value); break;//幂
+                        }
+                        //@ts-ignore
+                        return p.attr.isRounded ? MathUtils.int(v) : v;
                     }
                     //普通模式
                     if (p.attr.valueType == 0) {
@@ -1470,9 +1538,9 @@ module CommandExecute {
                             //object类型
                             if (p.attr.selectMode == 1 && p.attr.inputModeInfo.typeIndex == 3) {
                                 try {
-                                    v.value = JSON.parse(v.value);
+                                    v.value = JSON.parse(v.value as any);
                                 } catch (e) {
-                                    v.value = {};
+                                    (v.value as any) = {};
                                 }
                             }
                             setAttr(v.value);

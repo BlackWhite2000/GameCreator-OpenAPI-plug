@@ -7,7 +7,7 @@
 class CustomGameNumberParams_1 {
     type: number; // = 0; 当前场景
     isGrid: boolean; // = false; 格子坐标
-    dataGridIndex: number; // = 0; 存在
+    dataGridIndex: number; // = 0;  
     dynamicObs: boolean; // = false; 计算动态障碍
     dataGridUseVar: number; // = 0; 使用变量
     x: number; // = 0; 格子坐标x
@@ -94,10 +94,4 @@ class CustomGameNumberParams_8 {
 */
 class CustomGameNumberParams_9 {
     normalNumber: number; // = 0; 常用数值
-}
-/**
-* 自定义游戏数值 10-Steam
-*/
-class CustomGameNumberParams_10 {
-    type: number; // = 0;
 }

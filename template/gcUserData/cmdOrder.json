@@ -390,6 +390,11 @@
                     false
                 ],
                 [
+                    40021,
+                    "等待视频播放完成",
+                    false
+                ],
+                [
                     40008,
                     "消除图像",
                     false
@@ -567,104 +572,8 @@
             ]
         },
         {
-            "typeName": "测试Steam",
-            "commandList": [
-                [
-                    160006,
-                    "Steam初始化 Steam Init",
-                    false
-                ],
-                [
-                    160007,
-                    "安装DLC Install DLC",
-                    false
-                ],
-                [
-                    160008,
-                    "卸载DLC Uninstall DLC",
-                    false
-                ],
-                [
-                    160009,
-                    "激活成就 +Achievement",
-                    false
-                ],
-                [
-                    160010,
-                    "删除成就 -Achievement",
-                    false
-                ]
-            ]
-        },
-        {
             "typeName": "[#GAME_THE_PLUG-IN_COMMAND]",
-            "commandList": [
-                [
-                    160001,
-                    "获取日期",
-                    false
-                ],
-                [
-                    160002,
-                    "获取时间戳",
-                    false
-                ],
-                [
-                    160003,
-                    "获取时间",
-                    false
-                ],
-                [
-                    160004,
-                    "获取服务器时间",
-                    false
-                ],
-                [
-                    160005,
-                    "拖拽界面组件",
-                    false
-                ],
-                [
-                    160006,
-                    "Steam初始化 Steam Init",
-                    false
-                ],
-                [
-                    160007,
-                    "安装DLC Install DLC",
-                    false
-                ],
-                [
-                    160008,
-                    "卸载DLC Uninstall DLC",
-                    false
-                ],
-                [
-                    160009,
-                    "激活成就 +Achievement",
-                    false
-                ],
-                [
-                    160010,
-                    "删除成就 -Achievement",
-                    false
-                ],
-                [
-                    160011,
-                    "光标自定义plus",
-                    false
-                ],
-                [
-                    160012,
-                    "高级数值运算",
-                    false
-                ],
-                [
-                    160013,
-                    "字体切换",
-                    false
-                ]
-            ]
+            "commandList": []
         }
     ]
 }

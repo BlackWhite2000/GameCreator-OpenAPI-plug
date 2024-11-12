@@ -41,6 +41,7 @@ class GUI_2 extends GUI_BASE {
    list:UIList; // Item=1001
    关闭读档界面按钮:UIButton;
    关闭标志:UIBitmap;
+   界面标题背景:UIBitmap;
    界面标题:UIString;
    constructor(){
       super(2);
@@ -52,6 +53,7 @@ class ListItem_2 extends UIListItemData {
    滚动条背景:string;
    list:UIListItemData[];
    关闭标志:string;
+   界面标题背景:string;
    界面标题:string;
 }
 
@@ -94,6 +96,7 @@ class GUI_4 extends GUI_BASE {
    关闭标志:UIBitmap;
    货币图片:UIBitmap;
    我的金币文本:UIString;
+   界面标题背景:UIBitmap;
    界面标题:UIString;
    constructor(){
       super(4);
@@ -112,6 +115,7 @@ class ListItem_4 extends UIListItemData {
    关闭标志:string;
    货币图片:string;
    我的金币文本:string;
+   界面标题背景:string;
    界面标题:string;
 }
 
@@ -125,6 +129,7 @@ class GUI_5 extends GUI_BASE {
    list:UIList; // Item=1001
    关闭存档界面按钮:UIButton;
    关闭标志:UIBitmap;
+   界面标题背景:UIBitmap;
    界面标题:UIString;
    constructor(){
       super(5);
@@ -136,6 +141,7 @@ class ListItem_5 extends UIListItemData {
    滚动条背景:string;
    list:UIListItemData[];
    关闭标志:string;
+   界面标题背景:string;
    界面标题:string;
 }
 
@@ -396,111 +402,15 @@ class ListItem_13 extends UIListItemData {
 }
 
 /**
- * 14-TEST [BASE]
+ * 14- [BASE]
  */
 class GUI_14 extends GUI_BASE {
-   图片2:UIBitmap;
-   图片1:UIBitmap;
-   行走图:UIAvatar;
-   行走图2:UIAvatar;
-   文本:UIString;
-   滑块控件:UISlider;
-   游戏数值:UIString;
+
    constructor(){
       super(14);
    }
 }
 class ListItem_14 extends UIListItemData {
-   图片2:string;
-   图片1:string;
-   行走图:number;
-   行走图2:number;
-   文本:string;
-   滑块控件:number;
-
-}
-
-/**
- * 15-TEST2 [BASE]
- */
-class GUI_15 extends GUI_BASE {
-   图片2:UIBitmap;
-   容器:UIRoot;
-   物理:UIRoot;
-   图片:UIBitmap;
-   文本:UIString;
-   constructor(){
-      super(15);
-   }
-}
-class ListItem_15 extends UIListItemData {
-   图片2:string;
-   图片:string;
-   文本:string;
-}
-
-/**
- * 16- [BASE]
- */
-class GUI_16 extends GUI_BASE {
-
-   constructor(){
-      super(16);
-   }
-}
-class ListItem_16 extends UIListItemData {
-
-}
-
-/**
- * 17- [BASE]
- */
-class GUI_17 extends GUI_BASE {
-
-   constructor(){
-      super(17);
-   }
-}
-class ListItem_17 extends UIListItemData {
-
-}
-
-/**
- * 18- [BASE]
- */
-class GUI_18 extends GUI_BASE {
-
-   constructor(){
-      super(18);
-   }
-}
-class ListItem_18 extends UIListItemData {
-
-}
-
-/**
- * 19- [BASE]
- */
-class GUI_19 extends GUI_BASE {
-
-   constructor(){
-      super(19);
-   }
-}
-class ListItem_19 extends UIListItemData {
-
-}
-
-/**
- * 20- [BASE]
- */
-class GUI_20 extends GUI_BASE {
-
-   constructor(){
-      super(20);
-   }
-}
-class ListItem_20 extends UIListItemData {
 
 }
 

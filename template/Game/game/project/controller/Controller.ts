@@ -289,9 +289,11 @@ class Controller {
             return false;
         }
         // 不在场景上时忽略
-        if (!executor.inScene || !trigger.inScene || trigger.scene != Game.currentScene || executor.scene != Game.currentScene) return false;
+        if (!executor.inScene || !trigger.inScene || trigger.scene != Game.currentScene || executor.scene != Game.currentScene || !trigger.root.visible || !executor.root.visible) return false;
         // 跳跃中时忽略
         if (executor.isJumping || trigger.isJumping) return false;
+        // 派发碰触事件
+        executor.event(ProjectClientSceneObject.TOUCH, [trigger]);
         // 不允许非玩家以外的对象执行时则忽略
         if (executor.onlyPlayerTouch && trigger != Game.player.sceneObject) return false;
         // 如果需要玩家等待的场合
@@ -350,10 +352,12 @@ class Controller {
             return false;
         }
         // 不在场景上时忽略
-        if (!executor.inScene || !trigger.inScene || trigger.scene != Game.currentScene || executor.scene != Game.currentScene) return false;
+        if (!executor.inScene || !trigger.inScene || trigger.scene != Game.currentScene || executor.scene != Game.currentScene || !trigger.root.visible || !executor.root.visible) return false;
+        // 派发碰触事件
+        executor.event(ProjectClientSceneObject.AWAY_TOUCH, [trigger]);
         // 不允许非玩家以外的对象执行时则忽略
         if (executor.onlyPlayerTouch && trigger != Game.player.sceneObject) return false;
-        // 离开碰触的事件
+        // 离开离开碰触的事件
         GameCommand.startCommonCommand(14014, [], null, trigger, executor);
         // 没有事件时忽略
         if (!executor.hasCommand[4]) return false;

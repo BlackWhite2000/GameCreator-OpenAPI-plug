@@ -29,9 +29,11 @@ class AstarUtils {
      * @param gridH 格子高
      * @param obsArr 障碍数组 [x][y] = true/false
      * @param toGridAsThroughEnabled 目的地看作是可通行点
+     * @param throughMode 是否穿透模式，忽略障碍
+     * @param checker 检查者（如忽略掉与检查者具有穿透关系的动态障碍）
      * @return [string] 返回移动路线结果 [有效路径]=|x,y|x,y|x,y|x,y [无效路径]=null
      */
-    public static moveTo(x_x1: number, x_y1: number, x_x2: number, x_y2: number, gridW: number, gridH: number, scene: ProjectClientScene, ori4: boolean = false, toGridAsThroughEnabled: boolean = false): number[][] {
+    public static moveTo(x_x1: number, x_y1: number, x_x2: number, x_y2: number, gridW: number, gridH: number, scene: ProjectClientScene, ori4: boolean = false, toGridAsThroughEnabled: boolean = false, throughMode: boolean = false, checker: ProjectClientSceneObject = null): number[][] {
         let sceneUtils: SceneUtils = scene.sceneUtils;
         let GRID_SIZE = Config.SCENE_GRID_SIZE;
         let GRID_SIZE_HALF = Math.floor(Config.SCENE_GRID_SIZE / 2);// - 1;
@@ -76,12 +78,14 @@ class AstarUtils {
         }
         let helpP = new Point();
         //增加障碍物 scene.isObstacleGrid(helpP)  || !scene.isDynamicThrough(helpP)
-        for (let _x = n_f_x1; _x < n_f_x2; _x++) {
-            for (let _y = n_f_y1; _y < n_f_y2; _y++) {
-                helpP.x = _x;
-                helpP.y = _y;
-                if (sceneUtils.isObstacleGrid(helpP)) {
-                    mapmapmap[_y - offsetY][_x - offsetX].go = 1
+        if (!throughMode) {
+            for (let _x = n_f_x1; _x < n_f_x2; _x++) {
+                for (let _y = n_f_y1; _y < n_f_y2; _y++) {
+                    helpP.x = _x;
+                    helpP.y = _y;
+                    if (sceneUtils.isObstacleGrid(helpP, null, checker)) {
+                        mapmapmap[_y - offsetY][_x - offsetX].go = 1
+                    }
                 }
             }
         }

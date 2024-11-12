@@ -146,7 +146,7 @@
                             "compType": 6,
                             "compParam": {}
                         },
-                        "defaultValue": "",
+                        "defaultValue": "1",
                         "hideMode": false,
                         "useCommand": false,
                         "onlyPointTo": false,
@@ -217,7 +217,9 @@
                         "autoTitleWidth": false,
                         "titleWidth": 0,
                         "eyeShow": true,
-                        "lockBlock": false
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
                     },
                     "attrConditions": [],
                     "y": 80,
@@ -242,7 +244,7 @@
                                 "yDragEnabled": true
                             }
                         },
-                        "defaultValue": "",
+                        "defaultValue": "1",
                         "hideMode": false,
                         "useCommand": false,
                         "onlyPointTo": false,
@@ -290,7 +292,7 @@
                             "compType": 6,
                             "compParam": {}
                         },
-                        "defaultValue": "",
+                        "defaultValue": "1",
                         "hideMode": false,
                         "useCommand": false,
                         "onlyPointTo": false,

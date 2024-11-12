@@ -13,5 +13,6 @@
             "cmdIcon": "asset/image/command/eP_icon_ClearMenu_blue.png"
         }
     ],
-    "isCustomPhraseDesc": false
+    "isCustomPhraseDesc": false,
+    "fastModifyAttribute": false
 }

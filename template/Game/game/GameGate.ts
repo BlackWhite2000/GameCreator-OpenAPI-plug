@@ -269,6 +269,7 @@ class GameGate {
             }
             else {
                 GameGate.gateState = GameGate.STATE_4_PLAYER_CONTROL_START;
+                EventUtils.happen(GameGate, GameGate.EVENT_IN_SCENE_STATE_CHANGE, [inNewSceneState]);
             }
         }
     }

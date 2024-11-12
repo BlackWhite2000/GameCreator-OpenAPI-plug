@@ -320,7 +320,7 @@
                 "compType": 15,
                 "compParam": {}
             },
-            "defaultValue": "",
+            "defaultValue": "1",
             "hideMode": false,
             "useCommand": false,
             "onlyPointTo": false,
@@ -350,7 +350,7 @@
                 "compType": 15,
                 "compParam": {}
             },
-            "defaultValue": "",
+            "defaultValue": "1",
             "hideMode": false,
             "useCommand": false,
             "onlyPointTo": false,
@@ -439,9 +439,42 @@
             "titleWidth": 100,
             "enumEnable_get": false,
             "enumEnable_set": false
+        },
+        {
+            "id": "162193802929_0.4895214921303044",
+            "varName": "collisionGroup",
+            "varType": 0,
+            "compData": {
+                "compType": 0,
+                "compParam": {}
+            },
+            "defaultValue": "",
+            "hideMode": false,
+            "useCommand": false,
+            "onlyPointTo": false,
+            "moduleID": 1,
+            "dataStructureID": 1,
+            "arrayMode": false,
+            "arrayLength": 100,
+            "arrayAllowDelete": false,
+            "arrayAllowSwap": false,
+            "arrayAllowUpdate": false,
+            "accessMode": 1,
+            "syncMode": 1,
+            "attrTips": "碰撞组，根据世界设定的碰撞组关系决定是否互相碰撞\\n（我方队友碰撞组=1）",
+            "alias": "碰撞组",
+            "onlyConfig": false,
+            "preview": false,
+            "autoTitleWidth": true,
+            "titleWidth": 100,
+            "eyeShow": true,
+            "lockBlock": false,
+            "enumEnable_get": true,
+            "enumEnable_set": true
         }
     ],
     "attrConditions": [
+        [],
         [],
         [],
         [],
@@ -462,6 +495,8 @@
     "clientInstanceClassName": "ProjectClientSceneObject",
     "supportTriggerTypes": [],
     "supportStatusPage": true,
+    "hidePublicAttributes": [],
+    "editorListPresetData": [],
     "id": 0,
     "sysInitCommonModelData": true
 }

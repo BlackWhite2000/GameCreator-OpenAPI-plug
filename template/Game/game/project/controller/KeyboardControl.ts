@@ -200,11 +200,13 @@ class KeyboardControl {
             }
         }
         // 向前模拟一格开始碰撞
-        let halfGrid = (Config.SCENE_GRID_SIZE / 2) * (Config.SCENE_GRID_SIZE / 2);
-        if (WorldData.moveToGridCenter) halfGrid *= 2;
+        let halfGrid = (Config.SCENE_GRID_SIZE) * (Config.SCENE_GRID_SIZE);
+        if (WorldData.moveToGridCenter) halfGrid * 0.75;
         let myPoTest = new Point(Game.player.sceneObject.x, Game.player.sceneObject.y);
         myPoTest.x += this.dirOffsetArr[d][0] / 2 * Config.SCENE_GRID_SIZE;
         myPoTest.y += this.dirOffsetArr[d][1] / 2 * Config.SCENE_GRID_SIZE;
+        let minTarget: ProjectClientSceneObject = null;
+        let minNumber = Number.MAX_VALUE;
         for (let i = 0; i < soLen; i++) {
             let so = Game.currentScene.sceneObjects[i];
             // 无对象、玩家自己、无点击事件、不在场上的对象忽略掉
@@ -213,10 +215,13 @@ class KeyboardControl {
             let dis2 = Point.distanceSquare2(so.x, so.y, myPoTest.x, myPoTest.y);
             // 交集超过1/4格子时
             if (dis2 <= halfGrid) {
-                Controller.startSceneObjectClickEvent(so);
-                return;
+                if (dis2 < minNumber) {
+                    minTarget = so
+                    minNumber = dis2;
+                }
             }
         }
+        if (minTarget) Controller.startSceneObjectClickEvent(minTarget);
     }
     //------------------------------------------------------------------------------------------------------
     // 内部实现-方向
@@ -389,8 +394,7 @@ class KeyboardControl {
                     if (!this.moveDirect(newX, newY, false)) {
                         newX = Game.player.sceneObject.x + (x - Game.player.sceneObject.x < 0 ? -Config.SCENE_GRID_SIZE : Config.SCENE_GRID_SIZE);
                         newY = Game.player.sceneObject.y;
-                        // @ts-ignore
-                        if (!this.moveDirect(newX, newY), false) {
+                        if (!this.moveDirect(newX, newY, false)) {
                             return false;
                         }
                         else {

@@ -11,6 +11,7 @@
                 "width": 430,
                 "height": 65,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -27,6 +28,7 @@
                 "image": "asset/image/picture/control/itemBg.png",
                 "grid9": "15,15,15,15,0",
                 "flip": null,
+                "isTile": false,
                 "pivotType": 0
             },
             {
@@ -39,6 +41,7 @@
                 "width": 51,
                 "height": 18,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": false,
@@ -83,6 +86,7 @@
                 "width": 194,
                 "height": 18,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": false,
@@ -127,6 +131,7 @@
                 "width": 54,
                 "height": 54,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -143,6 +148,7 @@
                 "image": "asset/image/picture/control/propBg.png",
                 "grid9": "10,10,10,10,0",
                 "flip": null,
+                "isTile": false,
                 "pivotType": 0
             },
             {
@@ -155,6 +161,7 @@
                 "width": 48,
                 "height": 48,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -168,9 +175,10 @@
                 "showOnEditor": true,
                 "hasCommand": [],
                 "isOpen": true,
-                "image": "asset/image/picture/icon/item/Box_3.png",
+                "image": "asset/image/picture/other/BlueFeather.png",
                 "grid9": "3,3,3,3,0",
                 "flip": null,
+                "isTile": false,
                 "pivotType": 0
             },
             {
@@ -183,6 +191,7 @@
                 "width": 54,
                 "height": 54,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -199,6 +208,7 @@
                 "image": "asset/image/picture/control/propFrame.png",
                 "grid9": "10,10,10,10,0",
                 "flip": null,
+                "isTile": false,
                 "pivotType": 0
             }
         ]

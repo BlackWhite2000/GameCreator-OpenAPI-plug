@@ -474,6 +474,9 @@ module CommandExecute {
         // 获取通道
         let passageID = cp.passageIDUseVar ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
         passageID = MathUtils.int(passageID);
+        // 派发清理事件
+        let a = GameImageLayer.getImageSprite(passageID);
+        if (a) a.event(`___deletePassage`);
         // 清理通道
         GameImageLayer.deletePassage(passageID);
     }
@@ -517,7 +520,7 @@ module CommandExecute {
             passageID = 1000000 + uiID;
         }
         // 清理通道
-        GameImageLayer.deletePassage(passageID);
+        // GameImageLayer.deletePassage(passageID);
         // 获取属性
         let toDpX: number, toDpY: number, toDpScaleX: number, toDpScaleY: number;
         if (cp.posUseVar) {
@@ -686,22 +689,19 @@ module CommandExecute {
      * 关闭界面
      */
     export function customCommand_3012(commandPage: CommandPage, cmd: Command, trigger: CommandTrigger, triggerPlayer: ClientPlayer, playerInput: any[], cp: CustomCommandParams_3012): void {
-        // 获取通道
-        let passageID = cp.passageIDUseVar ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
-        passageID = MathUtils.int(passageID);
-        // 界面ID
-        let uiID = cp.objectUseVar ? Game.player.variable.getVariable(cp.uiVar) : cp.uiID;
         // -- 图像层的场合
         if (cp.showType == 1) {
+            // 获取通道
+            let passageID = cp.passageIDUseVar ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
+            passageID = MathUtils.int(passageID);
             passageID = cp.passageIDUseVar ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
+            GameImageLayer.deletePassage(passageID);
         }
         // -- 界面层的场合
         else {
-            passageID = 1000000 + uiID;
+            let uiID = cp.objectUseVar ? Game.player.variable.getVariable(cp.uiVar) : cp.uiID;
             GameUI.hide(uiID);
         }
-        // 清理通道
-        GameImageLayer.deletePassage(passageID);
     }
     /**
      * 移动界面元件
@@ -979,12 +979,11 @@ module CommandExecute {
     /**
      * 显示视频
      */
+    let startVideo: UIVideo;
     export function customCommand_3018(commandPage: CommandPage, cmd: Command, trigger: CommandTrigger, triggerPlayer: ClientPlayer, playerInput: any[], cp: CustomCommandParams_3018): void {
         // 获取通道
         let passageID = cp.passageIDUseVar ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
         passageID = MathUtils.int(passageID);
-        // 清理通道
-        GameImageLayer.deletePassage(passageID);
         // 获取属性值
         let video = cp.objectUseVar ? Game.player.variable.getString(cp.videoVar) : cp.video;
         let dpX: number, dpY: number, dpWidth: number, dpHeight: number;
@@ -1009,33 +1008,57 @@ module CommandExecute {
         let opacity = cp.opacityUseVar ? Game.player.variable.getVariable(cp.opacityVar) : cp.opacity;
         // 创建显示对象
         let a = new UIVideo();
+        startVideo = a;
+        // 先暂停，等真正载入完毕时才继续
+        trigger.pause = true;
+        trigger.offset(1);
+        a.once(EventObject.LOADED, this, () => {
+            a.dpX = dpX;
+            a.dpY = dpY;
+            a.dpZ = dpz;
+            a.dpWidth = dpWidth;
+            a.dpHeight = dpHeight;
+            a.rotation1 = rotation;
+            a.opacity = opacity;
+            a.flip = cp.flip;
+            let currentTime = cp.currentTimeUseVar ? Game.player.variable.getVariable(cp.currentTimeVar) : cp.currentTime;
+            a.muted = cp.muted;
+            a.loop = cp.loop;
+            a.volume = cp.volume;
+            a.currentTime = currentTime;
+            a.playbackRate = cp.playbackRate;
+            a.playType = cp.playType;
+            a.dpCoordToRealCoord();
+            Game.layer.imageLayer.addChild(a);
+            a.visible = false;
+            if (a.playType != 0 || a.isPlaying) {
+                GameImageLayer.deletePassage(passageID);
+                // 设置通道由该显示对象占用
+                GameImageLayer.setImageSprite(passageID, a);
+                a.visible = true;
+                CommandPage.executeEvent(trigger, []);
+            }
+            else {
+                os.add_ENTERFRAME(() => {
+                    if (a.isPlaying) {
+                        setFrameout(() => {
+                            GameImageLayer.deletePassage(passageID);
+                            // 设置通道由该显示对象占用
+                            GameImageLayer.setImageSprite(passageID, a);
+                            CommandPage.executeEvent(trigger, []);
+                            a.visible = true;
+                            a.event(`Video_Real_Loaded`);
+                        }, 1)
+                        //@ts-ignore
+                        os.remove_ENTERFRAME(arguments.callee, this);
+                    }
+                }, this);
+            }
+        })
         a.useDPCoord = true;
         a.dpDisplayPriority = passageID;
         a.videoURL = video;
-        // 设置通道由该显示对象占用
-        GameImageLayer.setImageSprite(passageID, a);
-        Game.layer.imageLayer.addChild(a);
-
-        a.dpX = dpX;
-        a.dpY = dpY;
-        a.dpZ = dpz;
-        a.dpWidth = dpWidth;
-        a.dpHeight = dpHeight;
-        a.rotation1 = rotation;
-        a.opacity = opacity;
-        a.flip = cp.flip;
-
-        let currentTime = cp.currentTimeUseVar ? Game.player.variable.getVariable(cp.currentTimeVar) : cp.currentTime;
-        a.muted = cp.muted;
-        a.loop = cp.loop;
-        a.volume = cp.volume;
-        a.currentTime = currentTime;
-        a.playbackRate = cp.playbackRate;
-        a.playType = cp.playType;
-
-        a.dpCoordToRealCoord();
-
-
+        if (cp.blendMode != null) a.blendMode = [null, "lighter", "blend5-1", "blend4-1", "blend4-7", "blend4-4"][cp.blendMode];
     }
     /**
      * 移动视频
@@ -1045,8 +1068,10 @@ module CommandExecute {
         let passageID = cp.passageIDUseVar ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
         passageID = MathUtils.int(passageID);
         // 获取通道显示对象
-        let a = GameImageLayer.getImageSprite(passageID) as UIBitmap;
-        if (!a || !(a instanceof UIBitmap)) return;
+        let a = GameImageLayer.getImageSprite(passageID) as UIVideo;
+        if (!a || !(a instanceof UIBitmap)) {
+            return;
+        }
         // 标识：用于注册图像层帧刷时的标识，以便可用此标识取消该类型帧刷
         let sign = "gcVideoMove";
         // 清理同一个通道的移动图像效果
@@ -1072,6 +1097,7 @@ module CommandExecute {
         }
         let toRotation = cp.rotationUseVar ? Game.player.variable.getVariable(cp.rotationVar) : cp.rotation;
         let toOpacity = cp.opacityUseVar ? Game.player.variable.getVariable(cp.opacityVar) : cp.opacity;
+        let toCurrentTime = cp.changeStartTime ? (cp.currentTimeUseVar ? Game.player.variable.getVariable(cp.currentTimeVar) : cp.currentTime) : null;
         // 立即模式：无需清理此行为
         if (cp.timeType == 0) {
             a.dpX = toDpX;
@@ -1082,6 +1108,14 @@ module CommandExecute {
             a.rotation = toRotation;
             a.opacity = toOpacity;
             a.flip = cp.flip;
+
+            if (cp.playType != null && a.playType != cp.playType) a.playType = cp.playType;
+            if (cp.muted != null) a.muted = cp.muted;
+            if (cp.loop != null) a.loop = cp.loop;
+            if (cp.playbackRate != null) a.playbackRate = cp.playbackRate;
+            if (cp.changeStartTime) a.currentTime = toCurrentTime;
+            if (cp.volume != null) a.volume = cp.volume;
+            if (cp.blendMode != null) a.blendMode = [null, "lighter", "blend5-1", "blend4-1", "blend4-7", "blend4-4"][cp.blendMode];
         }
         // 过渡模式：由于注册了帧刷，需要清理
         else {
@@ -1104,30 +1138,93 @@ module CommandExecute {
                 rotation2: toRotation - a.rotation1,
                 opacity2: toOpacity - a.opacity,
                 pivotType2: a.pivotType,
-                blendMode2: 0,
+                blendMode2: cp.blendMode,
                 flip2: cp.flip,
-                transData: GameUtils.getTransData(cp.trans)
+                transData: GameUtils.getTransData(cp.trans),
+                volume: a.volume,
+                currentTime: a.currentTime,
+                volume2: cp.volume != null ? cp.volume - a.volume : null,
+                currentTime2: toCurrentTime == null ? null : toCurrentTime - a.currentTime,
             }
             let thisPtr = {};
             GameImageLayer.regPassageFrameUpdate(passageID, gcImageMoveFrameUpdate, thisPtr, [a, m, passageID, sign], sign);
+            // 立即更改
+            if (cp.playType != null && a.playType != cp.playType) {
+                a.playType = cp.playType;
+            }
+            if (cp.muted != null) a.muted = cp.muted;
+            if (cp.loop != null) a.loop = cp.loop;
+            if (cp.playbackRate != null) a.playbackRate = cp.playbackRate;
             // 立刻开始执行一帧
             gcImageMoveFrameUpdate.apply(thisPtr, [a, m, passageID, sign]);
         }
     }
     /**
+     * 等待指定视频播放完成
+     */
+    export function customCommand_3021(commandPage: CommandPage, cmd: Command, trigger: CommandTrigger, triggerPlayer: ClientPlayer, playerInput: any[], cp: CustomCommandParams_3021): void {
+        let passageID = cp.varType == 1 ? Game.player.variable.getVariable(cp.passageIDVar) : cp.passageID;
+        let a = GameImageLayer.getImageSprite(passageID) as UIVideo;
+        if (!a || !(a instanceof UIVideo)) {
+            // -- 再次查询即将开始的UIVideo
+            a = startVideo;
+            if (!a) {
+                return;
+            }
+            // -- 找到后等待真正加载完成
+            else {
+                startVideo = null;
+                // 停止
+                a.once(`Video_Real_Loaded`, this, doWaitVideo, [true]);
+                return;
+            }
+        }
+        function doWaitVideo(realLoaded: boolean = false) {
+            // 如果被删除掉了
+            a.once(`___deletePassage`, this, doNext);
+            // 等待真正的加载完毕后
+            if (realLoaded) {
+                trigger.pause = true;
+                trigger.offset(1);
+                a.once(EventObject.COMPLETE, this, doNext, [trigger]);
+            }
+            // 未加载完成时先加载
+            else if (isNaN(a.duration)) {
+                a.once(EventObject.LOADED, this, () => {
+                    a.once(EventObject.COMPLETE, this, doNext, [trigger]);
+                });
+            }
+            else if (a.isPlaying) {
+                // 等待播放完成后继续执行
+                a.once(EventObject.COMPLETE, this, doNext, [trigger]);
+            }
+            else {
+                doNext.apply(this);
+            }
+        }
+        function doNext(): void {
+            a.offAll(`___deletePassage`);
+            if (trigger.pause) CommandPage.executeEvent(trigger, []);
+        }
+        // 停止
+        trigger.pause = true;
+        trigger.offset(1);
+        doWaitVideo.apply(this);
+    }
+    /**
      * 记录监听的界面以及对应的触发器标识
      */
-    var isWaitingUICloseInfos: { uiID: number, triggerMainType: number, triggerIndexType: number, triggerFrom: any }[] = []
+    let isWaitingUICloseInfos: { uiID: number, triggerMainType: number, triggerIndexType: number, triggerFrom: any }[] = []
     /**
      * 额外的存档标识
      */
-    var extSaveSign: string = "waitCloseUIListener";
+    let extSaveSign: string = "waitCloseUIListener";
     /**
      * 等待指定界面关闭
      */
     export function customCommand_3020(commandPage: CommandPage, cmd: Command, trigger: CommandTrigger, triggerPlayer: ClientPlayer, playerInput: any[], p: CustomCommandParams_3020): void {
         // 根据常量或变量或者界面编号
-        var uiID = p.useVar == 1 ? Game.player.variable.getVariable(p.uiVar) : p.uiID;
+        let uiID = p.useVar == 1 ? Game.player.variable.getVariable(p.uiVar) : p.uiID;
         // 如果该界面已打开的话则暂停并监听关闭后继续事件
         if (GameUI.isOpened(uiID)) {
             trigger.pause = true;
@@ -1145,9 +1242,9 @@ module CommandExecute {
      * 读档：重新恢复监听界面关闭的状态
      */
     EventUtils.addEventListener(SinglePlayerGame, SinglePlayerGame.EVENT_RECOVER_TRIGGER, Callback.New((trigger: CommandTrigger) => {
-        var listers: { uiID: number, triggerMainType: number, triggerIndexType: number, from: any }[] = SinglePlayerGame.getSaveCustomData(extSaveSign);
+        let listers: { uiID: number, triggerMainType: number, triggerIndexType: number, from: any }[] = SinglePlayerGame.getSaveCustomData(extSaveSign);
         // 检查该触发器是否在listers中
-        var lister = ArrayUtils.matchAttributes(listers, { triggerMainType: trigger.mainType, triggerIndexType: trigger.indexType, triggerFrom: trigger.from }, true)[0];
+        let lister = ArrayUtils.matchAttributes(listers, { triggerMainType: trigger.mainType, triggerIndexType: trigger.indexType, triggerFrom: trigger.from }, true)[0];
         if (lister) {
             listenerWhenUIClose(lister.uiID, trigger);
         }
@@ -1159,7 +1256,7 @@ module CommandExecute {
      */
     function listenerWhenUIClose(uiID: number, trigger: CommandTrigger) {
         // 添加监听记录至列表，以便读档后恢复
-        var t = { uiID: uiID, triggerMainType: trigger.mainType, triggerIndexType: trigger.indexType, triggerFrom: trigger.from };
+        let t = { uiID: uiID, triggerMainType: trigger.mainType, triggerIndexType: trigger.indexType, triggerFrom: trigger.from };
         isWaitingUICloseInfos.push(t);
         // 添加监听指定的界面关闭时事件
         EventUtils.addEventListenerFunction(GameUI, GameUI.EVENT_CLOSE_SYSTEM_UI, (closeUIID: number) => {
@@ -1320,6 +1417,10 @@ module CommandExecute {
         a.dpHeight = m.height2 * value + m.height;
         a.rotation1 = m.rotation2 * value + m.rotation;
         a.opacity = m.opacity2 * value + m.opacity;
+        if (a instanceof UIVideo) {
+            if (m.volume2 != null) a.volume = m.volume2 * value + m.volume;
+            if (m.currentTime2 != null) a.currentTime = m.currentTime2 * value + m.currentTime;
+        }
         m.curTime++;
         if (per == 1) {
             GameImageLayer.clearPassageFrameUpdate(passageID, sign);
@@ -1497,6 +1598,11 @@ module CommandExecute {
         blendMode2: number;
         flip2: boolean;
         transData: TransData;
+        // video
+        volume?: number;
+        currentTime?: number;
+        volume2?: number;
+        currentTime2?: number;
     }
     // 移动图像层镜头的参数伪类
     declare class ImageLayerCameraMoveParams {
@@ -1607,7 +1713,7 @@ module CommandExecute {
         // -- 获取通道
         let passageID = 1000000 + uiID;
         // -- 删除该通道
-        GameImageLayer.deletePassage(passageID);
+        // GameImageLayer.deletePassage(passageID);
     }, null));
     //------------------------------------------------------------------------------------------------------
     // 存档和读档-追加这些事件的修改的状态
@@ -1682,6 +1788,7 @@ module CommandExecute {
                 }
                 // 界面
                 else if (sp instanceof GUI_BASE) {
+                    if (!sp.stage) continue;
                     let saveAttrs: string[];
                     if (sp.useDPCoord) {
                         saveAttrs = ["useDPCoord", "dpX", "dpY", "dpZ", "dpScaleX", "dpScaleY", "rotation1", "rotation2", "opacity", "blendMode"];

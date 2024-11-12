@@ -11,6 +11,7 @@
                 "width": 208,
                 "height": 10,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,
@@ -26,6 +27,8 @@
                 "isOpen": true,
                 "image": "asset/image/picture/control/slider_bg.png",
                 "grid9": "5,10,5,10,0",
+                "flip": false,
+                "isTile": false,
                 "pivotType": 0
             },
             {
@@ -38,6 +41,7 @@
                 "width": 202,
                 "height": 4,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": false,
@@ -64,7 +68,9 @@
                 "transverseMode": true,
                 "blockFillMode": 1,
                 "blockPosMode": 0,
-                "fillStrething": false
+                "fillStrething": false,
+                "isBindingVarID": false,
+                "bindingVarID": -1
             },
             {
                 "id": "43899414627_0.9517476473442967",
@@ -76,6 +82,7 @@
                 "width": 192,
                 "height": 192,
                 "opacity": 1,
+                "blend": 0,
                 "rotation": 0,
                 "show": true,
                 "mouseEventEnabledData": true,

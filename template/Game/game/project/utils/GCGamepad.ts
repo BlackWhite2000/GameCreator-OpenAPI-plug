@@ -230,8 +230,9 @@ class GCGamepad extends EventDispatcher {
      */
     private update() {
         // 获取可用的手柄
+        if (!navigator.getGamepads) return;
         let gamepads = navigator.getGamepads();
-        if (!gamepads) return;
+        if (!gamepads || gamepads.length == 0) return;
         let pad: Gamepad;
         for (let i = 0, index = 0; i < gamepads.length; i++) {
             pad = gamepads[i];

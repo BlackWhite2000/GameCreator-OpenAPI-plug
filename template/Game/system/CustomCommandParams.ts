@@ -158,6 +158,7 @@ class CustomCommandParams_1001 {
     yVarID: number; // = 0; 格子坐标y
     layer: number; // = 0; 网格层
     on: number; // = 0; 开启
+    value: number; // = 0; 值
 }
 /**
 * 自定义指令 1002-绘制图块
@@ -303,10 +304,10 @@ class CustomCommandParams_2002 {
     symbol: number; // = 0; 操作
     itemID: number; // = 1; 道具
     useVar1: number; // = 0; 使用变量
-    itemIDVarID: number; // = 0; 道具
+    itemIDVarID: number; // = 1; 道具
     useVar2: number; // = 0; 使用变量
-    num: number; // = 0; 数目
-    numVarID: number; // = 0; 数目
+    num: number; // = 1; 数目
+    numVarID: number; // = 1; 数目
 }
 /**
 * 自定义指令 2003-克隆对象
@@ -847,11 +848,12 @@ class CustomCommandParams_3018 {
     playType: number; // = 0; 播放模式
     flip: boolean; // = false; 水平翻转
     muted: boolean; // = false; 静音模式
-    loop: boolean; // = true; 循环播放
+    loop: boolean; // = false; 循环播放
     volume: number; // = 1; 音量
     currentTime: number; // = 0; 起始时间
     currentTimeVar: number; // = 1; 起始时间
     playbackRate: number; // = 1; 播放速率
+    blendMode: number; // = 0; 混合模式
     higher: boolean; // = false; 高级设定
     objectUseVar: boolean; // = false; 视频使用变量
     posUseVar: boolean; // = false; 坐标使用变量
@@ -885,7 +887,16 @@ class CustomCommandParams_3019 {
     rotationVar: number; // = 1; 旋转度
     opacity: number; // = 1; 透明度
     opacityVar: number; // = 1; 透明度
+    playType: number; // = 0; 播放模式
     flip: boolean; // = false; 水平翻转
+    muted: boolean; // = false; 静音模式
+    loop: boolean; // = false; 循环播放
+    volume: number; // = 1; 音量
+    changeStartTime: boolean; // = false; 更改起始时间
+    currentTime: number; // = 0; 起始时间
+    currentTimeVar: number; // = 1; 起始时间
+    playbackRate: number; // = 1; 播放速率
+    blendMode: number; // = 0; 混合模式
     higher: boolean; // = false; 高级设定
     posUseVar: boolean; // = false; 坐标使用变量
     sizeUseVar: boolean; // = false; 尺寸使用变量
@@ -893,6 +904,7 @@ class CustomCommandParams_3019 {
     opacityUseVar: boolean; // = false; 透明度使用变量
     rotationUseVar: boolean; // = false; 旋转度使用变量
     passageIDUseVar: boolean; // = false; 编号使用变量
+    currentTimeUseVar: boolean; // = false; 起始时间使用变量
 }
 /**
 * 自定义指令 3020-等待关闭界面
@@ -901,6 +913,14 @@ class CustomCommandParams_3020 {
     useVar: number; // = 0; 类别
     uiID: number; // = 1; 界面
     uiVar: number; // = 1; 界面
+}
+/**
+* 自定义指令 3021-等待视频播放完成
+*/
+class CustomCommandParams_3021 {
+    passageID: number; // = 1; 编号
+    passageIDVar: number; // = 1; 编号
+    varType: number; // = 0; 模式
 }
 /**
 * 自定义指令 4001-允许玩家控制
@@ -1074,168 +1094,4 @@ class CustomCommandParams_8002 {
     noVarID: number; // = 1; 对象编号
     soType: number; // = 2; 对象
     attr: CustomCompData; // 属性
-}
-/**
-* 自定义指令 15001-获取日期
-*/
-class CustomCommandParams_15001 {
-    setTypeDataList: number; // = 0;  
-    setType: boolean; // = false; 输出指定时间单位 (输出至将变为数值)
-    setStr: number; // = 0; 输出至
-    setNum: number; // = 0; 输出至
-    isDataIndex: boolean; // = false; 一位数情况下, 保留0的存在. 即输出 01 而不是 1 (输出至将变为字符串-优先级最高)
-    timeDataTypeList: number; // = 0; 时间戳来源
-    timeStampType: number; // = 1;  
-    timeStamp: number; // = 0;  
-    timeStampVar: number; // = 0;  
-}
-/**
-* 自定义指令 15002-获取时间戳
-*/
-class CustomCommandParams_15002 {
-    timeStr: number; // = 0; 日期
-    timeStamp: number; // = 0; 输出至
-    isTimeType: boolean; // = false; 指定单位转换
-    timeDataTypeList: number; // = 0; 日期来源
-    timeNumType_y: number; // = 0;  
-    timeNumType_h: number; // = 0;  
-    timeNumType_m: number; // = 0;  
-    timeNumType_i: number; // = 0;  
-    timeNumType_d: number; // = 0;  
-    timeNumType_s: number; // = 0;  
-    timeNumVar_m: number; // = 0; 月
-    timeNumVar_h: number; // = 0; 时
-    timeNumVar_i: number; // = 0; 分
-    timeNumVar_d: number; // = 0; 日
-    timeNumVar_s: number; // = 0; 秒
-    timeNumVar_y: number; // = 0; 年
-    timeNum_y: number; // = 1970; 年
-    timeNum_m: number; // = 1; 月
-    timeNum_d: number; // = 1; 日
-    timeNum_h: number; // = 0; 时
-    timeNum_i: number; // = 0; 分
-    timeNum_s: number; // = 0; 秒
-}
-/**
-* 自定义指令 15003-获取时间
-*/
-class CustomCommandParams_15003 {
-    setTime: number; // = 0; 输出至
-    timeDataTypeList: number; // = 0; 时间来源
-    timeGetStatus: number; // = 0; 状态开关
-    setTimeStamp: number; // = 0; 获取时间戳
-    timeNumType_y: number; // = 0;  
-    timeNumType_h: number; // = 0;  
-    timeNumType_m: number; // = 0;  
-    timeNumType_i: number; // = 0;  
-    timeNumType_d: number; // = 0;  
-    timeNumType_s: number; // = 0;  
-    timeNumVar_m: number; // = 0; 月
-    timeNumVar_h: number; // = 0; 时
-    timeNumVar_i: number; // = 0; 分
-    timeNumVar_d: number; // = 0; 日
-    timeNumVar_s: number; // = 0; 秒
-    timeNumVar_y: number; // = 0; 年
-    timeNum_y: number; // = 1970; 年
-    timeNum_m: number; // = 1; 月
-    timeNum_d: number; // = 1; 日
-    timeNum_h: number; // = 0; 时
-    timeNum_i: number; // = 0; 分
-    timeNum_s: number; // = 0; 秒
-}
-/**
-* 自定义指令 15004-获取服务器时间
-*/
-class CustomCommandParams_15004 {
-    yy: boolean; // = false; 年
-    yyVar: number; // = 0;
-    mm: boolean; // = false; 月 
-    mmVar: number; // = 0;
-    dd: boolean; // = false; 日
-    ddVar: number; // = 0;
-    hh: boolean; // = false; 时
-    hhVar: number; // = 0;
-    min: boolean; // = false; 分
-    minVar: number; // = 0;
-    ss: boolean; // = false; 秒
-    ssVar: number; // = 0;
-    retVar: number; // = 0;
-    ret: boolean; // = false; 返回值
-}
-/**
-* 自定义指令 15005-拖拽界面组件
-*/
-class CustomCommandParams_15005 {
-    selectData: { uiID: number, compName:string, compID:string, varName:string }; // 界面组件
-    limit: boolean; // = false; 限制拖拽范围
-    startx: number; // = 0; 起始坐标X
-    starty: number; // = 0; 起始坐标Y
-    limitW: number; // = 0; 限制宽度
-    limitH: number; // = 0; 限制高度
-}
-/**
-* 自定义指令 15006-Steam初始化 Steam Init
-*/
-class CustomCommandParams_15006 {
-    validationMode: number; // = 1;
-    validationPrompt: string; // = "Please purchase the game!"; 验证提示 - Validation Prompt
-}
-/**
-* 自定义指令 15007-安装DLC Install DLC
-*/
-class CustomCommandParams_15007 {
-    dlc: number; // = 0; DLC ID
-}
-/**
-* 自定义指令 15008-卸载DLC Uninstall DLC
-*/
-class CustomCommandParams_15008 {
-    dlc: number; // = 0; DLC ID
-}
-/**
-* 自定义指令 15009-激活成就 +Achievement
-*/
-class CustomCommandParams_15009 {
-    achieveID: string; // = ""; Achieve ID
-    onSuccess: string; // = ""; 成功时 - on Success
-    onFail: string; // = ""; 失败时 - on Fail
-}
-/**
-* 自定义指令 15010-删除成就 -Achievement
-*/
-class CustomCommandParams_15010 {
-    achieveID: string; // = ""; Achieve ID
-    onSuccess: string; // = ""; 成功时 - on Success
-    onFail: string; // = ""; 失败时 - on Fail
-}
-/**
-* 自定义指令 15011-光标自定义plus
-*/
-class CustomCommandParams_15011 {
-    cursorStyle_Model: number; // = 0; 选择光标样式
-}
-/**
-* 自定义指令 15012-高级数值运算
-*/
-class CustomCommandParams_15012 {
-    math: string; // = ""; 运算方式
-    set: number; // = 0; 设置至
-    setGameNumber: boolean; // = false; 定义游戏数值
-    label1: boolean; // = false; 查看使用说明
-    label2: boolean; // = false; 查看高级用法
-    gVar: boolean; // = false; 二周目变量
-    setG: number; // = 0; 设置至
-    debug: boolean; // = false; Debug
-    abs: boolean; // = false; 取绝对值
-    sqrt: boolean; // = false; 开方
-    round: boolean; // = false; 取整
-    decimal: number; // = 0;  
-    gameNumber: any[]; // = [];
-}
-/**
-* 自定义指令 15013-字体切换
-*/
-class CustomCommandParams_15013 {
-    fontMap: number; // = 0; 要切换的字体模块
-    restoreOriFont: boolean; // = false; 切换回原字体
 }

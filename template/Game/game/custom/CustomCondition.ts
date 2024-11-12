@@ -29,14 +29,57 @@ module CustomCondition {
         if (p.type == 10) return so.repeatedTouchEnabled;
         if (p.type == 11) return so.onlyPlayerTouch;
         if (p.type == 12) return so.waitTouchEvent;
-        if (p.type == 13) return so[p.soCustomAttr.varName] ? true : false;
+        if (p.type == 13) {
+            //获取设置的名称
+            let varName: string;
+            if (p.soCustomAttr.selectMode == 1) {
+                let mode = p.soCustomAttr.inputModeInfo.mode;
+                let constName = p.soCustomAttr.inputModeInfo.constName;
+                let varNameIndex = p.soCustomAttr.inputModeInfo.varNameIndex;
+                varName = mode == 0 ? constName : Game.player.variable.getString(varNameIndex);
+            }
+            else {
+                varName = p.soCustomAttr.varName;
+            }
+            //指定界面
+            if (p.soCustomAttr.compAttrEnable) {
+                // 获取界面
+                let ui: GUI_BASE = so[varName];
+                if (!ui || !(ui instanceof GUI_BASE)) return false;
+                // 根据组件唯一ID找到该组件
+                let comp = ui.compsIDInfo[p.soCustomAttr.compInfo.compID];
+                if (!comp) return false;
+                return comp[p.soCustomAttr.compInfo.varName] ? true : false;
+            } else {
+                return so[varName] ? true : false;
+            }
+        }
         if (p.type == 14) {
             let soModule = so.getModule(p.soModuleAttr.moduleID);
-            if (soModule) {
-                debugger
-                return soModule[p.soModuleAttr.varName];
+            if (!soModule) return false;
+            //获取设置的名称
+            let varName: string;
+            if (p.soModuleAttr.selectMode == 1) {
+                let mode = p.soModuleAttr.inputModeInfo.mode;
+                let constName = p.soModuleAttr.inputModeInfo.constName;
+                let varNameIndex = p.soModuleAttr.inputModeInfo.varNameIndex;
+                varName = mode == 0 ? constName : Game.player.variable.getString(varNameIndex);
             }
-            return false;
+            else {
+                varName = p.soModuleAttr.varName;
+            }
+            //指定界面
+            if (p.soModuleAttr.compAttrEnable) {
+                // 获取界面
+                let ui: GUI_BASE = soModule[varName];
+                if (!ui || !(ui instanceof GUI_BASE)) return false;
+                // 根据组件唯一ID找到该组件
+                let comp = ui.compsIDInfo[p.soModuleAttr.compInfo.compID];
+                if (!comp) return false;
+                return comp[p.soModuleAttr.compInfo.varName] ? true : false;
+            } else {
+                return soModule[varName] ? true : false;
+            }
         }
     }
     /**
@@ -102,10 +145,12 @@ module CustomCondition {
         if (p.type == 5) return Browser.onMobile;
         if (p.type == 6) return os.platform == 3 || os.platform == 0;
         if (p.type == 7) {
-            if (!ProjectUtils.keyboardEvent) return false;
             let systemKeyName = GUI_Setting.SYSTEM_KEYS[p.systemKey];
             let systemKeyboardInfo: { index: number, name: string, keys: number[] } = GUI_Setting.KEY_BOARD[systemKeyName];
-            return systemKeyboardInfo.keys.indexOf(ProjectUtils.keyboardEvent.keyCode) != -1;
+            for (var i = 0; i < ProjectUtils.keyboardEvents.length; i++) {
+                if (systemKeyboardInfo.keys.indexOf(ProjectUtils.keyboardEvents[i].keyCode) != -1) return true;
+            }
+            return false;
         }
     }
     /**
@@ -121,18 +166,55 @@ module CustomCondition {
             dataID = p.modelData.dataID;
         }
         let moduleData = GameData.getModuleData(moduleID, dataID);
-        return !!moduleData[p.modelData.varName];
+        if (!moduleData) return false;
+        //获取设置的名称
+        let varName: string;
+        if (p.modelData.selectMode == 1) {
+            let mode = p.modelData.inputModeInfo.mode;
+            let constName = p.modelData.inputModeInfo.constName;
+            let varNameIndex = p.modelData.inputModeInfo.varNameIndex;
+            varName = mode == 0 ? constName : Game.player.variable.getString(varNameIndex);
+        }
+        else {
+            varName = p.modelData.varName;
+        }
+        if (moduleData[varName] == undefined) return false;
+        return !!moduleData[varName];
     }
     /**
      * 世界属性 - 布尔值属性
      */
     export function f5(trigger: CommandTrigger, p: CustomConditionParams_5): boolean {
-        return !!WorldData[p.worldData.varName];
+        //获取设置的名称
+        let varName: string;
+        if (p.worldData.selectMode == 1) {
+            let mode = p.worldData.inputModeInfo.mode;
+            let constName = p.worldData.inputModeInfo.constName;
+            let varNameIndex = p.worldData.inputModeInfo.varNameIndex;
+            varName = mode == 0 ? constName : Game.player.variable.getString(varNameIndex);
+        }
+        else {
+            varName = p.worldData.varName;
+        }
+        if (WorldData[varName] == undefined) return false;
+        return !!WorldData[varName];
     }
     /**
      * 玩家属性 - 布尔值属性
      */
     export function f6(trigger: CommandTrigger, p: CustomConditionParams_6): boolean {
-        return !!Game.player.data[p.playerData.varName];
+        //获取设置的名称
+        let varName: string;
+        if (p.playerData.selectMode == 1) {
+            let mode = p.playerData.inputModeInfo.mode;
+            let constName = p.playerData.inputModeInfo.constName;
+            let varNameIndex = p.playerData.inputModeInfo.varNameIndex;
+            varName = mode == 0 ? constName : Game.player.variable.getString(varNameIndex);
+        }
+        else {
+            varName = p.playerData.varName;
+        }
+        if (Game.player.data[varName] == undefined) return false;
+        return !!Game.player.data[varName];
     }
 }

@@ -12,5 +12,7 @@
             "hideBlockTitle": false
         }
     ],
-    "isCustomPhraseDesc": false
+    "isCustomPhraseDesc": false,
+    "compAutoOrder": false,
+    "fastModifyAttribute": false
 }

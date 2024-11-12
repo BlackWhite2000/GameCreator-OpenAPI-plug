@@ -170,7 +170,7 @@
                         "compData": {
                             "compType": 2,
                             "compParam": {
-                                "items": "障碍,遮罩,桥,数据层3,数据层4,数据层5,数据层6,数据层7,数据层8,数据层9",
+                                "items": "障碍,遮罩,桥,数据层3,数据层4,数据层5,数据层6,数据层7,数据层8,数据层9,数据层10,数据层11,数据层12,数据层13,数据层14,数据层15,数据层16,数据层17,数据层18,数据层19,数据层20",
                                 "showIndex": false
                             }
                         },
@@ -188,13 +188,15 @@
                         "accessMode": 1,
                         "syncMode": 0,
                         "attrTips": "",
-                        "alias": "存在",
+                        "alias": " ",
                         "onlyConfig": false,
                         "preview": false,
                         "autoTitleWidth": false,
-                        "titleWidth": 40,
+                        "titleWidth": 0,
                         "eyeShow": true,
-                        "lockBlock": false
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
                     },
                     "attrConditions": [],
                     "y": 45,
@@ -514,7 +516,9 @@
                         "autoTitleWidth": true,
                         "titleWidth": 30,
                         "eyeShow": true,
-                        "lockBlock": false
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
                     },
                     "attrConditions": [
                         {
