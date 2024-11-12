@@ -13,7 +13,7 @@ module OpenAPI {
     /**
      * 当前版本号
      */
-    static Version = 3.6
+    static Version = 3.7
 
     /**
      * 是否安装本插件

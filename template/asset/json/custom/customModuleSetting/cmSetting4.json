@@ -1,0 +1,57 @@
+{
+    "compAutoOrderLimitHeight": 0,
+    "id": 4,
+    "blockList": [
+        {
+            "name": "设定",
+            "blockAttrs": [
+                {
+                    "attr": {
+                        "id": "125382597732_0.2092285214129539",
+                        "varName": "archives",
+                        "varType": 3,
+                        "compData": {
+                            "compType": 1003,
+                            "compParam": {}
+                        },
+                        "defaultValue": "",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 15002,
+                        "arrayMode": true,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "档案内线索信息",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": true,
+                        "titleWidth": 100,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 15,
+                    "x": 15,
+                    "width": 1010,
+                    "height": 600
+                }
+            ],
+            "blockCondition": [],
+            "blockHeight": 630,
+            "autoOrder": true,
+            "hideBlockTitle": false
+        }
+    ],
+    "varName": "archives_advancedIllustrations",
+    "name": "图鉴档案",
+    "singleType": false
+}

@@ -1,0 +1,90 @@
+{
+    "picUrls": [
+        "asset/image/AvatarAutoAnimation/Archer_normal.png",
+        "asset/image/AvatarAutoAnimation/Archer_smile.png"
+    ],
+    "oriMode": 1,
+    "autoFlip": true,
+    "refObjs": {},
+    "helperSetting": {},
+    "helperType": 0,
+    "referenceMode": false,
+    "referenceID": 1,
+    "parts": [
+        {
+            "id": 0,
+            "showOnEditor": true,
+            "mouseEventEnabledInEditor": true,
+            "__partImgIndex": 0
+        }
+    ],
+    "actionListArr": [
+        {
+            "id": 1,
+            "frameImageInfo": [
+                [
+                    {
+                        "picUrlIndex": 0,
+                        "rect": [
+                            0,
+                            0,
+                            848,
+                            1200
+                        ],
+                        "x": -424,
+                        "y": -1230,
+                        "width": 848,
+                        "height": 1200,
+                        "rotation": 0,
+                        "alpha": 1,
+                        "hue": 0,
+                        "blur": 0,
+                        "tonal_r": 0,
+                        "tonal_g": 0,
+                        "tonal_b": 0,
+                        "tonal_gray": 0,
+                        "tonal_mr": 1,
+                        "tonal_mg": 1,
+                        "tonal_mb": 1,
+                        "isAnchor": false,
+                        "anchorX": 0,
+                        "anchorY": 0
+                    }
+                ]
+            ]
+        },
+        {
+            "id": 2,
+            "frameImageInfo": [
+                [
+                    {
+                        "picUrlIndex": 1,
+                        "rect": [
+                            0,
+                            0,
+                            848,
+                            1200
+                        ],
+                        "x": -424,
+                        "y": -1230,
+                        "width": 848,
+                        "height": 1200,
+                        "rotation": 0,
+                        "alpha": 1,
+                        "hue": 0,
+                        "blur": 0,
+                        "tonal_r": 0,
+                        "tonal_g": 0,
+                        "tonal_b": 0,
+                        "tonal_gray": 0,
+                        "tonal_mr": 1,
+                        "tonal_mg": 1,
+                        "tonal_mb": 1
+                    }
+                ]
+            ]
+        }
+    ],
+    "id": 15003,
+    "name": "立绘自动动画演示立绘3"
+}

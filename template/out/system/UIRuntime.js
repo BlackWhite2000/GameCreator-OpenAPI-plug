@@ -601,5 +601,75 @@ var ListItem_15001 = (function (_super) {
     }
     return ListItem_15001;
 }(UIListItemData));
+var GUI_15002 = (function (_super) {
+    __extends(GUI_15002, _super);
+    function GUI_15002() {
+        return _super.call(this, 15002) || this;
+    }
+    return GUI_15002;
+}(GUI_BASE));
+var ListItem_15002 = (function (_super) {
+    __extends(ListItem_15002, _super);
+    function ListItem_15002() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListItem_15002;
+}(UIListItemData));
+var GUI_15003 = (function (_super) {
+    __extends(GUI_15003, _super);
+    function GUI_15003() {
+        return _super.call(this, 15003) || this;
+    }
+    return GUI_15003;
+}(GUI_BASE));
+var ListItem_15003 = (function (_super) {
+    __extends(ListItem_15003, _super);
+    function ListItem_15003() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListItem_15003;
+}(UIListItemData));
+var GUI_15004 = (function (_super) {
+    __extends(GUI_15004, _super);
+    function GUI_15004() {
+        return _super.call(this, 15004) || this;
+    }
+    return GUI_15004;
+}(GUI_BASE));
+var ListItem_15004 = (function (_super) {
+    __extends(ListItem_15004, _super);
+    function ListItem_15004() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListItem_15004;
+}(UIListItemData));
+var GUI_15005 = (function (_super) {
+    __extends(GUI_15005, _super);
+    function GUI_15005() {
+        return _super.call(this, 15005) || this;
+    }
+    return GUI_15005;
+}(GUI_BASE));
+var ListItem_15005 = (function (_super) {
+    __extends(ListItem_15005, _super);
+    function ListItem_15005() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListItem_15005;
+}(UIListItemData));
+var GUI_15006 = (function (_super) {
+    __extends(GUI_15006, _super);
+    function GUI_15006() {
+        return _super.call(this, 15006) || this;
+    }
+    return GUI_15006;
+}(GUI_BASE));
+var ListItem_15006 = (function (_super) {
+    __extends(ListItem_15006, _super);
+    function ListItem_15006() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    return ListItem_15006;
+}(UIListItemData));
 GameUI["__compCustomAttributes"] = { "UIRoot": ["enabledLimitView", "scrollShowType", "hScrollBar", "hScrollBg", "vScrollBar", "vScrollBg", "scrollWidth", "slowmotionType", "enabledWheel", "hScrollValue", "vScrollValue"], "UIButton": ["label", "image1", "grid9img1", "image2", "grid9img2", "image3", "grid9img3", "fontSize", "color", "overColor", "clickColor", "bold", "italic", "smooth", "align", "valign", "letterSpacing", "font", "textDx", "textDy", "textStroke", "textStrokeColor"], "UIBitmap": ["image", "grid9", "flip", "isTile", "pivotType"], "UIString": ["text", "fontSize", "color", "bold", "italic", "smooth", "align", "valign", "leading", "letterSpacing", "font", "wordWrap", "overflow", "shadowEnabled", "shadowColor", "shadowDx", "shadowDy", "stroke", "strokeColor", "onChangeFragEvent"], "UIVariable": ["varID", "fontSize", "color", "bold", "italic", "smooth", "align", "valign", "leading", "letterSpacing", "font", "wordWrap", "overflow", "shadowEnabled", "shadowColor", "shadowDx", "shadowDy", "stroke", "strokeColor", "onChangeFragEvent"], "UICustomGameNumber": ["customData", "previewNum", "previewFixed", "fontSize", "color", "bold", "italic", "smooth", "align", "valign", "leading", "letterSpacing", "font", "wordWrap", "overflow", "shadowEnabled", "shadowColor", "shadowDx", "shadowDy", "stroke", "strokeColor"], "UICustomGameString": ["customData", "inEditorText", "fontSize", "color", "bold", "italic", "smooth", "align", "valign", "leading", "letterSpacing", "font", "wordWrap", "overflow", "shadowEnabled", "shadowColor", "shadowDx", "shadowDy", "stroke", "strokeColor"], "UIAvatar": ["avatarID", "scaleNumberX", "scaleNumberY", "orientationIndex", "avatarFPS", "playOnce", "isPlay", "avatarFrame", "actionID", "avatarHue"], "UIStandAvatar": ["avatarID", "actionID", "scaleNumberX", "scaleNumberY", "flip", "playOnce", "isPlay", "avatarFrame", "avatarFPS", "avatarHue"], "UIAnimation": ["animationID", "scaleNumberX", "scaleNumberY", "aniFrame", "playFps", "playType", "showHitEffect", "silentMode"], "UIInput": ["text", "fontSize", "color", "prompt", "promptColor", "bold", "italic", "smooth", "align", "leading", "font", "wordWrap", "restrict", "inputMode", "maxChars", "shadowEnabled", "shadowColor", "shadowDx", "shadowDy", "onInputFragEvent", "onEnterFragEvent"], "UICheckBox": ["selected", "image1", "grid9img1", "image2", "grid9img2", "onChangeFragEvent"], "UISwitch": ["selected", "image1", "grid9img1", "image2", "grid9img2", "previewselected", "onChangeFragEvent"], "UITabBox": ["selectedIndex", "itemImage1", "grid9img1", "itemImage2", "grid9img2", "itemWidth", "itemHeight", "items", "rowMode", "spacing", "labelSize", "labelColor", "labelFont", "labelBold", "labelItalic", "smooth", "labelAlign", "labelValign", "labelLetterSpacing", "labelSelectedColor", "labelDx", "labelDy", "labelStroke", "labelStrokeColor", "onChangeFragEvent"], "UISlider": ["image1", "bgGrid9", "image2", "blockGrid9", "image3", "blockFillGrid9", "step", "min", "max", "value", "transverseMode", "blockFillMode", "blockPosMode", "fillStrething", "isBindingVarID", "bindingVarID", "onChangeFragEvent"], "UIGUI": ["guiID", "instanceClassName"], "UIList": ["itemModelGUI", "previewSize", "selectEnable", "repeatX", "itemWidth", "itemHeight", "spaceX", "spaceY", "scrollShowType", "hScrollBar", "hScrollBg", "vScrollBar", "vScrollBg", "scrollWidth", "selectImageURL", "selectImageGrid9", "selectedImageAlpha", "selectedImageOnTop", "overImageURL", "overImageGrid9", "overImageAlpha", "overImageOnTop", "overSelectMode", "slowmotionType", "onChangeFragEvent1", "onChangeFragEvent2"], "UIComboBox": ["itemLabels", "selectedIndex", "bgSkin", "bgGrid9", "fontSize", "color", "bold", "italic", "smooth", "align", "valign", "letterSpacing", "font", "textDx", "textStroke", "textStrokeColor", "displayItemSize", "listScrollBg", "listScrollBar", "listAlpha", "listBgColor", "itemHeight", "itemFontSize", "itemColor", "itemBold", "itemItalic", "itemAlign", "itemValign", "itemLetterSpacing", "itemFont", "itemOverColor", "itemOverBgColor", "itemTextDx", "itemTextDy", "itemTextStroke", "itemTextStrokeColor", "onChangeFragEvent"], "UIVideo": ["videoURL", "playType", "volume", "playbackRate", "currentTime", "muted", "loop", "pivotType", "flip", "onLoadedFragEvent", "onErrorFragEvent", "onCompleteFragEvent"] };
 //# sourceMappingURL=UIRuntime.js.map

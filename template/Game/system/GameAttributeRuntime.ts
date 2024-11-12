@@ -33,6 +33,30 @@ class WorldData {
     static keyboards: DataStructure_gameKeyboard[]; // = [];
     static word_gamepadInput: string; // = ""; 请按下游戏手柄键位
     static word_keyboardInput: string; // = ""; 请输入键盘键位
+    static timeApi_yyvhc: string; // = "https://api.gcw.wiki/TimeStamp"; API地址
+    static y_AvatarAutoAnimation: number; // = -60; 偏移Y
+    static trans_AvatarAutoAnimation: string; // = ""; 过渡方式
+    static time_AvatarAutoAnimation: number; // = 15; 持续帧数
+    static disable_y_AvatarAutoAnimation: number; // = 60; 偏移Y
+    static disable_trans_AvatarAutoAnimation: string; // = ""; 过渡方式
+    static disable_time_AvatarAutoAnimation: number; // = 15; 持续帧数
+    static disable_AvatarAutoAnimation: DataStructure_AvatarAutoAnimation_disable; // 禁用效果
+    static is_AvatarAutoAnimation: boolean; // = false; 启用显示立绘时自动动画效果
+    static emojiPassageID_AvatarAutoAnimation: number; // = 1000; 表情气泡显示的起始编号
+    static alignAvatar_time_AvatarAutoAnimation: number; // = 15; 持续帧数
+    static avatarTags_advancedIllustrations: string; // = "立绘A,立绘B"; 立绘标签
+    static fileTags_advancedIllustrations: string; // = "档案A,档案B"; 档案标签
+    static isCategory_advancedIllustrations: boolean; // = true; 开启图鉴分类功能
+    static categoryAll_advancedIllustrations: string; // = "全部"; 分类"全部"的名称(留空表示不显示)
+    static category_advancedIllustrations2: number[]; // = [];
+    static gSaved_advancedIllustrations: boolean; // = false; 图鉴设定为全局图鉴
+    static unlock_archives_advancedIllustrations: DataStructure_unlock_archive_advancedIllustrations[]; // = [];
+    static unlock_avatars_advancedIllustrations: DataStructure_unlock_avatar_advancedIllustrations[]; // = [];
+    static gameDialogColorShowUI_Bind: DataStructure_textColor_GameDialogColorShowUI[]; // = [];
+    static gameDialogColorShowUI_Set: number; // = 1; 当对话文本
+    static gameDialogColorShowUI_LoopLength: number; // = 50; 拓展组件的数量
+    static gameDialogIsShow: boolean; // = false; 对话框最前方才显示悬浮框
+    static gameDialogWhiteList: number[]; // = [];
 }
 class PlayerData {
     sceneObject: SceneObject;

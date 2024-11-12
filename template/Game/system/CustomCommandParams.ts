@@ -1095,3 +1095,170 @@ class CustomCommandParams_8002 {
     soType: number; // = 2; 对象
     attr: CustomCompData; // 属性
 }
+/**
+* 自定义指令 15001-获取服务器时间
+*/
+class CustomCommandParams_15001 {
+    yy: boolean; // = false; 年
+    yyVar: number; // = 0;
+    mm: boolean; // = false; 月 
+    mmVar: number; // = 0;
+    dd: boolean; // = false; 日
+    ddVar: number; // = 0;
+    hh: boolean; // = false; 时
+    hhVar: number; // = 0;
+    min: boolean; // = false; 分
+    minVar: number; // = 0;
+    ss: boolean; // = false; 秒
+    ssVar: number; // = 0;
+    retVar: number; // = 0;
+    ret: boolean; // = false; 返回值
+}
+/**
+* 自定义指令 15002-获取日期
+*/
+class CustomCommandParams_15002 {
+    setTypeDataList: number; // = 0;  
+    setType: boolean; // = false; 输出指定时间单位 (输出至将变为数值)
+    setStr: number; // = 0; 输出至
+    setNum: number; // = 0; 输出至
+    isDataIndex: boolean; // = false; 一位数情况下, 保留0的存在. 即输出 01 而不是 1 (输出至将变为字符串-优先级最高)
+    timeDataTypeList: number; // = 0; 时间戳来源
+    timeStampType: number; // = 1;  
+    timeStamp: number; // = 0;  
+    timeStampVar: number; // = 0;  
+}
+/**
+* 自定义指令 15003-获取时间戳
+*/
+class CustomCommandParams_15003 {
+    timeStr: number; // = 0; 日期
+    timeStamp: number; // = 0; 输出至
+    isTimeType: boolean; // = false; 指定单位转换
+    timeDataTypeList: number; // = 0; 日期来源
+    timeNumType_y: number; // = 0;  
+    timeNumType_h: number; // = 0;  
+    timeNumType_m: number; // = 0;  
+    timeNumType_i: number; // = 0;  
+    timeNumType_d: number; // = 0;  
+    timeNumType_s: number; // = 0;  
+    timeNumVar_m: number; // = 0; 月
+    timeNumVar_h: number; // = 0; 时
+    timeNumVar_i: number; // = 0; 分
+    timeNumVar_d: number; // = 0; 日
+    timeNumVar_s: number; // = 0; 秒
+    timeNumVar_y: number; // = 0; 年
+    timeNum_y: number; // = 1970; 年
+    timeNum_m: number; // = 1; 月
+    timeNum_d: number; // = 1; 日
+    timeNum_h: number; // = 0; 时
+    timeNum_i: number; // = 0; 分
+    timeNum_s: number; // = 0; 秒
+}
+/**
+* 自定义指令 15004-获取时间
+*/
+class CustomCommandParams_15004 {
+    setTime: number; // = 0; 输出至
+    timeDataTypeList: number; // = 0; 时间来源
+    timeGetStatus: number; // = 0; 状态开关
+    setTimeStamp: number; // = 0; 获取时间戳
+    timeNumType_y: number; // = 0;  
+    timeNumType_h: number; // = 0;  
+    timeNumType_m: number; // = 0;  
+    timeNumType_i: number; // = 0;  
+    timeNumType_d: number; // = 0;  
+    timeNumType_s: number; // = 0;  
+    timeNumVar_m: number; // = 0; 月
+    timeNumVar_h: number; // = 0; 时
+    timeNumVar_i: number; // = 0; 分
+    timeNumVar_d: number; // = 0; 日
+    timeNumVar_s: number; // = 0; 秒
+    timeNumVar_y: number; // = 0; 年
+    timeNum_y: number; // = 1970; 年
+    timeNum_m: number; // = 1; 月
+    timeNum_d: number; // = 1; 日
+    timeNum_h: number; // = 0; 时
+    timeNum_i: number; // = 0; 分
+    timeNum_s: number; // = 0; 秒
+}
+/**
+* 自定义指令 15005-高级数值运算
+*/
+class CustomCommandParams_15005 {
+    math: string; // = ""; 运算方式
+    set: number; // = 0; 设置至
+    setGameNumber: boolean; // = false; 定义游戏数值
+    label1: boolean; // = false; 查看使用说明
+    label2: boolean; // = false; 查看高级用法
+    gVar: boolean; // = false; 二周目变量
+    setG: number; // = 0; 设置至
+    debug: boolean; // = false; Debug
+    abs: boolean; // = false; 取绝对值
+    sqrt: boolean; // = false; 开方
+    round: boolean; // = false; 取整
+    decimal: number; // = 0;  
+    gameNumber: any[]; // = [];
+}
+/**
+* 自定义指令 15006-启用立绘
+*/
+class CustomCommandParams_15006 {
+    num: string; // = ""; 编号
+    numVar: number; // = 0; 编号
+    strVar: number; // = 0; 编号
+    numType: number; // = 0;  
+}
+/**
+* 自定义指令 15007-禁用立绘
+*/
+class CustomCommandParams_15007 {
+    num: string; // = ""; 编号
+    numVar: number; // = 0; 编号
+    strVar: number; // = 0; 编号
+    numType: number; // = 0;  
+}
+/**
+* 自定义指令 15008-表情气泡
+*/
+class CustomCommandParams_15008 {
+    emojiType: number; // = 0;  
+    emoji: number; // = 0; 指定表情
+    emojiVar: number; // = 0; 指定表情
+    numType: number; // = 0;  
+    num: string; // = ""; 指定编号
+    numVar: number; // = 0; 指定编号
+    strVar: number; // = 0; 指定编号
+}
+/**
+* 自定义指令 15009-对齐立绘
+*/
+class CustomCommandParams_15009 {
+    num: string; // = ""; 编号
+    strVar: number; // = 0; 编号
+    numType: number; // = 0;  
+    modeType: number; // = 0;  
+    artificialID: number; // = 1; 识别编号
+    artificialIDVar: number; // = 0; 识别编号
+    artificialIDType: number; // = 0;  
+    artificialY: boolean; // = false; 绑定Y
+    artificialScale: boolean; // = false; 绑定缩放
+    artificialActionID: boolean; // = false; 绑定表情编号
+}
+/**
+* 自定义指令 15010-解锁图鉴档案
+*/
+class CustomCommandParams_15010 {
+    des: number; // = 0; 指定图鉴
+    opt: number; // = 0; 解锁
+    archivesNum: number; // = 0; 档案编号
+    clueNum: number; // = 0; 线索编号
+    avatarNum: number; // = 0; 立绘编号
+}
+/**
+* 自定义指令 15011-打开指定图鉴
+*/
+class CustomCommandParams_15011 {
+    des: number; // = 0; 指定图鉴
+    event: number; // = 0; 如果未解锁触发事件
+}

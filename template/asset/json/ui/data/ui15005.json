@@ -1,0 +1,64 @@
+{
+    "root": {
+        "children": [
+            {
+                "id": "125288941538_0.23979963159356843",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "image",
+                "x": 0,
+                "y": 0,
+                "width": 200,
+                "height": 100,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": true,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/高级图鉴/tab_unselected.png",
+                "grid9": "0,0,0,0,0",
+                "pivotType": 0
+            },
+            {
+                "id": "125289017939_0.12630260206774824",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "isNew",
+                "x": 158,
+                "y": 9,
+                "width": 33,
+                "height": 10,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": true,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/高级图鉴/NEW.png",
+                "grid9": "0,0,0,0,0",
+                "pivotType": 0
+            }
+        ]
+    },
+    "id": 15005,
+    "hasRootCommand": [],
+    "instanceClassName": "",
+    "lock": true
+}

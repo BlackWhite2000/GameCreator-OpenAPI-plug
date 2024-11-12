@@ -1,0 +1,95 @@
+{
+    "compAutoOrderLimitHeight": 0,
+    "id": 6,
+    "blockList": [
+        {
+            "name": "设定",
+            "blockAttrs": [
+                {
+                    "attr": {
+                        "id": "170736746184_0.40602249109457467",
+                        "varName": "unlocked",
+                        "varType": 0,
+                        "compData": {
+                            "compType": 31,
+                            "compParam": {}
+                        },
+                        "defaultValue": "",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 1,
+                        "arrayMode": false,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "未解锁的立绘",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": true,
+                        "titleWidth": 100,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 15,
+                    "x": 15,
+                    "width": 300,
+                    "height": 300
+                },
+                {
+                    "attr": {
+                        "id": "170736763230_0.2708123195425791",
+                        "varName": "unlock",
+                        "varType": 0,
+                        "compData": {
+                            "compType": 31,
+                            "compParam": {}
+                        },
+                        "defaultValue": "",
+                        "hideMode": false,
+                        "useCommand": false,
+                        "onlyPointTo": false,
+                        "moduleID": 1,
+                        "dataStructureID": 1,
+                        "arrayMode": false,
+                        "arrayLength": 100,
+                        "arrayAllowDelete": false,
+                        "arrayAllowSwap": false,
+                        "arrayAllowUpdate": false,
+                        "accessMode": 1,
+                        "syncMode": 0,
+                        "attrTips": "",
+                        "alias": "解锁的立绘",
+                        "onlyConfig": false,
+                        "preview": false,
+                        "autoTitleWidth": true,
+                        "titleWidth": 100,
+                        "eyeShow": true,
+                        "lockBlock": false,
+                        "enumEnable_get": true,
+                        "enumEnable_set": true
+                    },
+                    "attrConditions": [],
+                    "y": 15,
+                    "x": 325,
+                    "width": 300,
+                    "height": 300
+                }
+            ],
+            "blockCondition": [],
+            "blockHeight": 330,
+            "autoOrder": true,
+            "hideBlockTitle": false
+        }
+    ],
+    "varName": "avatar_advancedIllustrations",
+    "name": "图鉴立绘"
+}

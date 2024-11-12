@@ -1,1 +1,446 @@
-[]
+[
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [],
+            [],
+            [],
+            [
+                15001
+            ],
+            [],
+            [
+                [
+                    "timeApi_yyvhc"
+                ]
+            ],
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/542/ServerTimeStamp.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 542,
+        "name": "获取服务器时间",
+        "lastUpdateTime": 1678607439,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [],
+            [],
+            [],
+            [
+                15002,
+                15003,
+                15004
+            ],
+            [],
+            null,
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/654/TimeSystem.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 654,
+        "name": "时间系统 v1.3",
+        "lastUpdateTime": 1709799721,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [],
+            [
+                14001
+            ],
+            [],
+            [],
+            [
+                7
+            ],
+            null,
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/1077/ConditionalBranch.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 1077,
+        "name": "高级条件分歧v1.0 (轻松实现并且、或者等多种判断方式)",
+        "lastUpdateTime": 1720594075,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [],
+            [],
+            [],
+            [
+                15005
+            ],
+            [],
+            null,
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/1076/NumberVariables.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 1076,
+        "name": "高级数值运算v1.0 (一个指令满足多个数学计算需求)",
+        "lastUpdateTime": 1720550882,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            [
+                15001,
+                15002,
+                15003
+            ],
+            [
+                15001
+            ],
+            [
+                15001,
+                15002
+            ],
+            null,
+            null,
+            null,
+            [
+                "asset/image/AvatarAutoAnimation/Physician_normal.png",
+                "asset/image/AvatarAutoAnimation/Physician_smile.png",
+                "asset/image/AvatarAutoAnimation/Emo_bye.png",
+                "asset/image/picture/control/vscroll_bg.png",
+                "asset/image/picture/control/vscroll_bar.png",
+                "asset/image/picture/control/hscroll_bg.png",
+                "asset/image/picture/control/hscroll_bar.png",
+                "asset/image/AvatarAutoAnimation/Swordman_normal.png",
+                "asset/image/AvatarAutoAnimation/Swordman_smile.png",
+                "asset/image/AvatarAutoAnimation/Archer_normal.png",
+                "asset/image/AvatarAutoAnimation/Archer_smile.png"
+            ],
+            [],
+            [
+                2
+            ],
+            [
+                15001
+            ],
+            [],
+            [
+                15006,
+                15007,
+                15008,
+                15009
+            ],
+            [],
+            [
+                [
+                    "text_AvatarAutoAnimation",
+                    "y_AvatarAutoAnimation",
+                    "trans_AvatarAutoAnimation",
+                    "time_AvatarAutoAnimation",
+                    "disable_text_AvatarAutoAnimation",
+                    "disable_y_AvatarAutoAnimation",
+                    "disable_trans_AvatarAutoAnimation",
+                    "disable_time_AvatarAutoAnimation",
+                    "disable_AvatarAutoAnimation",
+                    "is_AvatarAutoAnimation",
+                    "emoji_text_AvatarAutoAnimation1",
+                    "emojiPassageID_AvatarAutoAnimation",
+                    "alignAvatar_text_AvatarAutoAnimation",
+                    "textEmoji_AvatarAutoAnimation",
+                    "alignAvatar_time_AvatarAutoAnimation"
+                ]
+            ],
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/893/addEventListener.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/893/AvatarAutoAnimation.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/893/CustomCommand.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/893/Main.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 893,
+        "name": "立绘动画v1.2（立绘自动动画、表情气泡）",
+        "lastUpdateTime": 1728619008,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            [
+                15004
+            ],
+            null,
+            [
+                15003,
+                15004,
+                15005,
+                15006
+            ],
+            null,
+            null,
+            null,
+            [
+                "asset/image/高级图鉴/Black.png",
+                "asset/image/高级图鉴/vscroll_bar.png",
+                "asset/image/高级图鉴/itemBg_selected.png",
+                "asset/image/高级图鉴/selected.png",
+                "asset/image/高级图鉴/tab_unselected.png",
+                "asset/image/高级图鉴/NEW.png",
+                "asset/image/高级图鉴/tab_selected.png",
+                "asset/image/高级图鉴/a1.png",
+                "asset/image/高级图鉴/tab_unselected2.png"
+            ],
+            [],
+            [
+                3,
+                4,
+                5,
+                6
+            ],
+            [
+                15002,
+                15003,
+                15004
+            ],
+            [],
+            [
+                15010,
+                15011
+            ],
+            [],
+            [
+                [
+                    "text_advancedIllustrations",
+                    "avatarTags_advancedIllustrations",
+                    "fileTags_advancedIllustrations",
+                    "isCategory_advancedIllustrations",
+                    "categoryAll_advancedIllustrations",
+                    "category_advancedIllustrations2",
+                    "gSaved_advancedIllustrations",
+                    "unlock_archives_advancedIllustrations",
+                    "unlock_avatars_advancedIllustrations"
+                ]
+            ],
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/723/addEventListener.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/723/AdvancedIllustrations.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/723/CustomCommand.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/723/GUI_AdvancedIllustrations.ts",
+                    "isServer": false
+                },
+                {
+                    "filePath": "Game/GCplug/723/GUI_ArchivesAdvancedIllustrations.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 723,
+        "name": "高级图鉴v2.0（自定义档案、线索、立绘组合、高级图鉴系统）",
+        "lastUpdateTime": 1728398591,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [
+                7
+            ],
+            [
+                15005
+            ],
+            [],
+            [],
+            [],
+            [
+                [
+                    "gameDialogColorShowUI_Bind",
+                    "gameDialogColorShowUI_Set",
+                    "gameDialogColorShowUI_Text",
+                    "gameDialogColorShowUI_LoopLength",
+                    "gameDialogIsShow",
+                    "gameDialogWhiteList",
+                    "gameDialog_text",
+                    "gameDialog_text1"
+                ]
+            ],
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/655/GameDialogColorShowUI.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 655,
+        "name": "对话文本悬浮框 v1.5(让显示对话拥有注释功能/显示文本支持变量)",
+        "lastUpdateTime": 1731132846,
+        "author": "BlackWhite",
+        "gcver": null
+    },
+    {
+        "allPlugUseData": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            null,
+            null,
+            [],
+            [
+                {
+                    "filePath": "Game/GCplug/641/OpenAPI.ts",
+                    "isServer": false
+                }
+            ],
+            null,
+            null,
+            [],
+            [],
+            []
+        ],
+        "id": 641,
+        "name": "【OpenAPI】更多API插件 v3.7",
+        "lastUpdateTime": 1731429795,
+        "author": "BlackWhite",
+        "gcver": null
+    }
+]

@@ -50,3 +50,12 @@ class CustomConditionParams_5 {
 class CustomConditionParams_6 {
     playerData: CustomCompData; // 玩家设定的布尔值属性
 }
+/**
+* 自定义条件 7-高级条件分歧
+*/
+class CustomConditionParams_7 {
+    comparison: string; // = ""; 判断方式
+    setGameVar: boolean; // = false; 定义游戏变量
+    debug: boolean; // = false; Debug
+    gameVar: DataStructure_定义游戏变量[]; // = [];
+}

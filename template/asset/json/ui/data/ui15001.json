@@ -1,6 +1,103 @@
 {
     "root": {
-        "children": []
+        "children": [
+            {
+                "id": "128645731067_0.052432670946861215",
+                "condition": [],
+                "type": "UIStandAvatar",
+                "name": "avatar",
+                "x": 779,
+                "y": 1180,
+                "width": 192,
+                "height": 192,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": true,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "avatarID": 15002,
+                "actionID": 1,
+                "scaleNumberX": 1,
+                "scaleNumberY": 1,
+                "playOnce": false,
+                "isPlay": true,
+                "avatarFrame": 1,
+                "avatarFPS": 12,
+                "avatarHue": 0
+            },
+            {
+                "id": "124339510814_0.83414516904216",
+                "condition": [],
+                "type": "UIBitmap",
+                "name": "emojiImage",
+                "x": 587,
+                "y": 88,
+                "width": 80,
+                "height": 80,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": true,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "image": "asset/image/AvatarAutoAnimation/Emo_bye.png",
+                "grid9": "0,0,0,0,0",
+                "flip": null,
+                "isTile": null,
+                "pivotType": 0
+            },
+            {
+                "id": "127280633571_0.25283426233911666",
+                "condition": [],
+                "type": "UIAnimation",
+                "name": "emojiAnimation",
+                "x": 627,
+                "y": 128,
+                "width": 192,
+                "height": 192,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": true,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": true,
+                "animationID": 15001,
+                "scaleNumberX": 1,
+                "scaleNumberY": 1,
+                "aniFrame": 1,
+                "playFps": 20,
+                "playType": 2,
+                "showHitEffect": true,
+                "silentMode": false
+            }
+        ]
     },
-    "id": 15001
+    "id": 15001,
+    "hasRootCommand": [],
+    "lock": true
 }

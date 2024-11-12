@@ -28,4 +28,9 @@ var CustomConditionParams_6 = (function () {
     }
     return CustomConditionParams_6;
 }());
+var CustomConditionParams_7 = (function () {
+    function CustomConditionParams_7() {
+    }
+    return CustomConditionParams_7;
+}());
 //# sourceMappingURL=CustomConditionParams.js.map

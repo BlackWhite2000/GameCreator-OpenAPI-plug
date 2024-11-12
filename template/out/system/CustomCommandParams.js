@@ -393,4 +393,59 @@ var CustomCommandParams_8002 = (function () {
     }
     return CustomCommandParams_8002;
 }());
+var CustomCommandParams_15001 = (function () {
+    function CustomCommandParams_15001() {
+    }
+    return CustomCommandParams_15001;
+}());
+var CustomCommandParams_15002 = (function () {
+    function CustomCommandParams_15002() {
+    }
+    return CustomCommandParams_15002;
+}());
+var CustomCommandParams_15003 = (function () {
+    function CustomCommandParams_15003() {
+    }
+    return CustomCommandParams_15003;
+}());
+var CustomCommandParams_15004 = (function () {
+    function CustomCommandParams_15004() {
+    }
+    return CustomCommandParams_15004;
+}());
+var CustomCommandParams_15005 = (function () {
+    function CustomCommandParams_15005() {
+    }
+    return CustomCommandParams_15005;
+}());
+var CustomCommandParams_15006 = (function () {
+    function CustomCommandParams_15006() {
+    }
+    return CustomCommandParams_15006;
+}());
+var CustomCommandParams_15007 = (function () {
+    function CustomCommandParams_15007() {
+    }
+    return CustomCommandParams_15007;
+}());
+var CustomCommandParams_15008 = (function () {
+    function CustomCommandParams_15008() {
+    }
+    return CustomCommandParams_15008;
+}());
+var CustomCommandParams_15009 = (function () {
+    function CustomCommandParams_15009() {
+    }
+    return CustomCommandParams_15009;
+}());
+var CustomCommandParams_15010 = (function () {
+    function CustomCommandParams_15010() {
+    }
+    return CustomCommandParams_15010;
+}());
+var CustomCommandParams_15011 = (function () {
+    function CustomCommandParams_15011() {
+    }
+    return CustomCommandParams_15011;
+}());
 //# sourceMappingURL=CustomCommandParams.js.map

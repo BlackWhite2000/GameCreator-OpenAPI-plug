@@ -38,4 +38,34 @@ var DataStructure_collisionGroupSetting = (function () {
     }
     return DataStructure_collisionGroupSetting;
 }());
+var DataStructure_定义游戏变量 = (function () {
+    function DataStructure_定义游戏变量() {
+    }
+    return DataStructure_定义游戏变量;
+}());
+var DataStructure_AvatarAutoAnimation_disable = (function () {
+    function DataStructure_AvatarAutoAnimation_disable() {
+    }
+    return DataStructure_AvatarAutoAnimation_disable;
+}());
+var DataStructure_clues_advancedIllustrations = (function () {
+    function DataStructure_clues_advancedIllustrations() {
+    }
+    return DataStructure_clues_advancedIllustrations;
+}());
+var DataStructure_unlock_archive_advancedIllustrations = (function () {
+    function DataStructure_unlock_archive_advancedIllustrations() {
+    }
+    return DataStructure_unlock_archive_advancedIllustrations;
+}());
+var DataStructure_unlock_avatar_advancedIllustrations = (function () {
+    function DataStructure_unlock_avatar_advancedIllustrations() {
+    }
+    return DataStructure_unlock_avatar_advancedIllustrations;
+}());
+var DataStructure_textColor_GameDialogColorShowUI = (function () {
+    function DataStructure_textColor_GameDialogColorShowUI() {
+    }
+    return DataStructure_textColor_GameDialogColorShowUI;
+}());
 //# sourceMappingURL=DataStructureRuntime.js.map

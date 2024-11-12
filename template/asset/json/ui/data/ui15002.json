@@ -1,0 +1,489 @@
+{
+    "root": {
+        "children": [
+            {
+                "id": "127368801664_0.43223913211692455",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "一张立绘情况",
+                "x": 0,
+                "y": 0,
+                "width": 1600,
+                "height": 900,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": true,
+                "hasCommand": [],
+                "isOpen": false,
+                "enabledLimitView": null,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0,
+                "children": [
+                    {
+                        "id": "127368763472_0.039342019133168815",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_1_1",
+                        "x": 800,
+                        "y": 1180,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15001,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    }
+                ]
+            },
+            {
+                "id": "127368864298_0.20246061238684154",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "两张立绘情况",
+                "x": 0,
+                "y": 0,
+                "width": 1600,
+                "height": 900,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": false,
+                "hasCommand": [],
+                "isOpen": false,
+                "enabledLimitView": null,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0,
+                "children": [
+                    {
+                        "id": "127368864299_0.8369866945349298",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_2_1",
+                        "x": 541,
+                        "y": 1180,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15001,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    },
+                    {
+                        "id": "127368878420_0.242585719632483",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_2_2",
+                        "x": 1027,
+                        "y": 1180,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15002,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    }
+                ]
+            },
+            {
+                "id": "127368916422_0.47253222849792564",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "三张立绘情况",
+                "x": 0,
+                "y": 1,
+                "width": 1600,
+                "height": 900,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": false,
+                "hasCommand": [],
+                "isOpen": false,
+                "enabledLimitView": null,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0,
+                "children": [
+                    {
+                        "id": "127368916422_0.6738636441056569",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_3_1",
+                        "x": 319,
+                        "y": 1180,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15001,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    },
+                    {
+                        "id": "127368916423_0.49337248590438776",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_3_2",
+                        "x": 779,
+                        "y": 1180,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15002,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    },
+                    {
+                        "id": "127368929948_0.5350190690841701",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_3_3",
+                        "x": 1283,
+                        "y": 1180,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15003,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    }
+                ]
+            },
+            {
+                "id": "127368961488_0.6699086606421136",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "中间放大情况",
+                "x": 0,
+                "y": 0,
+                "width": 1600,
+                "height": 900,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": false,
+                "hasCommand": [],
+                "isOpen": false,
+                "enabledLimitView": null,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0,
+                "children": [
+                    {
+                        "id": "127368961488_0.9682342760341287",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_4_1",
+                        "x": 258,
+                        "y": 1350,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15001,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    },
+                    {
+                        "id": "127368961489_0.4781775435553526",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_4_2",
+                        "x": 784,
+                        "y": 1390,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15002,
+                        "actionID": 2,
+                        "scaleNumberX": 1.2,
+                        "scaleNumberY": 1.2,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    },
+                    {
+                        "id": "127368961489_0.18171990084282075",
+                        "condition": [],
+                        "type": "UIStandAvatar",
+                        "name": "avatar_4_3",
+                        "x": 1343,
+                        "y": 1350,
+                        "width": 192,
+                        "height": 192,
+                        "opacity": 1,
+                        "rotation": 0,
+                        "show": true,
+                        "mouseEventEnabledData": true,
+                        "materialData": [
+                            {
+                                "materials": []
+                            }
+                        ],
+                        "mouseEventEnabledInEditor": true,
+                        "lock": false,
+                        "showOnEditor": true,
+                        "hasCommand": [],
+                        "isOpen": true,
+                        "avatarID": 15003,
+                        "actionID": 1,
+                        "scaleNumberX": 1,
+                        "scaleNumberY": 1,
+                        "playOnce": false,
+                        "isPlay": true,
+                        "avatarFrame": 1,
+                        "avatarFPS": 12,
+                        "avatarHue": 0
+                    }
+                ]
+            },
+            {
+                "id": "127428360877_0.28741898053937165",
+                "condition": [],
+                "type": "UIRoot",
+                "name": "更多立绘情况请根据规范创建",
+                "x": 0,
+                "y": 0,
+                "width": 1600,
+                "height": 900,
+                "opacity": 1,
+                "rotation": 0,
+                "show": true,
+                "mouseEventEnabledData": true,
+                "materialData": [
+                    {
+                        "materials": []
+                    }
+                ],
+                "mouseEventEnabledInEditor": true,
+                "lock": false,
+                "showOnEditor": false,
+                "hasCommand": [],
+                "isOpen": true,
+                "enabledLimitView": null,
+                "scrollShowType": 2,
+                "hScrollBar": "asset/image/picture/control/hscroll_bar.png",
+                "hScrollBg": "asset/image/picture/control/hscroll_bg.png",
+                "vScrollBar": "asset/image/picture/control/vscroll_bar.png",
+                "vScrollBg": "asset/image/picture/control/vscroll_bg.png",
+                "scrollWidth": 16,
+                "slowmotionType": 0,
+                "enabledWheel": true,
+                "hScrollValue": 0,
+                "vScrollValue": 0
+            }
+        ]
+    },
+    "id": 15002,
+    "lock": true,
+    "hasRootCommand": []
+}

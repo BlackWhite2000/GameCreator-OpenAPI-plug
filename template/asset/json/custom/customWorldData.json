@@ -583,6 +583,21 @@
             "varType": 1,
             "value": "第$1个键位：请按下键位",
             "copy": false
+        },
+        "banCollisionSetting": {
+            "varType": 9,
+            "value": [],
+            "copy": false
+        },
+        "timeApi_yyvhc": {
+            "varType": 1,
+            "value": "https://api.gcw.wiki/TimeStamp",
+            "copy": false
+        },
+        "碰撞组设定": {
+            "varType": 1,
+            "value": "",
+            "copy": false
         }
     }
 }

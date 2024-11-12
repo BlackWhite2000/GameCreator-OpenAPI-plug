@@ -1,0 +1,17 @@
+{
+    "compAutoOrderLimitHeight": 0,
+    "id": 5,
+    "blockList": [
+        {
+            "name": "设定",
+            "blockAttrs": [],
+            "blockCondition": [],
+            "blockHeight": 50,
+            "autoOrder": true,
+            "hideBlockTitle": true
+        }
+    ],
+    "varName": "category_advancedIllustrations",
+    "name": "图鉴分类",
+    "singleType": false
+}
