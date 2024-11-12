@@ -4,6 +4,7 @@ module OpenAPI {
    * 界面模块API
    * 
    * @deprecated 请使用OpenAPI.InterfaceUtils
+   * @private
    */
   export class UI {
     /**

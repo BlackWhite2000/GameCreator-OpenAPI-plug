@@ -3,6 +3,7 @@ module OpenAPI {
    * 第三方库
    * 
    * @deprecated 该类库已经废弃，不再维护。未来版本将删除该类库，请使用RunUtils。
+   * @private
    */
   export class Require {
     /**

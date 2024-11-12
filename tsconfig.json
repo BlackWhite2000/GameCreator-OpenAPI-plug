@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "target": "ES5",
     "lib": [
       "DOM",
-      "ES2019"
+      "ES2015"
     ],
     "rootDir": "./src",
     "declaration": true,
@@ -11,22 +11,22 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "skipLibCheck": true,
+    "noEmitOnError": false,
+    "outFile": "lib/index.js"
   },
-  "skipLibCheck": true,
   "include": [
-    "src/**/*.ts",
-    "test/**/*.ts"
+    "src/**/*",
+    "template/GameCreatorLib/API/**/*",
+    "types/index.d.ts"
   ],
+  "exclude": [
+    "node_modules",
+  ],
+  "files": [],
   "references": [
     {
       "path": "./template/Game"
     }
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "files":[
-    "types/matter.d.ts",
-    "types/spine-canvas.d.ts",
   ]
 }

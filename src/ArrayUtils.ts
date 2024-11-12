@@ -15,16 +15,16 @@ module OpenAPI {
          * @returns {T | undefined} 数组的第一个元素，如果数组为空则返回 `undefined`。
          *
          * @example
+         * ```ts
          * const arr = [1, 2, 3];
-         * const firstElement = head(arr);
+         * const firstElement = OpenAPI.ArrayUtils.head(arr);
          * // firstElement 将会是 1
          *
          * const emptyArr: number[] = [];
-         * const noElement = head(emptyArr);
+         * const noElement = OpenAPI.ArrayUtils.head(emptyArr);
          * // noElement 将会是 undefined
+         * ```
          */
-        static head<T>(arr: readonly [T, ...T[]]): T;
-        static head<T>(arr: readonly T[]): T | undefined;
         static head<T>(arr: readonly T[]): T | undefined {
             return arr[0];
         }
@@ -41,16 +41,16 @@ module OpenAPI {
          * @returns {T | undefined} 数组的最后一个元素，如果数组为空则返回 `undefined`。
          *
          * @example
+         * ```ts
          * const arr = [1, 2, 3];
-         * const lastElement = last(arr);
+         * const lastElement = OpenAPI.ArrayUtils.last(arr);
          * // lastElement 将为 3
          *
          * const emptyArr: number[] = [];
-         * const noElement = last(emptyArr);
+         * const noElement = OpenAPI.ArrayUtils.last(emptyArr);
          * // noElement 将为 undefined
+         * ```
          */
-        static last<T>(arr: readonly [...T[], T]): T;
-        static last<T>(arr: readonly T[]): T | undefined;
         static last<T>(arr: readonly T[]): T | undefined {
             return arr[arr.length - 1];
         }
@@ -66,9 +66,11 @@ module OpenAPI {
          * @returns {T} 数组中随机选取的一个元素。
          *
          * @example
+         * ```ts
          * const array = [1, 2, 3, 4, 5];
-         * const randomElement = sample(array);
+         * const randomElement = OpenAPI.ArrayUtils.sample(array);
          * // randomElement 将是数组中随机选择的一个元素。
+         * ```
          */
         static sample<T>(arr: readonly T[]): T {
             const randomIndex = Math.floor(Math.random() * arr.length);
@@ -90,9 +92,11 @@ module OpenAPI {
          * @throws {Error} 如果 `size` 大于 `array` 的长度，则抛出错误。
          *
          * @example
-         * const result = sampleSize([1, 2, 3], 2)
+         * ```ts
+         * const result = OpenAPI.ArrayUtils.sampleSize([1, 2, 3], 2)
          * // result 将是包含两个来自数组的元素的数组。
          * // [1, 2] 或 [1, 3] 或 [2, 3]
+         * ```
          */
         static sampleSize<T>(array: readonly T[], size: number): T[] {
             if (size > array.length) {
@@ -127,9 +131,11 @@ module OpenAPI {
          * @returns {T[]} 元素顺序已随机洗牌的新数组。
          *
          * @example
+         * ```ts
          * const array = [1, 2, 3, 4, 5];
-         * const shuffledArray = shuffle(array);
+         * const shuffledArray = OpenAPI.ArrayUtils.shuffle(array);
          * // shuffledArray 将是一个新数组，其中 array 的元素以随机顺序洗牌，例如 [3, 1, 4, 5, 2]
+         * ```
          */
         static shuffle<T>(arr: readonly T[]): T[] {
             const result = arr.slice();
@@ -156,9 +162,11 @@ module OpenAPI {
          * @returns {T[]} 仅包含原始数组中唯一值的新数组。
          *
          * @example
+         * ```ts
          * const array = [1, 2, 2, 3, 4, 4, 5];
-         * const result = uniq(array);
+         * const result = OpenAPI.ArrayUtils.uniq(array);
          * // result 将为 [1, 2, 3, 4, 5]
+         * ```
          */
         static uniq<T>(arr: readonly T[]): T[] {
             return Array.from(new Set(arr));

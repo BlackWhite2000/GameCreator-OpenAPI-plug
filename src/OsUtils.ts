@@ -9,6 +9,11 @@ module OpenAPI {
          * 获取当前操作系统的用户名称
          * 
          * 只支持Windows系统
+         * 
+         * @example
+         * ```ts
+         * const systemUserName = OpenAPI.OsUtils.systemUserName
+         * ```
          */
         static get systemUserName(): string {
             const userInfo = OpenAPI.RunUtils.os.userInfo();

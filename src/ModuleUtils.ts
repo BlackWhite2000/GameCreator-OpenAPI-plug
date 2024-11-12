@@ -12,9 +12,11 @@ module OpenAPI {
          * @param {number} length 类别长度 默认16
          * 
          * @example
-         * const moduleData = getModuleData(1, (data) => {
+         * ```ts
+         * const moduleData = getModuleData(1, Callback.New((data) => {
          *     console.log(data)
-         * }) // 返回 '模块数据'
+         * }, this)) // 返回 '模块数据'
+         * ```
          */
         static getModuleData = (id: number, comp: Callback, length: number = 16): void => {
             return OpenAPI.Method.getModuleData(id, comp, length);

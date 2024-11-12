@@ -13,10 +13,12 @@ module OpenAPI {
          * @returns {string} - 转换后的蛇形命名法字符串。
          *
          * @example
+         * ```ts
          * const convertedStr1 = snakeCase('camelCase') // 返回 'camel_case'
          * const convertedStr2 = snakeCase('some whitespace') // 返回 'some_whitespace'
          * const convertedStr3 = snakeCase('hyphen-text') // 返回 'hyphen_text'
          * const convertedStr4 = snakeCase('HTTPRequest') // 返回 'http_request'
+         * ```
          */
         static snakeCase = (str: string): string => {
             const splitWords = str.match(OpenAPI.ConstantsUtils.CASE_SPLIT_PATTERN) || [];
@@ -30,7 +32,9 @@ module OpenAPI {
          * @param {string} str - 随机的字符串
          * 
          * @example
+         * ```ts
          * const randomStr = randomString(10) // 返回 'a1b2c3d4e5'
+         * ```
          */
         static randomString = (length: number, str: string = OpenAPI.ConstantsUtils.RANDOM_STRING_RANGE): string => {
             return OpenAPI.Method.getRandomString(length, str);
@@ -40,7 +44,9 @@ module OpenAPI {
          * 随机颜色
          * 
          * @example
+         * ```ts
          * const randomColor = randomColor() // 返回 '#ffffff'
+         * ```
          */
         static get randomColor(): string {
             return OpenAPI.Method.getRandomColor();
@@ -54,8 +60,10 @@ module OpenAPI {
          * @param {RegExp[]} regex - 正则表达式
          * 
          * @example
+         * ```ts
          * const text = '你好, 我是[@s1], 今年[@v1]岁'
          * return parseVariableText(text) // 返回 '你好, 我是黑白, 今年18岁'
+         * ```
          */
         static parseVariableText = (text: string, getData: (((s: any) => number) | ((s: any) => string))[] | null = null, regex: RegExp[] | null = null): string => {
             return OpenAPI.Method.parseVarPlaceholderData(text, getData, regex);
@@ -69,9 +77,11 @@ module OpenAPI {
          * @param {RegExp[]} regex - 正则表达式
          * 
          * @example
+         * ```ts
          * const text = '你好, 我是[@gs0], 今年[@gv1]岁'
          * // gameData 需要从编辑器中获取, 例如游戏变量组件
          * return parseGameVariableText(text, gameData) // 返回 '你好, 我是黑白, 今年18岁'
+         * ```
          */
         static parseGameVariableText = (text: string, gameData: any[], regex: RegExp[] | null = null): string => {
             return OpenAPI.Method.parseGameVarPlaceholderData(text, gameData, regex);
@@ -84,6 +94,7 @@ module OpenAPI {
          * @param {RegExp[]} regex - 正则表达式
          * 
          * @example
+         * ```ts
          * const text = 'max(1,100)' // 获取最大值
          * return parseFunctionText(text) // 返回 '100'
          * const text = 'min(1,100)' // 获取最小值
@@ -98,6 +109,7 @@ module OpenAPI {
          * return parseFunctionText(text) // 返回 '4.2426...' 不会取整
          * const text = 'round(1.1234)' // 获取整数
          * return parseFunctionText(text) // 返回 '1'
+         * ```
          */
         static parseFunctionText = (text: string, regex: RegExp[] | null = null): string => {
             return OpenAPI.Method.parseCombinedFunctions(text, regex);
@@ -109,7 +121,9 @@ module OpenAPI {
          * @param {number} num - 阿拉伯数字
          * 
          * @example
+         * ```ts
          * const romanNum = arabicToRoman(2024) // 返回 'MMXXIV'
+         * ```
          */
         static arabicToRoman = (num: number): string => {
             return OpenAPI.Method.intToRoman(num);

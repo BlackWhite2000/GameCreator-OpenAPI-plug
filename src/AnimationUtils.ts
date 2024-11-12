@@ -8,6 +8,13 @@ module OpenAPI {
          * 设置对象数据
          * @param object_1 来源
          * @param object_2 目标
+         * 
+         * @example
+         * ```ts
+         * const object_1 = new GameSprite()
+         * const object_2 = new GameSprite()
+         * OpenAPI.AnimationUtils.setObjectData(object_1, object_2)
+         * ```
          */
         private static setObjectData(object_1: GameSprite, object_2: GameSprite) {
             Object.assign(object_2, {
@@ -30,6 +37,14 @@ module OpenAPI {
          * @param object 目标对象
          * @param aniID 动画编号
          * @param complete 回调
+         * 
+         * @example
+         * ```ts
+         * const object = new GameSprite()
+         * OpenAPI.AnimationUtils.setAnimation(object, 1, Callback.New(() => {
+         *    console.log('动画播放完成')
+         * }, this))
+         * ```
          */
         static setAnimation(object: GameSprite, aniID: number, complete?: Callback) {
             const ui = new UIRoot()
@@ -57,6 +72,13 @@ module OpenAPI {
          * @param object 图像
          * @param aniID 动画编号
          * @param complete 回调
+         * 
+         * @example
+         * ```ts
+         * OpenAPI.AnimationUtils.setImageAnimation('taskName', object, 1, Callback.New(() => {
+         *   console.log('动画播放完成')
+         * }, this))
+         * ```
          */
         static setImageAnimation(taskName: string | null, object: UIStandAvatar, aniID: number, complete?: Callback) {
             if (!object) return
@@ -84,6 +106,13 @@ module OpenAPI {
          * @param object 界面
          * @param aniID 动画编号
          * @param complete 回调
+         * 
+         * @example
+         * ```ts
+         * OpenAPI.AnimationUtils.setUIAnimation('taskName', object, 1, Callback.New(() => {
+         *  console.log('动画播放完成')
+         * }, this))
+         * ```
          */
         static setUIAnimation(taskName: string | null, object: GUI_BASE, aniID: number, complete?: Callback) {
             if (!object) return
@@ -113,6 +142,13 @@ module OpenAPI {
           * @param loop 是否循环播放
           * @param isHit 是否显示被击中的效果，动画编辑器支持动画层仅命中时显示，如果设置为true即表示该动画所有层均显示
          * @param complete 回调
+         * 
+         * @example
+         * ```ts
+         * OpenAPI.AnimationUtils.setSceneObjectAnimation('taskName', object, 1, false, false, Callback.New(() => {
+         * console.log('动画播放完成')
+         * }, this))
+         * ```
           */
         static setSceneObjectAnimation(taskName: string | null, object: ProjectClientSceneObject, aniID: number, loop: boolean = false, isHit: boolean = false, complete?: Callback) {
             if (!object) return

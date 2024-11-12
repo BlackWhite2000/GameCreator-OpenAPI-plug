@@ -11,6 +11,15 @@ module OpenAPI {
 
       /**
        * 是否是GC平台
+       * 
+       * @returns {boolean} 如果是GC平台则返回 `true`，否则返回 `false`。
+       * 
+       * @example
+       * ```ts
+       * if (OpenAPI.GC.Cloud.isInGCCloud) {
+       *  console.log('当前是GC平台')
+       * }
+       * ```
        */
       get isInGCCloud(): boolean {
         return window.location.href.includes('gamecreator')
@@ -18,6 +27,13 @@ module OpenAPI {
 
       /**
        * 游戏ID
+       * 
+       * @returns {number} 返回游戏ID。
+       * 
+       * @example
+       * ```ts
+       * const gameID = OpenAPI.GC.Cloud.GameID
+       * ```
        */
       get GameID(): number {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
@@ -35,6 +51,13 @@ module OpenAPI {
 
       /**
        * 游戏名称
+       * 
+       * @returns {string} 返回游戏名称。
+       * 
+       * @example
+       * ```ts
+       * const gameName = OpenAPI.GC.Cloud.GameName
+       * ```
        */
       get GameName(): string {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
@@ -59,6 +82,13 @@ module OpenAPI {
 
       /**
        * 当前版本号
+       * 
+       * @returns {number} 返回当前版本号。
+       * 
+       * @example
+       * ```ts
+       * const gameVersion = OpenAPI.GC.Cloud.GameVersion
+       * ```
        */
       get GameVersion(): number {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
@@ -73,6 +103,13 @@ module OpenAPI {
 
       /**
        * 作者ID
+       * 
+       * @returns {number} 返回作者ID。
+       * 
+       * @example
+       * ```ts
+       * const authorUID = OpenAPI.GC.Cloud.AuthorUID
+       * ```
        */
       get AuthorUID(): number {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
@@ -93,6 +130,13 @@ module OpenAPI {
 
       /**
        * 作者名称
+       * 
+       * @returns {string} 返回作者名称。
+       * 
+       * @example
+       * ```ts
+       * const authorName = OpenAPI.GC.Cloud.AuthorName
+       * ```
        */
       get AuthorName(): string {
         if (!OpenAPI.GC.Cloud.isInGCCloud)
@@ -108,6 +152,13 @@ module OpenAPI {
 
     /**
      * 如果是编辑器则弹窗, 如果是发布后则输出
+     * 
+     * @param {any} text - 输出的文本
+     * 
+     * @example
+     * ```ts
+     * OpenAPI.GC.isCloudLog('这是一条日志')
+     * ```
      */
     static isCloudLog(text: any): void {
       if (Config.RELEASE_GAME)

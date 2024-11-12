@@ -10,7 +10,9 @@ module OpenAPI {
          * PC版本与WEB版本返回的路径不同，通常WEB版本将携带路由以及标识符，PC版本则返回本地路径
          * 
          * @example
+         * ```ts
          * const gamePath = OpenAPI.RunUtils.gamePath // 返回当前游戏根路径
+         * ```
          */
         static get gamePath(): string | undefined {
             let path = '';
@@ -32,7 +34,9 @@ module OpenAPI {
          * 如果是PC版本则返回相对路径，实际是返回空。WEB版本则返回绝对路径
          * 
          * @example
+         * ```ts
          * const gamePathByEnv = OpenAPI.PathUtils.gamePathByEnv // 返回当前游戏根路径
+         * ```
          */
         static get gamePathByEnv(): string | undefined {
             if (OpenAPI.RunUtils.gameEnv == 2) {

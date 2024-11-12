@@ -10,6 +10,11 @@ module OpenAPI {
          * @param model 列表项模型
          * @param len 列表长度
          * @param isFocus 是否设置焦点
+         * 
+         * @example
+         * ```ts
+         * OpenAPI.InterfaceUtils.initList(ui, list, model, 10, true);
+         * ```
          */
         static initList(list: UIList, model: any, len: number, isFocus: boolean = false): void {
             // 初始化列表数据
@@ -38,6 +43,11 @@ module OpenAPI {
          * @param add 增加按钮
          * @param minBtn 最小值按钮
          * @param maxBtn 最大值按钮
+         * 
+         * @example
+         * ```ts
+         * OpenAPI.InterfaceUtils.NumberInput(ui, comp, 10, 0, 100, sub, add, minBtn, maxBtn);
+         * ```
          */
         static NumberInput(ui: UIRoot, comp: UIInput, value: number, min: number, max: number, subBtn?: UIButton, addBtn?: UIButton, minBtn?: UIButton, maxBtn?: UIButton): void {
             // 输入值不允许为空

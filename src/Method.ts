@@ -4,11 +4,17 @@ module OpenAPI {
    * 通用API
    * 
    * @deprecated 尽管这个类在以前很常用，但是现在已经不推荐使用了。请使用新的类。当然，如果你有特殊需求，你仍然可以使用这个类。
+   * @private
    */
   export class Method {
     /**
      * 当前页面协议
      * @ "http://" : "https://"
+     * 
+     * @example
+     * ```ts
+     * const origin = OpenAPI.Method.Origin // 返回 "https://"
+     * ```
      */
     static get Origin(): string {
       return window.location.protocol === 'http:' ? 'http://' : 'https://'
@@ -18,6 +24,11 @@ module OpenAPI {
      * 随机字符串
      * @param {number} len 随机字符串的长度
      * @param {string} _charStr 随机的字符串
+     * 
+     * @example
+     * ```ts
+     * const randomString = OpenAPI.Method.getRandomString(6) // 返回 "aBcDeF"
+     * ```
      */
     static getRandomString(len: number, _charStr = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678'): string {
       const min = 0
@@ -47,6 +58,12 @@ module OpenAPI {
     /**
      * 日期转时间戳, 格式 1970/01/01 00:00:00 或 1970-01-01 00:00:00
      * @param {string} date 日期
+     * 
+     * @example
+     * ```ts
+     * const timestamp = OpenAPI.Method.dateToTimestamp('2024-01-01') // 返回 1704038400000
+     * const timestamp = OpenAPI.Method.dateToTimestamp('2024/01/01') // 返回 1704038400000
+     * ```
      */
     static dateToTimestamp(date: string): number {
       return new Date(date.replace(/-/g, '/')).getTime()
@@ -56,6 +73,12 @@ module OpenAPI {
      * 时间戳转日期, 格式 1609459200。 支持获取特定时间
      * @param {number} data 时间戳。输出格式 1970/01/01 00:00:00
      * @param {string} data_type 【可选】获取时间类型 y、m、d、h、i、s。如 s = 获取时间戳中的秒
+     * 
+     * @example
+     * ```ts
+     * const date = OpenAPI.Method.timestampToDate(1704038400000) // 返回 '2024/01/01 00:00:00'
+     * const date = OpenAPI.Method.timestampToDate(1704038400000, 'y') // 返回 '2024'
+     * ```
      */
     static timestampToDate(data: number, data_type: string = ''): string | number | undefined {
       let _data = 0
@@ -102,6 +125,11 @@ module OpenAPI {
      * @param {number} variable 变量
      * @param {number} index_type 选项类型 0 = 常量 1 = 变量
      * @param {number} variable_type 【默认数值】变量类型 0 = 数值, 1 = 字符串, 2 = 开关(返回 0 = 关闭, 1 = 开启)
+     * 
+     * @example
+     * ```ts
+     * const variable_value = OpenAPI.Method.JudgeTypeConstantVariable(1, 1, 0) // 返回 1
+     * ```
      */
     static JudgeTypeConstantVariable(constant: any, variable: number, index_type: number, variable_type: number = 0): any {
       let variable_value
@@ -127,6 +155,11 @@ module OpenAPI {
     /**
      * 光标系统样式名称
      * 'default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize'
+     * 
+     * @example
+     * ```ts
+     * const cursorStyle = OpenAPI.Method.cursorSystemStyleName // 返回 ['default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize']
+     * ```
      */
     static cursorSystemStyleName: string[] = [
       'default', 'auto', 'pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize',
@@ -135,6 +168,11 @@ module OpenAPI {
     /**
      * 基于cursorSystemStyleName来弹出指定名称
      * @param {string[]} name 弹出指定的名称
+     * 
+     * @example
+     * ```ts
+     * const cursorStyle = OpenAPI.Method.cursorSystemStyleName_spliceName(['default', 'auto']) // 返回 ['pointer', 'text', 'wait', 'help', 'crosshair', 'move', 'n-resize', 's-resize', 'w-resize', 'e-resize', 'nw-resize', 'sw-resize', 'ne-resize', 'se-resize']
+     * ```
      */
     static cursorSystemStyleName_spliceName(name: string[]): string[] {
       const cursorName = [...OpenAPI.Method.cursorSystemStyleName]
@@ -144,6 +182,11 @@ module OpenAPI {
     /**
      * 检查当前模板是否是兼容的模板ID。 false = 不兼容, true = 兼容
      * @param {number[]} templateID 兼容的模板ID合集
+     * 
+     * @example
+     * ```ts
+     * const checkTemplateID = OpenAPI.Method.checkTemplateID([1, 2, 3]) // 返回 false
+     * ```
      */
     static checkTemplateID(templateID: number[]): boolean {
       return templateID.indexOf(Config.templateID) !== -1
@@ -151,6 +194,11 @@ module OpenAPI {
 
     /**
      * 随机颜色
+     * 
+     * @example
+     * ```ts
+     * const randomColor = OpenAPI.Method.getRandomColor() // 返回 "#FFFFFF"
+     * ```
      */
     static getRandomColor(): string {
       return `#${(Math.random() * 0xFFFFFF << 0).toString(16)}`

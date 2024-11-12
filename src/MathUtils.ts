@@ -16,19 +16,19 @@ module OpenAPI {
          * @returns {number} 在指定边界内限制后的数字。
          *
          * @example
-         * const result1 = clamp(10, 5); // result1 将会是 5，因为 10 被限制在边界 5 上
-         * const result2 = clamp(10, 5, 15); // result2 将会是 10，因为它在边界 5 和 15 内
-         * const result3 = clamp(2, 5, 15); // result3 将会是 5，因为 2 被限制在边界 5 下
-         * const result4 = clamp(20, 5, 15); // result4 将会是 15，因为 20 被限制在边界 15 上
+         * ```ts
+         * const result1 = OpenAPI.MathUtils.clamp(10, 5); // result1 将会是 5，因为 10 被限制在边界 5 上
+         * const result2 = OpenAPI.MathUtils.clamp(10, 5, 15); // result2 将会是 10，因为它在边界 5 和 15 内
+         * const result3 = OpenAPI.MathUtils.clamp(2, 5, 15); // result3 将会是 5，因为 2 被限制在边界 5 下
+         * const result4 = OpenAPI.MathUtils.clamp(20, 5, 15); // result4 将会是 15，因为 20 被限制在边界 15 上
+         * ```
          */
-        static clamp(value: number, maximum: number): number;
-        static clamp(value: number, minimum: number, maximum: number): number;
-        static clamp(value: number, bound1: number, bound2?: number): number {
-            if (bound2 == null) {
-                return Math.min(value, bound1);
+        static clamp(value: number, minimum: number, maximum?: number): number {
+            if (maximum == null) {
+                return Math.min(value, minimum);
             }
 
-            return Math.min(Math.max(value, bound1), bound2);
+            return Math.min(Math.max(value, minimum), maximum);
         }
 
         /**
@@ -41,12 +41,12 @@ module OpenAPI {
          * @throws {Error} 如果 `minimum` 大于或等于 `maximum`，抛出错误。
          *
          * @example
-         * const result1 = inRange(3, 5); // result1 将返回 true。
-         * const result2 = inRange(1, 2, 5); // result2 将返回 false。
-         * const result3 = inRange(1, 5, 2); // 如果最小值大于或等于最大值，将抛出错误。
+         * ```ts
+         * const result1 = OpenAPI.MathUtils.inRange(3, 5); // result1 将返回 true。
+         * const result2 = OpenAPI.MathUtils.inRange(1, 2, 5); // result2 将返回 false。
+         * const result3 = OpenAPI.MathUtils.inRange(1, 5, 2); // 如果最小值大于或等于最大值，将抛出错误。
+         * ```
          */
-        static inRange(value: number, maximum: number): boolean;
-        static inRange(value: number, minimum: number, maximum: number): boolean;
         static inRange(value: number, minimum: number, maximum?: number): boolean {
             if (maximum == null) {
                 maximum = minimum;
@@ -69,9 +69,11 @@ module OpenAPI {
          * @returns {number} 数组中所有数字的平均值。
          *
          * @example
+         * ```ts
          * const numbers = [1, 2, 3, 4, 5];
-         * const result = mean(numbers);
+         * const result = OpenAPI.MathUtils.mean(numbers);
          * // result 将为 3
+         * ```
          */
         static mean(nums: readonly number[]): number {
             return this.sum(nums) / nums.length;
@@ -88,8 +90,10 @@ module OpenAPI {
          * @returns {number} 根据 `getValue` 函数确定的所有数字的平均值。
          *
          * @example
-         * meanBy([{ a: 1 }, { a: 2 }, { a: 3 }], x => x.a); // 返回: 2
-         * meanBy([], x => x.a); // 返回: NaN
+         * ```ts
+         * OpenAPI.MathUtils.meanBy([{ a: 1 }, { a: 2 }, { a: 3 }], x => x.a); // 返回: 2
+         * OpenAPI.MathUtils.meanBy([], x => x.a); // 返回: NaN
+         * ```
          */
         static meanBy<T>(items: readonly T[], getValue: (element: T) => number): number {
             const nums = items.map(x => getValue(x));
@@ -108,12 +112,12 @@ module OpenAPI {
          * @throws {Error} 如果 `maximum` 不大于 `minimum`，则抛出错误。
          *
          * @example
-         * const result1 = random(0, 5); // 返回介于 0 和 5 之间的随机数。
-         * const result2 = random(5, 0); // 如果最小值大于最大值，则抛出错误。
-         * const result3 = random(5, 5); // 如果最小值等于最大值，则抛出错误。
+         * ```ts
+         * const result1 = OpenAPI.MathUtils.random(0, 5); // 返回介于 0 和 5 之间的随机数。
+         * const result2 = OpenAPI.MathUtils.random(5, 0); // 如果最小值大于最大值，则抛出错误。
+         * const result3 = OpenAPI.MathUtils.random(5, 5); // 如果最小值等于最大值，则抛出错误。
+         * ```
          */
-        static random(maximum: number): number;
-        static random(minimum: number, maximum: number): number;
         static random(minimum: number, maximum?: number): number {
             if (maximum == null) {
                 maximum = minimum;
@@ -138,11 +142,11 @@ module OpenAPI {
          * @throws {Error} 如果 `maximum` 不大于 `minimum`，则抛出错误。
          *
          * @example
-         * const result = randomInt(0, 5); // result 将是介于 0（包含）和 5（不包含）之间的随机整数
-         * const result2 = randomInt(5, 0); // 这将抛出错误
+         * ```ts
+         * const result = OpenAPI.MathUtils.randomInt(0, 5); // result 将是介于 0（包含）和 5（不包含）之间的随机整数
+         * const result2 = OpenAPI.MathUtils.randomInt(5, 0); // 这将抛出错误
+         * ```
          */
-        static randomInt(maximum: number): number;
-        static randomInt(minimum: number, maximum: number): number;
         static randomInt(minimum: number, maximum?: number): number {
             return Math.floor(this.random(minimum, maximum!));
         }
@@ -158,24 +162,20 @@ module OpenAPI {
          * @returns {number[]} 包含从 `start` 到 `end` 的数字数组，步长为 `step`。
          *
          * @example
+         * ```ts
          * // 返回 [0, 1, 2, 3]
-         * range(4);
+         * OpenAPI.MathUtils.range(4);
          *
-         * @example
          * // 返回 [0, 5, 10, 15]
-         * range(0, 20, 5);
+         * OpenAPI.MathUtils.range(0, 20, 5);
          *
-         * @example
          * // 返回 [0, -1, -2, -3]
-         * range(0, -4, -1);
+         * OpenAPI.MathUtils.range(0, -4, -1);
          *
-         * @example
          * // 抛出错误: 步长值必须是非零整数。
-         * range(1, 4, 0);
+         * OpenAPI.MathUtils.range(1, 4, 0);
+         * ```
          */
-        static range(end: number): number[];
-        static range(start: number, end: number): number[];
-        static range(start: number, end: number, step: number): number[];
         static range(start: number, end?: number, step?: number): number[] {
             if (end == null) {
                 end = start;
@@ -211,10 +211,12 @@ module OpenAPI {
          * @throws {Error} 如果 `precision` 不是整数，则抛出错误。
          *
          * @example
-         * const result1 = round(1.2345); // result1 将是 1
-         * const result2 = round(1.2345, 2); // result2 将是 1.23
-         * const result3 = round(1.2345, 3); // result3 将是 1.235
-         * const result4 = round(1.2345, 3.1); // 这将抛出一个错误
+         * ```ts
+         * const result1 = OpenAPI.MathUtils.round(1.2345); // result1 将是 1
+         * const result2 = OpenAPI.MathUtils.round(1.2345, 2); // result2 将是 1.23
+         * const result3 = OpenAPI.MathUtils.round(1.2345, 3); // result3 将是 1.235
+         * const result4 = OpenAPI.MathUtils.round(1.2345, 3.1); // 这将抛出一个错误
+         * ```
          */
         static round(value: number, precision = 0): number {
             if (!Number.isInteger(precision)) {
@@ -233,9 +235,11 @@ module OpenAPI {
          * @returns {number} 数组中所有数字的总和。
          *
          * @example
+         * ```ts
          * const numbers = [1, 2, 3, 4, 5];
-         * const result = sum(numbers);
+         * const result = OpenAPI.MathUtils.sum(numbers);
          * // result 将为 15
+         * ```
          */
         static sum(nums: readonly number[]): number {
             let result = 0;
